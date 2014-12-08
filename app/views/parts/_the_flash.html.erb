@@ -1,0 +1,17 @@
+<div id="the_flash" class="container text-center">
+  <% if alert %>
+      <div class="alert alert-danger">
+        <h4><%= alert %></h4>
+      </div>
+  <% end %>
+  <% if notice %>
+      <div id="x" class="alert alert-success">
+        <h4><%= notice %></h4>
+      </div>
+
+  <% end %>
+
+  <script>
+    //$('#the_flash').delay(3000).slideUp(1000);
+  </script>
+</div>
