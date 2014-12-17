@@ -61,7 +61,7 @@ $calendar_light: #dddddd;
   }
   td.day {
     height: 120px;
-    width: 900px;
+    //width: 100px;
     border-right: 1px solid $calendar_light;
     border-top: 1px solid $calendar_light;
     border-bottom: 1px solid $calendar_light;
@@ -104,19 +104,22 @@ $calendar_light: #dddddd;
 }
 
 .calendar_view_selector{
-  font-size: 28px !important;
-  padding-top: 40px;
+  font-size: 20px !important;
+  float: right;
+  position: relative;
+  bottom: -18px;
 }
 
 .calendar-header {
-  padding-left: 20px;
+  //padding-left: 10px;
   margin-bottom: 10px;
-  font-size: 48px;
+  margin-top: 10px;
+  font-size: 30px;
 
   /*these are the controls next to the month*/
   a{
     color: black !important;
-    font-size: 70px;
+    font-size: 40px;
     padding-left: 10px;
     padding-right: 10px;
   }
