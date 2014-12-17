@@ -1,0 +1,52 @@
+<div id="home_header" class="jumbotron">
+  <h1 class="text-center">Kevin's Gym</h1>
+  <h3 class="text-center">We also do cupping!</h3>
+</div>
+
+<div id="main_content" class="container">
+  <div id="left_content" class="col-md-8">
+    <h1 class="text-center">News from the Gym</h1>
+    <h3>Many Linkable Stories may go here <small>with some sort of excerpt of the news story here talking about how great this or that gym activity is...</small></h3>
+    <h3>Many Linkable Stories may go here <small>with some sort of excerpt of the news story here talking about how great this or that gym activity is...</small></h3>
+    <h3>Many Linkable Stories may go here <small>with some sort of excerpt of the news story here talking about how great this or that gym activity is...</small></h3>
+  </div>
+
+  <div id="right_content" class="col-md-4">
+    <!-- <div class="text-center">
+
+       <a href="#" type="button" class="btn btn-default btn-lg">
+         <span class="glyphicon glyphicon-calendar"></span> Class Schedule
+       </a>
+ <br><br>
+       <a href="#" type="button" class="btn btn-default btn-lg">
+         <span class="glyphicon glyphicon-tasks"></span> Something Else
+       </a>
+     </div>-->
+
+    ICONS AND CONTENT
+    ICONS AND CONTENT
+    ICONS AND CONTENT
+    ICONS AND CONTENT
+    ICONS AND CONTENT
+    ICONS AND CONTENT
+    ICONS AND CONTENT
+    ICONS AND CONTENT
+
+  </div>
+</div>
+
+<script>
+    $(function() {
+        enquire.register("screen and (max-width: 992px)", [{
+            match: function () {
+                $('#right_content').insertBefore('#left_content');
+            },
+            unmatch: function () {
+                $('#left_content').insertBefore ('#right_content');
+            }
+        }])
+    });
+</script>
+
+<style>
+</style>
