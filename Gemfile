@@ -44,6 +44,8 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem "simple_calendar", "~> 1.1.0"
+
 #gem 'paypal-sdk-rest'
 
 gem 'faker'

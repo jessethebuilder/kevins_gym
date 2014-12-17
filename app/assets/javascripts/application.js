@@ -15,3 +15,8 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+//ca
+
+//calendar scripts ------------------------------------------------------------------------
+
+//end calendar scripts ------------------------------------------------------------------------
