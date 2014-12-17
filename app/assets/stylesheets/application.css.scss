@@ -44,10 +44,79 @@
 }
 
 //calendar styles-----------------------------------------------------------------------------------------
-.day{
-  height: 150px;
-  width: 100px;
-  border: 1px solid black;
+$calendar_dark: #363636;
+$calendar_medium: #c0c0c0;
+
+#calendar_month {
+
+  td.next-month{
+    background-color: $calendar-medium;
+  }
+  td.prev-month{
+    background-color: $calendar_medium;
+  }
+  td.day {
+    height: 150px;
+    width: 120px;
+    border: 1px solid $calendar_dark;
+    vertical-align: top;
+
+    .date_on_calendar {
+      color: $calendar_dark;
+      font-weight: 600;
+      padding-top: 5px;
+      padding-left: 5px;
+      padding-bottom: 5px;
+      font-size: 20px;
+
+    }
+  }
+  .calendar-header {
+    padding-left: 20px;
+    margin-bottom: 10px;
+    font-size: 48px;
+
+    /*these are the controls next to the month*/
+    a{
+      color: black !important;
+      font-size: 70px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    a:hover{
+      text-decoration:none;
+      color: $calendar_medium !important;
+    }
+
+  }
+
+  ul.event_on_calendar {
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      padding: 3px;
+      font-size: 12px;
+      //border: 1px solid black;
+      margin-top: 5px;
+      a:link{
+        color: $calendar_dark;
+        //background-color: $calendar_dark;
+        text-decoration: none;
+      }
+      a:visited{
+        color: $calendar_dark;
+      }
+      a:hover{
+        color: $calendar_medium;
+      }
+    }
+
+  }
 }
 
+.calendar_view_selector{
+  font-size: 28px !important;
+  padding-top: 40px;
+}
 //end calendar styles-------------------------------------------------------------------------------------

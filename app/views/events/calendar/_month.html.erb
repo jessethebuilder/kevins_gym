@@ -1,0 +1,19 @@
+<div id="calendar_month">
+  <%= month_calendar :events => @events, :table => {:id => 'calendar_month_table'} do |date, events| %>
+      <div class="date_on_calendar">
+        <%= date.day %>
+      </div>
+
+      <ul class="event_on_calendar">
+        <% events.each do |event| %>
+            <li><%= link_to event.name, event_path(event) %></li>
+        <% end %>
+      </ul>
+  <% end %>
+</div>
+
+<script>
+    //append link to week view to header
+    $('#calendar_month .calendar-header span').append('<%= j link_to 'Weekly Schedule', events_path(:calendar_view => 'week'), :class => 'calendar_view_selector pull-right' %>');
+    $('.calendar-header').css('width', $('#calendar_month_table').width());
+</script>

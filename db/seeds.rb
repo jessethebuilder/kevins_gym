@@ -3,6 +3,6 @@ g.address = Address.new :street => '4218 S. Mt. Angeles Rd', :city => 'Port Ange
 g.save!
 
 3.times do
-  e = Event.new :name => Faker::Business.name, :starts_at => Date.today
+  e = Event.new :name => Faker::Company.name, :starts_at => Date.today
   e.save!
 end

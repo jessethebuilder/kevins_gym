@@ -1,0 +1,14 @@
+<div id="events_calendar_week">
+
+  <%= link_to 'Monthly', events_path(:calendar_view => 'month') %>
+
+  <%= week_calendar :events => @events do |date, events| %>
+    <%= date.day %>
+
+      <ul>
+        <% events.each do |event| %>
+          <li><%= event.name %></li>
+        <% end %>
+      </ul>
+  <% end %>
+</div>
