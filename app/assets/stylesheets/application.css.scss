@@ -104,10 +104,10 @@ $calendar_light: #dddddd;
 }
 
 .calendar_view_selector{
-  font-size: 20px !important;
   float: right;
-  position: relative;
-  bottom: -18px;
+
+  //position: relative;
+  //bottom: -18px;
 }
 
 .calendar-header {
@@ -118,8 +118,8 @@ $calendar_light: #dddddd;
 
   /*these are the controls next to the month*/
   a{
-    color: black !important;
-    font-size: 40px;
+    color: $calendar_dark;
+    //font-size: 40px;
     padding-left: 10px;
     padding-right: 10px;
   }

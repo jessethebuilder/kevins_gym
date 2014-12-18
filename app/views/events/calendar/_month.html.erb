@@ -13,20 +13,57 @@
 </div>
 
 <script>
-  $(document).ready(function() {
+    $(window).resize(function(){
+        set_calendar_size();
+    })
+
+    function set_calendar_size(){
+        var cell_width = $('#calendar_month').width() / 7;
+        $('td.day').width(cell_width + 'px');
+    }
+
+    $(document).ready(function() {
       //append link to week view to header
-      $('#calendar_month .calendar-header').append('<%= j link_to 'Weekly Schedule', events_path(:calendar_view => 'week'), :class => 'calendar_view_selector' %>');
-      set_calendar_size();
+        $('#calendar_month .calendar-header').append('<%= j link_to 'Weekly Schedule', events_path(:calendar_view => 'week'), :class => 'calendar_view_selector' %>');
+
+        set_calendar_size();
+
+        //hack to ensure labels are the correct size on larger (than xs) screens.
+        if($(window).width > '768px'){ grow_calendar_labels() }
+
+        onMediaQuery(768, shrink_calendar_labels, grow_calendar_labels);
   })
 
-  $(window).resize(function(){
-      set_calendar_size();
-  })
-
-  function set_calendar_size(){
-      var cell_width = $('#calendar_month').width() / 7;
-      $('td.day').width(cell_width + 'px');
+  function grow_calendar_labels(){
+      $('.calendar-header').css('font-size', '30px');
+      $('.calendar-header a').css('font-size', '40px');
+      $('.calendar_view_selector').css('font-size', '25px');
   }
+
+  function shrink_calendar_labels(){
+      $('.calendar-header').css('font-size', '25px');
+      $('.calendar-header a').css('font-size', '30px');
+      $('.calendar_view_selector').css('font-size', '18px');
+  }
+
+  function onMediaQuery(screen_size, on_methods, off_methods) {
+      enquire.register("screen and (max-width:" + screen_size + "px)", [{
+          match: function () {
+              if(typeof on_methods == "function"){on_methods = [on_methods]}
+              on_methods.forEach(function(method){
+                  method();
+              })
+          },
+          unmatch: function () {
+            if(typeof off_methods == "function"){off_methods = [off_methods]}
+            off_methods.forEach(function(method){
+                  method();
+              })
+
+            }
+          }
+      ])
+  };
 </script>
 
 <style>
