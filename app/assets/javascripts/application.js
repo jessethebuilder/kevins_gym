@@ -20,3 +20,24 @@
 //calendar scripts ------------------------------------------------------------------------
 
 //end calendar scripts ------------------------------------------------------------------------
+
+//toolbox---------------------------------------------------------------------------------------
+
+function onMediaQuery(screen_size, on_methods, off_methods) {
+    enquire.register("screen and (max-width:" + screen_size + "px)", [{
+        match: function () {
+            if(typeof on_methods == "function"){on_methods = [on_methods]}
+            on_methods.forEach(function(method){
+                method();
+            })
+        },
+        unmatch: function () {
+            if(typeof off_methods == "function"){off_methods = [off_methods]}
+            off_methods.forEach(function(method){
+                method();
+            })
+
+        }
+    }
+    ])
+};
