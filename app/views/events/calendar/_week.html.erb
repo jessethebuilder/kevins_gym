@@ -1,20 +1,40 @@
-<div id="calendar_week" class="table-responsive">
-  <%= week_calendar :events => @events, :thead => '', :table => {:id => 'calendar_week_table'} do |date, events| %>
-    <h3><%#= date.to_formatted_s('%a') %></h3>
-    <%= date.day %>
-      <ul>
-        <% events.each do |event| %>
-          <li><%= event.name %></li>
-        <% end %>
-      </ul>
-  <% end %>
+<%= week_calendar :events => @events, :thead => '', :table => {:id => 'calendar_week_table'} do |date, events| %>
+    <h3 class="day_name"><%= "#{date.strftime('%A')} #{date.day}"  %></h3>
+
+    <%= calendar_week_time_slots(calendar_start_time, calendar_end_time, 15) %>
+
+
+    <ul>
+      <% events.each do |event| %>
+          <li><%= link_to event.name, events_path(event) %></li>
+      <% end %>
+    </ul>
+<% end %>
+
+<div id="calendar_week">
+    <% 7.times do %>
+      <div class="row day_row">
+        <div class="col-xs-12 day_col">
+
+        </div>
+      </div>
+    <% end %>
 </div>
 
 <script>
-    $('#calendar_week .calendar-header span').append('<%= j link_to 'Monthly Schedule', events_path(:calendar_view => 'month'), :class => 'calendar_view_selector pull-right' %>');
 
-    //hack to ensure labels are the correct size on larger (than xs) screens.
-    if($(window).width > '768px'){ grow_calendar_labels() }
+  $(document).ready(function() {
+      build_week_column();
 
-    onMediaQuery(768, shrink_calendar_labels, grow_calendar_labels);
+      $('.calendar-header span').append('<%= j link_to 'Monthly', events_path(:calendar_view => 'month'), :class => 'calendar_view_selector pull-right' %>');
+
+      //hack to ensure labels are the correct size on larger (than xs) screens.
+      if ($(window).width > '768px') {
+          grow_calendar_labels()
+      }
+
+      set_calendar_size();
+
+      onMediaQuery(768, shrink_calendar_labels, grow_calendar_labels);
+  })
 </script>

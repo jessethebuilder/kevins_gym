@@ -23,4 +23,9 @@ FactoryGirl.define do
 
   end
 
+  factory :event do
+    name Faker::Company.bs
+    starts_at Random.rand(1..50000).minutes.until
+  end
+
 end

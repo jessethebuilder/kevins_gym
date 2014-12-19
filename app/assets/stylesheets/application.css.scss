@@ -36,12 +36,6 @@
   margin-bottom: 0px;
 }
 
-/* Home Page */
-
-#home_header{
-  //color: grey;
-  //background-image: url('forest.jpg');
-}
 
 //calendar styles-----------------------------------------------------------------------------------------
 $calendar_dark: #363636;
@@ -78,7 +72,7 @@ $calendar_light: #dddddd;
 
     }
   }
-  ul.event_on_calendar {
+  ul.events_on_calendar {
     padding-left: 0;
     list-style: none;
 
@@ -113,7 +107,7 @@ $calendar_light: #dddddd;
 .calendar-header {
   //padding-left: 10px;
   margin-bottom: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
   font-size: 30px;
 
   /*these are the controls next to the month*/
@@ -131,10 +125,14 @@ $calendar_light: #dddddd;
 }
 
 #calendar_week{
-  td.day{
-    height: 300px;
-    width: 200px;
-    border: 1px solid black;
+  div.day_col{
+    border-bottom: 1px solid $calendar_dark;
+
+    .calendar_week_time_slot{
+      border-top: 1px solid $calendar_light;
+      border-bottom: 1px solid $calendar_light;
+      height: 20px;
+    }
   }
 
 }

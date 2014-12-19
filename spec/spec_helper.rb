@@ -1,7 +1,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'rspec/autorun'
+#require 'rspec/autorun'
 require 'capybara/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -38,6 +38,9 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  config.expect_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
   #require 'support/request_helper'
   #config.include RequestHelper
 end

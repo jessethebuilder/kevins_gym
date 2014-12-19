@@ -4,7 +4,7 @@
         <%= date.day %>
       </div>
 
-      <ul class="event_on_calendar">
+      <ul class="events_on_calendar">
         <% events.each do |event| %>
             <li><%= link_to event.name, event_path(event) %></li>
         <% end %>
@@ -12,25 +12,38 @@
   <% end %>
 </div>
 
+
+
 <script>
+
     $(window).resize(function(){
         set_calendar_size();
     })
 
-    function set_calendar_size(){
-        var cell_width = $('#calendar_month').width() / 7;
-        $('td.day').width(cell_width + 'px');
-    }
-
     $(document).ready(function() {
       //append link to week view to header
-        $('#calendar_month .calendar-header').append('<%= j link_to 'Weekly Schedule', events_path(:calendar_view => 'week'), :class => 'calendar_view_selector' %>');
+        $('#calendar_month .calendar-header').append('<%= j link_to 'Weekly', events_path(:calendar_view => 'week'), :class => 'calendar_view_selector' %>');
 
         set_calendar_size();
-
         //hack to ensure labels are the correct size on larger (than xs) screens.
         if($(window).width > '768px'){ grow_calendar_labels() }
 
         onMediaQuery(768, shrink_calendar_labels, grow_calendar_labels);
+
+        truncate_events_on_month_calendar(2);
     })
+
+    function truncate_events_on_month_calendar(event_count){
+      var item_counter
+
+      jQuery('td.day ul.events_on_calendar').each(function(i, list){
+          jQuery(list).find('li').each(function(list_index, item){
+            if(list_index == event_count){ $(item).html('more...') }
+            if(list_index > event_count){ $(item).detach() }
+          })
+      })
+
+        //alert(jQuery('td.day').length);
+
+    }
 </script>
