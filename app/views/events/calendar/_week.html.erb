@@ -1,15 +1,10 @@
 <%= week_calendar :events => @events, :thead => '', :table => {:id => 'calendar_week_table'} do |date, events| %>
     <%= content_tag :div, :id => "week_calendar_#{date.strftime('%A')}", :class => 'week_calendar_content' do %>
       <%= content_tag :h4, :class => 'day_name' do %>
-          <%= "#{date.strftime('%A')} #{date.day}"  %>
-          <%= content_tag :a, :href => "javascript:collapseDayOnWeek('#week_calendar_#{date.strftime('%A')}', 'open')",
-                          :class => 'week_collapse_control week_collapse_open' do %>
-            <span class="glyphicon glyphicon-collapse-down pull-right"></span>
-          <% end %>
-          <%= content_tag :a, :href => "javascript:collapseDayOnWeek('#week_calendar_#{date.strftime('%A')}', 'close')",
-                          :class => 'week_collapse_control week_collapse_close' do %>
-            <span class="glyphicon glyphicon-collapse-up pull-right"></span>
-          <% end %>
+        <%= "#{date.strftime('%A')} #{date.day}"  %>
+
+        <%= week_collapse_control date %>
+        <%= week_collapse_control date, 'close' %>
       <% end %>
 
       <%= calendar_week_time_slots(calendar_start_time, calendar_end_time, calendar_increment_in_minutes) %>

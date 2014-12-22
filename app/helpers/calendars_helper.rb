@@ -1,18 +1,5 @@
 module CalendarsHelper
-  def calendar_week_time_slots(start_time, end_time, increment_in_minutes)
-    time = Time.parse(start_time)
-    html = ''
-    while time <= Time.parse(end_time) do
-      html += content_tag(:div, :id => "time_slot_#{time.strftime(Event::STRFTIME_FOR_ID)}", :class => 'calendar_week_time_slot') do
-        content_tag(:span, :class => 'pull-left') do
-          time.strftime('%l:%M %P')
-        end
-      end
 
-      time = time + increment_in_minutes.minutes
-    end
-    html.html_safe
-  end
 
   def calendar_start_time
     '7:00am'
@@ -41,5 +28,30 @@ module CalendarsHelper
     time = round_to_nearest_increment(datetime, increment)
     time = Time.parse(time).strftime(strftime_string) unless strftime_string == '%I:%M%P'
     time
+  end
+
+  #specific use methods
+  def calendar_week_time_slots(start_time, end_time, increment_in_minutes)
+    time = Time.parse(start_time)
+    html = ''
+    while time <= Time.parse(end_time) do
+      html += content_tag(:div, :id => "time_slot_#{time.strftime(Event::STRFTIME_FOR_ID)}", :class => 'calendar_week_time_slot') do
+        content_tag(:span, :class => 'pull-left') do
+          time.strftime('%l:%M %P')
+        end
+      end
+
+      time = time + increment_in_minutes.minutes
+    end
+    html.html_safe
+  end
+
+  def week_collapse_control(date, open_or_close = 'open')
+    up_down = open_or_close == 'open' ? 'down' : 'up'
+    html = content_tag :a, :href => "javascript:collapseDayOnWeek('#week_calendar_#{date.strftime('%A')}', '#{open_or_close}')",
+                       :class => "week_collapse_control week_collapse_#{open_or_close}" do
+            %Q|<span class="glyphicon glyphicon-collapse-#{up_down} pull-right"></span>|.html_safe
+    end
+    html.html_safe
   end
 end
