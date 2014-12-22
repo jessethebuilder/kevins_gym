@@ -32,5 +32,59 @@ function build_week_column(){
     })
 
     //hide the original table
-    $('#calendar_week_table').hide();
+    $('#calendar_week_table').detach();
+}
+
+function collapseDaysOnWeek(){
+    collapseDayOnWeek('body', 'close');
+    collapseDayOnWeek('.today', 'open');
+}
+
+function collapseDayOnWeek(selector, direction){
+    if(direction == 'open'){
+        $(selector).find('.calendar_week_time_slot').show();
+        $(selector).find('.week_collapse_open').hide();
+        $(selector).find('.week_collapse_close').show();
+        $(selector).find('ul.week_collapse_close_events li').hide();
+        $(selector).find('span.week_collapse_open_event').show();
+
+
+
+    } else {
+        $(selector).find('.calendar_week_time_slot').hide();
+        $(selector).find('.week_collapse_open').show();
+        $(selector).find('.week_collapse_close').hide();
+        $(selector).find('ul.week_collapse_close_events li').show();
+        $(selector).find('span.week_collapse_open_event').hide();
+    }
+}
+
+function placeEventsOnCollapseOpen(){
+
+}
+
+function setUpWeekCalendar(){
+    $(document).ready(function(){
+
+
+
+        //function to move data from table to columns
+        build_week_column();
+
+        //hack to ensure labels are the correct size on larger (than xs) screens.
+        if ($(window).width > '768px') {
+            grow_calendar_labels()
+        }
+
+        set_calendar_size();
+
+        //change label sizes on xs media query
+        onMediaQuery(768, shrink_calendar_labels, grow_calendar_labels);
+
+        //set the default view for the calendar.
+        collapseDaysOnWeek();
+
+        //place events on week calendar in the proper time slot
+        placeEventsOnCollapseOpen();
+    })
 }

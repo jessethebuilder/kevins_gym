@@ -1,1 +1,1 @@
-::USER_LEVELS = [:member, :staff, :admin, :owner]
+

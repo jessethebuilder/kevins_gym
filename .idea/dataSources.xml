@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2068482937">
+    <data-source source="LOCAL" name="Rails s_gym: development" uuid="281ab09b-250a-47c2-bd20-afce05e0de2a">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/s_gym_dev</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfc9dfcbdfd8dfc6dfdedfc5dfc4dfc6dfcbdfd9dfc3dfdedfcfdfd8</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.2-1002.jdbc4.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="Rails s_gym: test" uuid="3a1e5e68-11e1-47d3-9fbb-8fb6d2d2064a">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://127.0.0.1:5432/s_gym_test</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfc9dfcbdfd8dfc6dfdedfc5dfc4dfc6dfcbdfd9dfc3dfdedfcfdfd8</user-password>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.2-1002.jdbc4.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+    <data-source source="LOCAL" name="Rails s_gym: production" uuid="18ff9ac1-4f58-4b87-b33d-26929c1ba819">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:s_gym_production</jdbc-url>
+      <libraries>
+        <library>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/postgresql-9.2-1002.jdbc4.jar</url>
+        </library>
+      </libraries>
+    </data-source>
+  </component>
+</project>
+

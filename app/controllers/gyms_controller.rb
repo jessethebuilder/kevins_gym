@@ -7,7 +7,7 @@ class GymsController < ApplicationController
     #@gyms = Gym.all
     #respond_with(@gyms)
     @gym = Gym.first
-    redirect_to :show
+    redirect_to gym_path(@gym)
   end
 
   def show

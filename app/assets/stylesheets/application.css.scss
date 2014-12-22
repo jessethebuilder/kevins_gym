@@ -129,14 +129,24 @@ $calendar_light: #dddddd;
     border-bottom: 1px solid $calendar_dark;
 
     .calendar_week_time_slot{
-      border-top: 1px solid $calendar_light;
+      //border-top: 1px solid $calendar_light;
       border-bottom: 1px solid $calendar_light;
       height: 20px;
     }
+
+    .week_collapse_control{
+      color: $calendar_dark;
+    }
   }
+
+
 
 }
 .today{
-  background-color: #6cb1ff;
+  background-color: rgba(108, 177, 255, 0.42);
+
+  .calendar_week_time_slot{
+    border-color: $calendar_medium !important;
+  }
 }
 //end calendar styles-------------------------------------------------------------------------------------

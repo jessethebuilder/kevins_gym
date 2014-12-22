@@ -4,5 +4,4 @@ class Gym < ActiveRecord::Base
   validates :email, :presence => true
 
   has_one :address, :as => 'has_address'
-
 end

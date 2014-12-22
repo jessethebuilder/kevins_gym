@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Gym, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Validations' do
+    it{ should validate_presence_of :name }
+    it{ should validate_presence_of :phone }
+    it{ should validate_presence_of :email }
+  end
+
+  describe 'Associations' do
+    it{ should have_one :address }
+  end
 end

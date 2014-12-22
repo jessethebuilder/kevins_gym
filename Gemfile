@@ -52,6 +52,7 @@ gem 'faker'
 
 group :test, :development do
 
+
   gem 'rspec-rails'
   gem 'wdm'
   gem 'database_cleaner', '~> 1.0.0rc'
@@ -62,11 +63,15 @@ group :test, :development do
 end
 
 group :test do
+  gem 'rspec-legacy_formatters'
   gem 'factory_girl_rails'
   gem 'capybara'
+  #https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit
+  #gem 'capybara-webkit'
   gem 'guard-rspec'
   gem 'selenium-webdriver'
   gem 'shoulda'
+  gem 'shoulda-matchers'
   gem 'launchy', '~> 2.3.0'
   #gem 'webrat'
 end

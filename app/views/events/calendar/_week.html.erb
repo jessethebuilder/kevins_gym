@@ -1,20 +1,50 @@
 <%= week_calendar :events => @events, :thead => '', :table => {:id => 'calendar_week_table'} do |date, events| %>
-    <h3 class="day_name"><%= "#{date.strftime('%A')} #{date.day}"  %></h3>
-
-    <%= calendar_week_time_slots(calendar_start_time, calendar_end_time, 15) %>
-
-
-    <ul>
-      <% events.each do |event| %>
-          <li><%= link_to event.name, events_path(event) %></li>
+    <%= content_tag :div, :id => "week_calendar_#{date.strftime('%A')}", :class => 'week_calendar_content' do %>
+      <%= content_tag :h4, :class => 'day_name' do %>
+          <%= "#{date.strftime('%A')} #{date.day}"  %>
+          <%= content_tag :a, :href => "javascript:collapseDayOnWeek('#week_calendar_#{date.strftime('%A')}', 'open')",
+                          :class => 'week_collapse_control week_collapse_open' do %>
+            <span class="glyphicon glyphicon-collapse-down pull-right"></span>
+          <% end %>
+          <%= content_tag :a, :href => "javascript:collapseDayOnWeek('#week_calendar_#{date.strftime('%A')}', 'close')",
+                          :class => 'week_collapse_control week_collapse_close' do %>
+            <span class="glyphicon glyphicon-collapse-up pull-right"></span>
+          <% end %>
       <% end %>
-    </ul>
+
+      <%= calendar_week_time_slots(calendar_start_time, calendar_end_time, calendar_increment_in_minutes) %>
+
+      <ul class="week_collapse_close_events">
+        <% events.each do |event| %>
+            <% if event.event_type == 'class' %>
+              <li><%= link_to "#{event.starts_at.strftime('%l:%M %P')} - #{event.ends_at.strftime('%l:%M %P')}
+                              <strong>#{event.name}</strong>".html_safe,
+                              events_path(event) %>
+              </li>
+            <% end %>
+
+
+            <!-- spans to be added to the un-collapsed week calendar view -->
+          <%= content_tag :span, :class => 'week_collapse_open_event',
+                          'data-starts' => round_and_format(event.starts_at),
+                          'data-ends' => round_and_format(event.ends_at) do %>
+              <% if event.event_type == 'class' %>
+                  <%= link_to "#{event.starts_at.strftime('%l:%M %P')} - #{event.ends_at.strftime('%l:%M %P')}
+                          <strong>#{event.name}</strong>".html_safe,
+                              events_path(event) %>
+              <% end %>
+          <% end %>
+
+        <% end %>
+      </ul>
+
+    <% end %>
 <% end %>
 
 <div id="calendar_week">
     <% 7.times do %>
       <div class="row day_row">
-        <div class="col-xs-12 day_col">
+        <div class="col-lg-12 day_col">
 
         </div>
       </div>
@@ -22,19 +52,10 @@
 </div>
 
 <script>
+    //append links other views to header
+    $('.calendar-header span').append('<%= j link_to 'Monthly', events_path(:calendar_view => 'month'), :class => 'calendar_view_selector pull-right' %>');
 
-  $(document).ready(function() {
-      build_week_column();
+    setUpWeekCalendar();
 
-      $('.calendar-header span').append('<%= j link_to 'Monthly', events_path(:calendar_view => 'month'), :class => 'calendar_view_selector pull-right' %>');
 
-      //hack to ensure labels are the correct size on larger (than xs) screens.
-      if ($(window).width > '768px') {
-          grow_calendar_labels()
-      }
-
-      set_calendar_size();
-
-      onMediaQuery(768, shrink_calendar_labels, grow_calendar_labels);
-  })
 </script>
