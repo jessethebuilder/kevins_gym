@@ -37,7 +37,7 @@ function build_week_column(){
 
 function collapseDaysOnWeek(){
     collapseDayOnWeek('body', 'close');
-    collapseDayOnWeek('.today', 'open');
+    //collapseDayOnWeek('.today', 'open');
 }
 
 function collapseDayOnWeek(selector, direction){
