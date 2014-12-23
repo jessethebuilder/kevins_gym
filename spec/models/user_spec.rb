@@ -9,6 +9,10 @@ RSpec.describe User, :type => :model do
     it{ should validate_inclusion_of(:level).in_array(User::USER_LEVELS)}
   end
 
+  describe 'Associations' do
+    it{ should have_many(:classes).class_name('Event') }
+  end
+
   describe 'Methods' do
     describe '#level_is_at_least(#level)' do
       #USER_LEVELS is described in initializers/globals.rb

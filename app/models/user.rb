@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :classes, :class_name => 'Event'
+
   USER_LEVELS = symbols_and_strings([:member, :staff, :admin, :owner])
 
   validates :level, :presence => true, :inclusion => {:in => USER_LEVELS}

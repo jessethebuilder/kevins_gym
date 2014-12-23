@@ -3,9 +3,10 @@
 
     <%= content_tag :h4, :class => 'day_name' do %>
         <%= "#{date.strftime('%A')} #{date.day}"  %>
-
-        <%= week_collapse_control date %>
-        <%= week_collapse_control date, 'close' %>
+        <% unless local_assigns[:hide_collapse_controls] %>
+          <%= week_collapse_control date %>
+          <%= week_collapse_control date, 'close' %>
+        <% end %>
       <% end %>
 
       <%= calendar_week_time_slots(calendar_start_time, calendar_end_time, calendar_increment_in_minutes) %>
@@ -13,7 +14,7 @@
       <ul class="week_collapse_close_events">
         <% events.each do |event| %>
             <% if event.event_type == 'class' %>
-              <li><%= link_to "#{event.starts_at.strftime('%l:%M %P')} - #{event.ends_at.strftime('%l:%M %P')}
+              <li><%= link_to "#{event.starts_at.strftime('%l:%M%P')} - #{event.ends_at.strftime('%l:%M%P')}
                               <strong>#{event.name}</strong>".html_safe,
                               event_path(event) %>
               </li>
@@ -23,8 +24,17 @@
                           'data-starts' => round_and_format(event.starts_at),
                           'data-ends' => round_and_format(event.ends_at) do %>
               <% if event.event_type == 'class' %>
-                  <%= link_to "<strong>#{event.name}</strong>".html_safe,
+                  <div class="col-sm-2">
+                    <%= link_to "<strong>#{event.name}</strong>".html_safe,
                               event_path(event) %>
+                  </div>
+                  <div class="col-sm-6">
+                    <%= truncate(event.description.to_s, :length => 50) %>
+                  </div>
+
+                  <div class="col-sm-4">
+                    <%= "#{event.starts_at.strftime('%l:%M%P')} - #{event.ends_at.strftime('%l:%M%P')}" %>
+                  </div>
               <% end %>
           <% end %>
 
@@ -34,12 +44,14 @@
     <% end %>
 <% end %>
 
-<div id="calendar_week" class="row">
+<div id="calendar_week"class="container">
+  <div class="row">
     <% number_of_days_on_week_calendar.times do %>
         <div class="col-lg-12 day_col">
           <!-- the elements that will actually be visible will end up here -->
         </div>
     <% end %>
+  </div>
 </div>
 
 <script>
@@ -57,13 +69,17 @@
             $(day).find('div.calendar_week_time_slot').each(function(k, slot){
                 if($(slot).attr('data-time_slot') == start){
                     $(slot).append(event).addClass('event_on_week_calendar_collapse_open');
-                    event_count = $(slot).find('div.week_collapse_open_event').length;
-                    $(slot).height(event_count * 20);
+                    //event_count = $(slot).find('div.week_collapse_open_event').length;
+                    //$(slot).height(event_count * 20);
                 }
             })
 //            $(event).appendTo();
         })
       })
+
+      //development hack to hide events that start before the calendar starts
+        $('ul.week_collapse_close_events').find('div.week_collapse_open_event').hide();
+
     }
 
     //append links other views to header
