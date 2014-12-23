@@ -51,4 +51,8 @@ class EventsController < ApplicationController
       #set the session and return
       session[:calendar_view] = params[:calendar_view] || session[:calendar_view] || 'week'
     end
+
+    def calendar_start_date
+      params[:start_date] || Date.today
+    end
 end

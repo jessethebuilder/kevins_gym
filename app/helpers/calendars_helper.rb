@@ -1,5 +1,7 @@
 module CalendarsHelper
-
+  def number_of_days_on_week_calendar
+    7
+  end
 
   def calendar_start_time
     '7:00am'
@@ -35,7 +37,7 @@ module CalendarsHelper
     time = Time.parse(start_time)
     html = ''
     while time <= Time.parse(end_time) do
-      html += content_tag(:div, :id => "time_slot_#{time.strftime(Event::STRFTIME_FOR_ID)}", :class => 'calendar_week_time_slot') do
+      html += content_tag(:div, 'data-time_slot' => time.strftime('%I:%M%P'), :class => 'calendar_week_time_slot') do
         content_tag(:span, :class => 'pull-left') do
           time.strftime('%l:%M %P')
         end
@@ -54,4 +56,6 @@ module CalendarsHelper
     end
     html.html_safe
   end
+
+
 end

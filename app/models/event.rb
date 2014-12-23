@@ -6,8 +6,6 @@ class Event < ActiveRecord::Base
 
   EVENT_TYPES = symbols_and_strings([:class, :appointment, :appointment_request])
 
-  STRFTIME_FOR_ID = '%I:%M%P'
-
   validates :name, :presence => true
 
   validates :starts_at, :presence => true

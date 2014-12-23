@@ -125,6 +125,8 @@ $calendar_light: #dddddd;
 }
 
 #calendar_week{
+  margin-bottom: 30px;
+
   div.day_col{
     border-bottom: 1px solid $calendar_dark;
 
@@ -137,6 +139,16 @@ $calendar_light: #dddddd;
     .week_collapse_control{
       color: $calendar_dark;
     }
+  }
+
+  div.week_collapse_open_event{
+    margin-left: 80px;
+    height: 20px;
+//    padding-left: 100px;
+//    margin-left: 10px;
+  }
+  .event_on_week_calendar_collapse_open{
+    background-color: $calendar_medium;
   }
 
 

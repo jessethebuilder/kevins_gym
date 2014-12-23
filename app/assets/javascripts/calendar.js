@@ -16,18 +16,18 @@ function set_calendar_size(){
 }
 
 //---------Week Scripts------------------------------------------
-function build_week_column(){
+function build_week_columns(){
     var days = $('#calendar_week_table td.day');
-    var day_rows = $('div.day_row');
+    var day_cols = $('div.day_col');
     var class_list
 
     days.each(function(i, day){
         //move html from table to divs
-        $(day_rows[i]).find('.day_col').html($(day).html());
+        $(day_cols[i]).html($(day).html());
         //add classes to new divs from td
         class_list = $(day).attr('class').split(' ');
         for(j = 0; j < class_list.length; j++ ){
-            $(day_rows[i]).addClass(class_list[j]);
+            $(day_cols[i]).addClass(class_list[j]);
         }
     })
 
@@ -65,11 +65,8 @@ function placeEventsOnCollapseOpen(){
 
 function setUpWeekCalendar(){
     $(document).ready(function(){
-
-
-
         //function to move data from table to columns
-        build_week_column();
+        build_week_columns();
 
         //hack to ensure labels are the correct size on larger (than xs) screens.
         if ($(window).width > '768px') {

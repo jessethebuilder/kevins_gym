@@ -1,6 +1,7 @@
 <%= week_calendar :events => @events, :thead => '', :table => {:id => 'calendar_week_table'} do |date, events| %>
     <%= content_tag :div, :id => "week_calendar_#{date.strftime('%A')}", :class => 'week_calendar_content' do %>
-      <%= content_tag :h4, :class => 'day_name' do %>
+
+    <%= content_tag :h4, :class => 'day_name' do %>
         <%= "#{date.strftime('%A')} #{date.day}"  %>
 
         <%= week_collapse_control date %>
@@ -14,19 +15,16 @@
             <% if event.event_type == 'class' %>
               <li><%= link_to "#{event.starts_at.strftime('%l:%M %P')} - #{event.ends_at.strftime('%l:%M %P')}
                               <strong>#{event.name}</strong>".html_safe,
-                              events_path(event) %>
+                              event_path(event) %>
               </li>
             <% end %>
-
-
-            <!-- spans to be added to the un-collapsed week calendar view -->
-          <%= content_tag :span, :class => 'week_collapse_open_event',
+          <!-- spans to be added to the un-collapsed week calendar view -->
+          <%= content_tag :div, :class => 'week_collapse_open_event',
                           'data-starts' => round_and_format(event.starts_at),
                           'data-ends' => round_and_format(event.ends_at) do %>
               <% if event.event_type == 'class' %>
-                  <%= link_to "#{event.starts_at.strftime('%l:%M %P')} - #{event.ends_at.strftime('%l:%M %P')}
-                          <strong>#{event.name}</strong>".html_safe,
-                              events_path(event) %>
+                  <%= link_to "<strong>#{event.name}</strong>".html_safe,
+                              event_path(event) %>
               <% end %>
           <% end %>
 
@@ -36,21 +34,44 @@
     <% end %>
 <% end %>
 
-<div id="calendar_week">
-    <% 7.times do %>
-      <div class="row day_row">
+<div id="calendar_week" class="row">
+    <% number_of_days_on_week_calendar.times do %>
         <div class="col-lg-12 day_col">
-
+          <!-- the elements that will actually be visible will end up here -->
         </div>
-      </div>
     <% end %>
 </div>
 
 <script>
+
+    function placeEventsOnWeekCollapseOpen(){
+      var start
+      var event_count
+      var slot_height
+      var end
+
+      $('div.week_calendar_content').each(function(i, day){
+        $(day).find('div.week_collapse_open_event').each(function(j, event){
+            start = $(event).attr('data-starts');
+            //locate the time slot, and move the event there
+            $(day).find('div.calendar_week_time_slot').each(function(k, slot){
+                if($(slot).attr('data-time_slot') == start){
+                    $(slot).append(event).addClass('event_on_week_calendar_collapse_open');
+                    event_count = $(slot).find('div.week_collapse_open_event').length;
+                    $(slot).height(event_count * 20);
+                }
+            })
+//            $(event).appendTo();
+        })
+      })
+    }
+
     //append links other views to header
     $('.calendar-header span').append('<%= j link_to 'Monthly', events_path(:calendar_view => 'month'), :class => 'calendar_view_selector pull-right' %>');
 
     setUpWeekCalendar();
+
+    placeEventsOnWeekCollapseOpen();
 
 
 </script>
