@@ -14,9 +14,22 @@
       <ul class="week_collapse_close_events">
         <% events.each do |event| %>
             <% if event.event_type == 'class' %>
-              <li><%= link_to "#{event.starts_at.strftime('%l:%M%P')} - #{event.ends_at.strftime('%l:%M%P')}
-                              <strong>#{event.name}</strong>".html_safe,
-                              event_path(event) %>
+
+              <li>
+                <span class='event_times'>
+                  <%= "#{event.starts_at.strftime('%l:%M%P')} - #{event.ends_at.strftime('%l:%M%P')}" %>
+                </span>
+                <strong>
+                  <%= link_to event.name, event_path(event) %>
+                </strong>
+
+                <% if u = event.user %>
+                  <span class="instructor_name">
+                    with <%= "#{u.first_name} #{u.last_name}" %>
+                  </span>
+                <% end %>
+
+
               </li>
             <% end %>
           <!-- spans to be added to the un-collapsed week calendar view -->

@@ -144,11 +144,22 @@ $calendar_light: #dddddd;
   div.week_collapse_open_event{
     margin-left: 80px;
     min-height: 20px;
-//    padding-left: 100px;
-//    margin-left: 10px;
   }
   .event_on_week_calendar_collapse_open{
     background-color: $calendar_medium;
+  }
+
+  ul.week_collapse_close_events{
+    list-style: none;
+    margin-left: -10px;
+    .event_times{
+      font-size: 12px;
+      font-color: $calendar_dark;
+    }
+  }
+
+  div.week_calendar_content{
+    padding: 3px;
   }
 
 
