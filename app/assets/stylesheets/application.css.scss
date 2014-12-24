@@ -13,6 +13,7 @@
 @import 'calendar';
 @import 'events';
 @import 'users';
+@import 'news_stories';
 @import 'bootstrap';
 
 
@@ -45,11 +46,89 @@
   a{
     color: $calendar_dark;
   }
+  a:hover{
+    background-color: transparent;
+    color: $calendar_dark;
+  }
   a:link{
     text-decoration: none;
   }
+  a:visited{
+    color: $calendar_dark;
+  }
 
 }
+
+#home_header{
+  height: 240px;
+  margin-bottom: 10px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin-top: -20px;
+
+  h1{
+    text-align: left;
+    font-size: 98px;
+    font-weight: 600;
+    padding-top: 40px;
+    padding-left: 60px;
+    }
+  h1.smaller{
+    font-size: 48px;
+
+  }
+  h1.medium{
+    font-size: 64px;
+  }
+
+  h3{
+    padding-left: 55px;
+  }
+
+}
+
+//my styles
+.news_headline{
+  font-size: 36px;
+  font-family: times, Times New Roman, times-roman, georgia, serif;
+  line-height: 44px;
+  letter-spacing: -2px;
+  font-weight: bold;
+  color: $calendar_dark;
+
+}
+
+.fancy_quote{
+  color: $calendar_medium;
+  font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+  letter-spacing:0.1em;
+  text-align:center;
+  margin: 40px auto;
+  text-transform: lowercase;
+  line-height: 145%;
+  font-size: 14pt;
+  font-variant: small-caps;
+}
+.fancy_quote:first-letter{
+  text-transform: uppercase;
+}
+
+.subheadline{
+  font-family: "Lucida Grande", Tahoma;
+  font-size: 10px;
+//  font-weight: lighter;
+  font-variant: normal;
+  text-transform: uppercase;
+  color: $calendar_dark;
+  margin-top: 10px;
+  letter-spacing: 0.3em;
+}
+
+
+
+
+
+
 
 
 

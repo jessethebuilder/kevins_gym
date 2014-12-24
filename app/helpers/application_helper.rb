@@ -12,7 +12,9 @@ module ApplicationHelper
   end
 
   def initiate_quick_options
-    "<script>quickOptionsBehaviors();</script>"
+    "<script>$(document).ready(function(){
+                      quickOptionsBehaviors();
+              })</script>"
   end
 
 end

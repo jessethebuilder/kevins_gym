@@ -1,50 +1,53 @@
-<div id="home_header" class="jumbotron">
-  <h1 class="text-center">Kevin's Gym</h1>
-  <h3 class="text-center">We also do cupping!</h3>
-</div>
+  <div id="home_header">
+    <h1 class="visible-lg">Kevin's Gym</h1>
+    <h1 class="visible-md medium">Kevin's Gym</h1>
+    <h1 class="visible-xs visible-sm smaller">Kevin's Gym</h1>
+    <!--<h3>We also do cupping!</h3>-->
+  </div>
+<div id="page_content" class="container">
 
-
-<div id="main_content" class="row">
-  <div id="left_content" class="col-md-8">
-    <div id="news_list_header">
-      <h1>News</h1>
+  <div id="main_content" class="row">
+    <div class="col-md-8 col_left">
+      <div id="news_list_header">
+        <h1>News</h1>
+      </div>
+      <ul id="news_list">
+        <% @news_stories.each do |story| %>
+          <li>
+            <%= link_to '(edit)', edit_news_story_path(story),
+                        :class => 'edit_link pull-right' if user_signed_in? && current_user.level > :member%>
+            <h3><%= link_to story.title, news_story_path(story) %></h3>
+            <p class="subheadline">
+              <%= truncate(story.content.html_safe, :length => 250) %>
+            </p>
+          </li>
+        <% end %>
+      </ul>
     </div>
-    <ul id="news_list">
-      <% @news_stories.each do |story| %>
+
+
+    <div class="col-md-4 col_right">
+      <ul id="features_bar">
         <li>
-          <%= link_to '(edit)', edit_news_story_path(story), :class => 'pull-right' if user_signed_in? && current_user.level > :member%>
-          <h3><%= link_to story.title, news_story_path(story) %></h3>
-          <p>
-            <%= truncate(story.content.html_safe, :length => 250) %>
-          </p>
+          <%= link_to events_path do %>
+            <%= image_tag 'home_images/icons/icon_calendar.png' %>
+            <div>Classes</div>
+          <% end %>
+
         </li>
-      <% end %>
-    </ul>
-  </div>
+        <li>
+          <%= image_tag 'home_images/icons/icon_calendar.png' %>
+          <div>adfadaf</div>
+        </li>
+        <li>
+          <%= image_tag 'home_images/icons/icon_calendar.png' %>
+          <div>cxrayy</div>
+        </li>
 
 
-  <div id="right_content" class="col-md-4">
-    <!-- <div class="text-center">
-
-       <a href="#" type="button" class="btn btn-default btn-lg">
-         <span class="glyphicon glyphicon-calendar"></span> Class Schedule
-       </a>
- <br><br>
-       <a href="#" type="button" class="btn btn-default btn-lg">
-         <span class="glyphicon glyphicon-tasks"></span> Something Else
-       </a>
-     </div>-->
-
-    ICONS AND CONTENT
-    ICONS AND CONTENT
-    ICONS AND CONTENT
-    ICONS AND CONTENT
-    ICONS AND CONTENT
-    ICONS AND CONTENT
-    ICONS AND CONTENT
-    ICONS AND CONTENT
-
-  </div>
+       </ul>
+    </div><!-- col -->
+  </div><!-- row -->
 </div>
 
 <script>
@@ -62,17 +65,43 @@
     })
   }
 
-  $(function() {
-    enquire.register("screen and (max-width: 992px)", [{
-      match: function () {
-        $('#right_content').insertBefore('#left_content');
-      },
-      unmatch: function () {
-        $('#left_content').insertBefore ('#right_content');
-      }
-    }])
-  });
+//
+//  onMediaQuery(992, news_stories_large, news_stories_small)
+//
+//  function news_stories_small(){
+//    $('.col_left').insertAfter('.col_right');
+//  }
+//  function news_stories_large(){
+//    $('.col_right').insertAfter('.col_left');
+//
+//  }
+
+
+  onMediaQuery(992, function(){
+    $('.col_right').insertBefore('.col_left');
+
+
+  }, function(){
+            $('.col_left').insertBefore ('.col_right');
+  })
+
+
+
+//  $(function() {
+//    enquire.register("screen and (max-width: 992px)", [{
+//      match: function () {
+//        $('.col_right').insertBefore('.col_left');
+//      },
+//      unmatch: function () {
+//        $('.col_left').insertBefore ('.col_right');
+//      }
+//    }])
+//  });
 </script>
 
 <style>
+  #home_header{
+    background-image: url("<%= asset_path 'home_images/gym_still_1.png' %>");
+
+  }
 </style>

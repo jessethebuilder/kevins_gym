@@ -13,13 +13,21 @@ ul#news_list{
     border-bottom: 1px solid $calendar_medium;
 
     a{
-      color: $calendar_dark;
+      @extend .news_headline;
+
     }
 
     a:hover{
       background-color: $background_color;
       color: $calendar_dark;
       text-decoration: none;
+    }
+    a.edit_link{
+      color: blue;
+      font-size: 20px;
+    }
+    a.edit_link:hover{
+      text-decoration: underline;
     }
 
 
@@ -30,13 +38,48 @@ ul#news_list{
 }
 
 #news_list_header{
-  margin-left: -10px;
   border-bottom: 2px solid $calendar_dark;
 
   h1{
-    font-size: 48px;
+    @extend .news_headline;
+    font-size: 82px;
     font-weight: 600px;
+//    text-align: left;
+    padding-bottom: 5px;
+    padding-left: 20px;
 
   }
 }
 
+#features_bar{
+  margin-top: 10px;
+//  margin-bottom: 30px;
+//  height:100px;
+  background-color: $calendar_light;
+  border: 2px solid $calendar_medium;
+  border-radius: 25px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  list-style: none;
+  text-align: center;
+//  padding-left: -20px;
+
+  li{
+    margin-left: -30px;
+
+    div{
+      margin-top: 5px;
+      margin-bottom: 25px;
+      font-size: 24px;
+    }
+//    display: inline;
+//    margin-left: -20px;
+//    margin-bottom: 20px;
+
+    img{
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+}

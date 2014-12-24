@@ -1,5 +1,7 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="container">
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= render :partial => 'devise/forms/registration_edit', :locals => {:resource => resource, :resource_name => resource_name} %>
+  <%= render :partial => 'devise/forms/registration_edit', :locals => {:resource => resource, :resource_name => resource_name} %>
+</div>
 
 
