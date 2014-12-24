@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @news_story.name %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @news_story.content %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @news_story.author_id %>
+</p>
+
+<p>
+  <strong>Published:</strong>
+  <%= @news_story.published %>
+</p>
+
+<p>
+  <strong>Archived:</strong>
+  <%= @news_story.archived %>
+</p>
+
+<%= link_to 'Edit', edit_news_story_path(@news_story) %> |
+<%= link_to 'Back', news_stories_path %>

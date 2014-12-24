@@ -1,0 +1,78 @@
+<div id="home_header" class="jumbotron">
+  <h1 class="text-center">Kevin's Gym</h1>
+  <h3 class="text-center">We also do cupping!</h3>
+</div>
+
+
+<div id="main_content" class="row">
+  <div id="left_content" class="col-md-8">
+    <div id="news_list_header">
+      <h1>News</h1>
+    </div>
+    <ul id="news_list">
+      <% @news_stories.each do |story| %>
+        <li>
+          <%= link_to '(edit)', edit_news_story_path(story), :class => 'pull-right' if user_signed_in? && current_user.level > :member%>
+          <h3><%= link_to story.title, news_story_path(story) %></h3>
+          <p>
+            <%= truncate(story.content.html_safe, :length => 250) %>
+          </p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+
+  <div id="right_content" class="col-md-4">
+    <!-- <div class="text-center">
+
+       <a href="#" type="button" class="btn btn-default btn-lg">
+         <span class="glyphicon glyphicon-calendar"></span> Class Schedule
+       </a>
+ <br><br>
+       <a href="#" type="button" class="btn btn-default btn-lg">
+         <span class="glyphicon glyphicon-tasks"></span> Something Else
+       </a>
+     </div>-->
+
+    ICONS AND CONTENT
+    ICONS AND CONTENT
+    ICONS AND CONTENT
+    ICONS AND CONTENT
+    ICONS AND CONTENT
+    ICONS AND CONTENT
+    ICONS AND CONTENT
+    ICONS AND CONTENT
+
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+        colorStoriesOnHover();
+      }
+  )
+
+  function colorStoriesOnHover(){
+    $('ul#news_list a').hover(function(){
+      $(this).closest('li').css('border-left', '2px solid #363636');
+    }, function(){
+      $(this).closest('li').css('border-left-color', 'white');
+
+    })
+  }
+
+  $(function() {
+    enquire.register("screen and (max-width: 992px)", [{
+      match: function () {
+        $('#right_content').insertBefore('#left_content');
+      },
+      unmatch: function () {
+        $('#left_content').insertBefore ('#right_content');
+      }
+    }])
+  });
+</script>
+
+<style>
+</style>

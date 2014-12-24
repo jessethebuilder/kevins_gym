@@ -1,0 +1,42 @@
+@import 'variables';
+
+ul#news_list{
+
+  li{
+    list-style: none;
+    margin-left: -30px;
+    color: $calendar_dark;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    border-left: 2px solid $background_color;
+    border-bottom: 1px solid $calendar_medium;
+
+    a{
+      color: $calendar_dark;
+    }
+
+    a:hover{
+      background-color: $background_color;
+      color: $calendar_dark;
+      text-decoration: none;
+    }
+
+
+    p{
+      margin-left: 10px;
+    }
+  }
+}
+
+#news_list_header{
+  margin-left: -10px;
+  border-bottom: 2px solid $calendar_dark;
+
+  h1{
+    font-size: 48px;
+    font-weight: 600px;
+
+  }
+}
+
