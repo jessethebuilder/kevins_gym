@@ -33,13 +33,19 @@
   <% end %>
 </div>
 
+<style>
+  #user_list .user_row{
+    border-left: 2px solid white;
+  }
+</style>
+
 <script>
   $(document).ready(function(){
     $('.name_col a').hover(function(){
-      $(this).closest('.row').css('background-color', '#dddddd');
+      $(this).closest('.row').css('border-left', '2px solid #363636');
     },
     function(){
-      $(this).closest('.row').css('background-color', 'white');
+      $(this).closest('.row').css('border-left-color', 'transparent');
 
     })
   })

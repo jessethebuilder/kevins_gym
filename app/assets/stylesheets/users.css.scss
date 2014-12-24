@@ -7,10 +7,21 @@
     padding-top: 3px;
     padding-bottom: 3px;
     border-bottom: 1px solid $calendar_medium;
-
-    a:link{
-      //color: blue;
+    .btn-danger{
+      color: white;
     }
+    .name_col{
+      a:link{
+        background-color: transparent;
+      }
+    }
+    .email_col{
+      a:hover{
+        background-color: transparent;
+        color: $calendar_medium;
+      }
+    }
+
   }
 
 
