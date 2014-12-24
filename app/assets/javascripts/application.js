@@ -41,12 +41,4 @@ function onMediaQuery(screen_size, on_methods, off_methods) {
     }
     ])
 };
-//
-//function scrollTo(selector){
-////    $(document.body).scrollTop($(selector).offset().top);
-//    jQuery(document.body).animate({
-//        'scrollTop':   $('#Saturday').offset().top
-//    }, 2000);
-////   $('html,body').animate({scrollTop: $(selector).offset().top},'slow');
-//
-//}
+

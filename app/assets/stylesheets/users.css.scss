@@ -1,0 +1,29 @@
+@import 'variables';
+
+#user_list{
+//  margin-top: 10px;
+
+  .user_row{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid $calendar_medium;
+
+    a:link{
+      //color: blue;
+    }
+  }
+
+
+  .name_col{
+    color: $calendar_dark;
+    font-weight: 600;
+
+    a:link{
+      color: $calendar_dark;
+      text-decoration: none;
+    }
+    a:visited{
+      color: $calendar_dark;
+    }
+  }
+}

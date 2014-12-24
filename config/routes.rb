@@ -1,13 +1,19 @@
 SGym::Application.routes.draw do
+
+  resources :news_stories
+
   resources :events
 
-  resources :gyms
+  #resources :gyms
 
   get "tools/home"
-  devise_for :users
+
+  devise_for :users, :path_prefix => 'd'
+  resources :users
+
   resources :employees
 
-  root :to => 'gyms#index'
+  root :to => 'news_stories#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

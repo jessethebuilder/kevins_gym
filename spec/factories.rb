@@ -17,14 +17,20 @@ FactoryGirl.define do
     end
 
     factory :staff do
+      first_name Faker::Name.first_name
+      last_name Faker::Name.last_name
       level :staff
     end
 
-    factory :administrator do
-      level :administrator
+    factory :admin do
+      first_name Faker::Name.first_name
+      last_name Faker::Name.last_name
+      level :admin
     end
 
     factory :owner do
+      first_name Faker::Name.first_name
+      last_name Faker::Name.last_name
       level :owner
     end
 
@@ -40,6 +46,7 @@ FactoryGirl.define do
 
     factory :class do
       event_type :class
+      association :user, :factory => :staff
       ends_at event_date + [30, 45, 60, 75, 90].sample.minutes
     end
   end

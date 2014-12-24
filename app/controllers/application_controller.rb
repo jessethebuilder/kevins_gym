@@ -8,7 +8,14 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) << :level
+    allowed_params = [:level, :avatar, :avatar_cache, :first_name, :last_name]
+    devise_parameter_sanitizer.for(:sign_up) << allowed_params
+    devise_parameter_sanitizer.for(:account_update) << allowed_params
+  end
+
+  def authenticate_level_is_at_least
+    return false unless user_signed_in?
+
   end
 
 

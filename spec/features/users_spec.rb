@@ -1,23 +1,73 @@
-#require 'rails_helper'
-#
-#RSpec.describe 'Users', :type => :feature do
-#  let!(:gym){ create :gym }
-#  describe 'Signing Up as an unknown user' do
-#    it 'A newly created user has :member level' do
-#      visit '/'
-#      click_link 'Sign Up'
-#      fill_in 'Email', :with => '123@gmail.com'
-#      fill_in 'Password', :with => 'carltonlasiter'
-#      fill_in 'Password confirmation', :with => 'carltonlasiter'
-#      click_link 'Sign Up'
-#      #Perhaps change this to something a custom welcome message
-#      #within('#the_flash') do
-##      save_and_open_page
-#        expect(page).to have_content "Welcome! You have signed up successfully."
-#      #end
-#
-#    end
-#
-#  end
-#
+require 'rails_helper'
+
+RSpec.describe 'Users', :type => :feature do
+  let!(:gym){ create :gym }
+  let(:user){ build :user }
+  let(:staff){ build :staff }
+
+  describe 'users#index' do
+    specify 'should keep current view between requests' do
+      staff = manual_login_as(:staff)
+      visit '/users'
+      within('.quick_options') do
+        click_link 'All Users'
+      end
+
+      visit '/'
+
+      visit '/users'
+      within('.quick_options') do
+        page.should_not have_link('All Users')
+        page.should have_link('Staff Users')
+      end
+    end
+
+    specify 'View options should toggle between "Staff Users" and "All Users"' do
+      staff = manual_login_as(:staff)
+      visit '/users'
+      within('.quick_options') do
+        click_link 'All Users'
+
+        page.should have_link 'Staff Users'
+        click_link 'Staff Users'
+
+        page.should have_link 'All Users'
+      end
+    end
+
+
+  end
+
+  describe 'users#edit' do
+    it 'should go to users#index after a user is edited' do
+      staff.save
+      visit "/users/#{staff.id}/edit"
+      click_button 'Update'
+      current_path.should == '/users'
+    end
+   end
+
+  it 'should render edit user with errors if user has validation errors' do
+    admin = FactoryGirl.create(:admin)
+    visit "/users/#{admin.id}/edit"
+    fill_in 'First name', :with => ''
+    click_button 'Update'
+    current_path.should == "/users/#{admin.id}"
+    within('#error_explanation') do
+      page.should have_content 'error kept this User'
+    end
+  end
+
+  describe 'Destroy' do
+    it 'should not let you destroy current user' do
+      staff = manual_login_as(:staff)
+      #todo
+    end
+  end
+
+
+end
+
+#module RequestsSpecHelper
+
 #end

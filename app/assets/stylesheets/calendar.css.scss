@@ -1,0 +1,135 @@
+$calendar_dark: #363636;
+$calendar_medium: #c0c0c0;
+$calendar_light: #dddddd;
+
+#calendar_month {
+
+  td.next-month{
+    background-color: $calendar_medium;
+  }
+  td.prev-month{
+    background-color: $calendar_medium;
+  }
+  td.day:hover{
+    background-color: $calendar_light;
+  }
+  td.day {
+    height: 120px;
+    //width: 100px;
+    border-right: 1px solid $calendar_light;
+    border-top: 1px solid $calendar_light;
+    border-bottom: 1px solid $calendar_light;
+    border-left: 1px solid $calendar_light;
+    vertical-align: top;
+
+    .date_on_calendar {
+      color: $calendar_dark;
+      font-weight: 600;
+      padding-top: 5px;
+      padding-left: 5px;
+      padding-bottom: 5px;
+      font-size: 20px;
+
+    }
+  }
+  ul.events_on_calendar {
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      padding: 3px;
+      font-size: 10px;
+      //border: 1px solid black;
+      margin-top: 5px;
+      a:link{
+        color: $calendar_dark;
+        //background-color: $calendar_dark;
+        text-decoration: none;
+      }
+      a:visited{
+        color: $calendar_dark;
+      }
+      a:hover{
+        color: $calendar_medium;
+      }
+    }
+
+  }
+}
+
+.calendar_view_selector{
+  float: right;
+
+  //position: relative;
+  //bottom: -18px;
+}
+
+.calendar-header {
+  //padding-left: 10px;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  font-size: 30px;
+
+  /*these are the controls next to the month*/
+  a{
+    color: $calendar_dark;
+    //font-size: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  a:hover{
+    text-decoration:none;
+    color: $calendar_medium !important;
+  }
+
+}
+
+#calendar_week{
+//  margin-bottom: 30px;
+
+  div.day_col{
+    border-bottom: 1px solid $calendar_dark;
+
+    .calendar_week_time_slot{
+      //border-top: 1px solid $calendar_light;
+      border-bottom: 1px solid $calendar_light;
+      height: 20px;
+    }
+
+    .week_collapse_control{
+      color: $calendar_dark;
+    }
+  }
+
+  div.week_collapse_open_event{
+    margin-left: 80px;
+    min-height: 20px;
+  }
+  .event_on_week_calendar_collapse_open{
+    background-color: $calendar_medium;
+  }
+
+  ul.week_collapse_close_events{
+    list-style: none;
+    margin-left: -10px;
+    .event_times{
+      font-size: 12px;
+      font-color: $calendar_dark;
+      font-weight: 600;
+    }
+  }
+
+  div.week_calendar_content{
+    padding: 3px;
+  }
+
+
+
+}
+.today{
+  background-color: rgba(108, 177, 255, 0.42);
+
+  .calendar_week_time_slot{
+    border-color: $calendar_medium !important;
+  }
+}

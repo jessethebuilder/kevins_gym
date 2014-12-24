@@ -6,11 +6,29 @@ RSpec.describe User, :type => :model do
 
   describe 'Validations' do
     it{ should validate_presence_of :level }
-    it{ should validate_inclusion_of(:level).in_array(User::USER_LEVELS)}
+    #it{ should validate_inclusion_of(:level).in_array(symbols_and_strings(User::USER_LEVELS))}
+
+    it 'should be invalid if of #level :staff or higher if no first_name' do
+      owner.first_name = nil
+      owner.valid?
+      owner.errors.messages[:first_name].include?('cannot be blank').should == true
+
+      owner.level = :staff
+      owner.valid?
+      owner.errors.messages[:first_name].include?('cannot be blank').should == true
+    end
+
+    it 'should be invalid if of #level :staff or higher if no last_name' do
+      admin = FactoryGirl.build :admin
+      admin.last_name = nil
+      admin.valid?
+      admin.errors.messages[:last_name].include?('cannot be blank').should == true
+    end
   end
 
   describe 'Associations' do
-    it{ should have_many(:classes).class_name('Event') }
+    it{ should have_many(:events) }
+    it{ should have_many(:news_stories) }
   end
 
   describe 'Methods' do
@@ -31,7 +49,7 @@ RSpec.describe User, :type => :model do
         owner.level_is_at_least('owner')
       end
 
-      it 'should raise an error is the parameter is not a symbol' do
+      it 'should raise an error is the parameter is not a valid value' do
         expect{ member.level_is_at_least('f;lkasd11').to raise_error(ArgumentError) }
       end
 

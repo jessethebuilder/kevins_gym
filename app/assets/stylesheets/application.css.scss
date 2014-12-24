@@ -1,33 +1,20 @@
-@import 'bootstrap';
+//todo get all of my variables in on file
+//
+//$calendar_dark: #363636;
+//$calendar_medium: #c0c0c0;
+//$calendar_light: #dddddd;
+
+
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
  *= require_self
- *= require_tree .
+ = require_tree .
  */
+@import 'variables';
+@import 'calendar';
+@import 'events';
+@import 'users';
+@import 'bootstrap';
 
-/* Main Components */
-#main_content {
-  margin-top: 20px;
-}
-#left_content {
-  //padding-top: 10px;
-
-}
-#right_content {
-  border: 5px solid #696969;
-  border-radius: 10px;
-  background-color: rgb(205, 205, 205);
-  margin-top: 50px;
-  padding: 30px;
-}
 
 #the_flash {
 
@@ -36,141 +23,34 @@
   margin-bottom: 0px;
 }
 
-
-//calendar styles-----------------------------------------------------------------------------------------
-$calendar_dark: #363636;
-$calendar_medium: #c0c0c0;
-$calendar_light: #dddddd;
-
-#calendar_month {
-
-  td.next-month{
-    background-color: $calendar-medium;
-  }
-  td.prev-month{
-    background-color: $calendar_medium;
-  }
-  td.day:hover{
-    background-color: $calendar_light;
-  }
-  td.day {
-    height: 120px;
-    //width: 100px;
-    border-right: 1px solid $calendar_light;
-    border-top: 1px solid $calendar_light;
-    border-bottom: 1px solid $calendar_light;
-    border-left: 1px solid $calendar_light;
-    vertical-align: top;
-
-    .date_on_calendar {
-      color: $calendar_dark;
-      font-weight: 600;
-      padding-top: 5px;
-      padding-left: 5px;
-      padding-bottom: 5px;
-      font-size: 20px;
-
-    }
-  }
-  ul.events_on_calendar {
-    padding-left: 0;
-    list-style: none;
-
-    li {
-      padding: 3px;
-      font-size: 10px;
-      //border: 1px solid black;
-      margin-top: 5px;
-      a:link{
-        color: $calendar_dark;
-        //background-color: $calendar_dark;
-        text-decoration: none;
-      }
-      a:visited{
-        color: $calendar_dark;
-      }
-      a:hover{
-        color: $calendar_medium;
-      }
-    }
-
-  }
+#top_nav{
+//  margin-bottom: 10px;
 }
 
-.calendar_view_selector{
+
+.quick_options{
+  font-size: 20px;
   float: right;
+  margin-top: 10px;
+  li{
+    list-style: none;
+    text-align: right;
+    border-right: 2px solid $calendar_medium;
+    margin-bottom: 3px;
+    padding-right: 5px;
 
-  //position: relative;
-  //bottom: -18px;
-}
+//    border-righ
+  }
 
-.calendar-header {
-  //padding-left: 10px;
-  margin-bottom: 10px;
-  margin-top: 20px;
-  font-size: 30px;
-
-  /*these are the controls next to the month*/
   a{
     color: $calendar_dark;
-    //font-size: 40px;
-    padding-left: 10px;
-    padding-right: 10px;
   }
-  a:hover{
-    text-decoration:none;
-    color: $calendar_medium !important;
+  a:link{
+    text-decoration: none;
   }
 
 }
 
-#calendar_week{
-  margin-bottom: 30px;
-
-  div.day_col{
-    border-bottom: 1px solid $calendar_dark;
-
-    .calendar_week_time_slot{
-      //border-top: 1px solid $calendar_light;
-      border-bottom: 1px solid $calendar_light;
-      height: 20px;
-    }
-
-    .week_collapse_control{
-      color: $calendar_dark;
-    }
-  }
-
-  div.week_collapse_open_event{
-    margin-left: 80px;
-    min-height: 20px;
-  }
-  .event_on_week_calendar_collapse_open{
-    background-color: $calendar_medium;
-  }
-
-  ul.week_collapse_close_events{
-    list-style: none;
-    margin-left: -10px;
-    .event_times{
-      font-size: 12px;
-      font-color: $calendar_dark;
-      font-weight: 600;
-    }
-  }
-
-  div.week_calendar_content{
-    padding: 3px;
-  }
 
 
 
-}
-.today{
-  background-color: rgba(108, 177, 255, 0.42);
-
-  .calendar_week_time_slot{
-    border-color: $calendar_medium !important;
-  }
-}
-//end calendar styles-------------------------------------------------------------------------------------

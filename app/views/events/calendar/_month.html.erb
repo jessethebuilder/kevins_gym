@@ -1,3 +1,5 @@
+<%= quick_options [['Weekly', events_path(:calendar_view => 'week')]] %>
+
 <div id="calendar_month" class="table-responsive">
   <%= month_calendar :events => @events, :table => {:id => 'table calendar_month_table'} do |date, events| %>
       <div class="date_on_calendar">
@@ -22,8 +24,6 @@
 
     $(document).ready(function() {
       //append link to week view to header
-        $('#calendar_month .calendar-header').append('<%= j link_to 'Weekly', events_path(:calendar_view => 'week'), :class => 'calendar_view_selector' %>');
-
         set_calendar_size();
         //hack to ensure labels are the correct size on larger (than xs) screens.
         if($(window).width > '768px'){ grow_calendar_labels() }

@@ -1,3 +1,6 @@
+<%= quick_options [['Monthly', events_path(:calendar_view => 'month')]] %>
+
+
 <%= week_calendar :events => @events, :thead => '', :table => {:id => 'calendar_week_table'} do |date, events| %>
     <%= content_tag :div, :id => "week_calendar_#{date.strftime('%A')}", :class => 'week_calendar_content' do %>
 
@@ -95,11 +98,7 @@
 
     }
 
-    //append links other views to header
-    $('.calendar-header span').append('<%= j link_to 'Monthly', events_path(:calendar_view => 'month'), :class => 'calendar_view_selector pull-right' %>');
-
     setUpWeekCalendar();
-
     placeEventsOnWeekCollapseOpen();
 
 

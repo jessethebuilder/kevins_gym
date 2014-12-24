@@ -1,0 +1,25 @@
+<div id="show_class" class="row">
+  <div class="col-sm-4">
+    <h3>
+      <%= @event.name %>
+    </h3>
+    <div id="event_description">
+      <%= @event.description.html_safe %>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <%= image_tag(@event.user.avatar.url(:show), :class => 'image_right') if @event.user.avatar? %>
+    <h3>
+      <%= @event.user.first_name %>
+      <%= @event.user.last_name %>
+    </h3>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+<style>
+  .image_right{
+    float: right;
+  }
+</style>
+
