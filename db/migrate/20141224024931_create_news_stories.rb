@@ -4,8 +4,8 @@ class CreateNewsStories < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.integer :author_id
-      t.boolean :published
-      t.boolean :archived
+      t.boolean :published, :default => false
+      t.boolean :archived, :default => false
 
       t.timestamps
     end

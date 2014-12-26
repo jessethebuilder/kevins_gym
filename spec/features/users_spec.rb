@@ -4,6 +4,7 @@ RSpec.describe 'Users', :type => :feature do
   let!(:gym){ create :gym }
   let(:user){ build :user }
   let(:staff){ build :staff }
+  let(:admin){ create :admin }
 
   describe 'users#index' do
     specify 'should keep current view between requests' do
@@ -27,10 +28,12 @@ RSpec.describe 'Users', :type => :feature do
       visit '/users'
       within('.quick_options') do
         click_link 'All Users'
-
+      end
+      within('.quick_options') do
         page.should have_link 'Staff Users'
         click_link 'Staff Users'
-
+      end
+      within('.quick_options') do
         page.should have_link 'All Users'
       end
     end
@@ -40,6 +43,7 @@ RSpec.describe 'Users', :type => :feature do
 
   describe 'users#edit' do
     it 'should go to users#index after a user is edited' do
+      admin = manual_login_as(:admin)
       staff.save
       visit "/users/#{staff.id}/edit"
       click_button 'Update'
@@ -48,7 +52,8 @@ RSpec.describe 'Users', :type => :feature do
    end
 
   it 'should render edit user with errors if user has validation errors' do
-    admin = FactoryGirl.create(:admin)
+    admin = manual_login_as(:admin)
+
     visit "/users/#{admin.id}/edit"
     fill_in 'First name', :with => ''
     click_button 'Update'

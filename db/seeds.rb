@@ -4,6 +4,8 @@ g = Gym.new :name => "Kevin's Gym", :phone => "360-555-1212", :email => "gym@tes
 g.address = Address.new :street => '4218 S. Mt. Angeles Rd', :city => 'Port Angeles', :state => 'wa', :zip => '98362'
 g.save!
 
+staff_user = User.new :level => :staff, :first_name => 'x', :last_name => 'y', :email => 'staff@test.com', :password => @pw
+
 4.times do
   u = User.new :first_name => Faker::Name.first_name, :last_name => Faker::Name.last_name,
                :email => Faker::Internet.email, :password => @pw, :level => :staff
@@ -11,7 +13,7 @@ g.save!
   u.save!
 end
 
-u = User.create! :email => 'j@test.com', :password => @pw, :first_name => 'Jesse', :last_name => 'Farmer',
+admin = User.create! :email => 'admin@test.com', :password => @pw, :first_name => 'Jesse', :last_name => 'Farmer',
                  :level => :admin
 
 30.times do

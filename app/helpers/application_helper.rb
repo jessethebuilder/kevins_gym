@@ -1,4 +1,7 @@
 module ApplicationHelper
+  include HtmlTools
+  include SecurityGate
+
   def quick_options(options)
     html = initiate_quick_options
     html += '<ul class="quick_options">'

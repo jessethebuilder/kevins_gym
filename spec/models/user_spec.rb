@@ -5,7 +5,12 @@ RSpec.describe User, :type => :model do
   let(:owner){ build :owner }
 
   describe 'Validations' do
-    it{ should validate_presence_of :level }
+    it 'should validate presence of level' do
+      member.level = nil
+      member.save
+      member.errors.messages[:level].include?('cannot be blank').should == true
+    end
+
     #it{ should validate_inclusion_of(:level).in_array(symbols_and_strings(User::USER_LEVELS))}
 
     it 'should be invalid if of #level :staff or higher if no first_name' do
@@ -28,7 +33,7 @@ RSpec.describe User, :type => :model do
 
   describe 'Associations' do
     it{ should have_many(:events) }
-    it{ should have_many(:news_stories) }
+    it{ should have_many(:news_stories).with_foreign_key('author_id') }
   end
 
   describe 'Methods' do
@@ -54,5 +59,9 @@ RSpec.describe User, :type => :model do
       end
 
     end
+  end
+
+  describe UserLevel do
+
   end
 end

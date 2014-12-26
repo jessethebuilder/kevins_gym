@@ -1,6 +1,28 @@
 FactoryGirl.define do
   sequence(:email){ |n| "test#{n}@test.com" }
 
+  trait :human_names do
+    first_name Faker::Name.first_name
+    last_name Faker::Name.last_name
+  end
+
+  factory :news_story do
+    title Faker::Company.catch_phrase.titlecase
+    association :author, :factory => :staff_plus
+
+    factory :published do
+      published true
+    end
+
+    factory :draft do
+      published false
+    end
+
+     factory :archive do
+       archived true
+     end
+  end
+
   factory :gym do
     name Faker::Company.name
     email
@@ -16,22 +38,25 @@ FactoryGirl.define do
       level :member
     end
 
+
     factory :staff do
-      first_name Faker::Name.first_name
-      last_name Faker::Name.last_name
+      human_names
       level :staff
     end
 
     factory :admin do
-      first_name Faker::Name.first_name
-      last_name Faker::Name.last_name
+      human_names
       level :admin
     end
 
     factory :owner do
-      first_name Faker::Name.first_name
-      last_name Faker::Name.last_name
+      human_names
       level :owner
+    end
+
+    factory :staff_plus do
+      human_names
+      level User::AFFILIATED_LEVELS.sample
     end
 
   end

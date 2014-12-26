@@ -19,13 +19,13 @@ RSpec.describe 'Member Users', :type => :feature do
   describe 'User Requests' do
     specify ':members cannot access User request, except through Devise' do
       member = manual_login_as(:member)
-      visit '/users'
+      visit '/users/new'
       current_path.should == '/'
     end
 
     specify 'unknown users cannot access User request, except through Devise' do
-      visit '/users'
-      curent_path.should == '/'
+      visit '/users/new'
+      current_path.should == '/'
     end
   end
 

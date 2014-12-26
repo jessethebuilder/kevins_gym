@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, :only => [:edit, :destroy, :update, :show]
 
+  before_action :except => [:index, :show] do |controller|
+    authenticate_user_level!(controller, :admin)
+  end
+
   respond_to :html
 
   def index

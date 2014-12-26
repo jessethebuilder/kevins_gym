@@ -13,10 +13,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << allowed_params
   end
 
-  def authenticate_level_is_at_least
-    return false unless user_signed_in?
-
+  def authenticate_user_level!(controller, min_level)
+    if controller.send(:user_signed_in?)
+      return if controller.send(:current_user).level >= min_level
+    end
+    redirect_to root_path, :alert => 'Access Denied!'
   end
+
 
 
 end

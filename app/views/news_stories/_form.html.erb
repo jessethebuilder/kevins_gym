@@ -1,37 +1,46 @@
+
 <%= form_for(@news_story) do |f| %>
-  <% if @news_story.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@news_story.errors.count, "error") %> prohibited this news_story from being saved:</h2>
+  <%= error_explanation(@news_story) %>
 
-      <ul>
-      <% @news_story.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="row">
+    <div class="col-sm-12">
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :author_id %><br>
-    <%= f.number_field :author_id %>
-  </div>
-  <div class="field">
-    <%= f.label :published %><br>
-    <%= f.check_box :published %>
-  </div>
-  <div class="field">
-    <%= f.label :archived %><br>
-    <%= f.check_box :archived %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+      <div class="form-group">
+        <%= f.label :title, :class => 'control-label' %>
+        <%= f.text_field :title, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :content, :class => 'control-label' %>
+        <%= f.bootsy_area :content, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= security_gate('>= admin') do %>
+          <%= f.label :author_id, :class => 'control-label'  %>
+          <%= f.select :author_id, for_select(User.affiliated, :full_name, :id, current_user.id),
+                       {}, :class => 'form-control'%>
+          <% end %>
+
+        <%= security_gate('== staff') do %>
+          <%= f.hidden_field :author_id, :value => current_user.id.to_s %>
+        <% end %>
+      </div>
+
+    </div><!-- col -->
+  </div><!-- row -->
+
+  <div class="form-group pull-right">
+    <% unless @news_story.new_record? %>
+      <%= f.submit 'Archive', :class => 'btn btn-warning', :data => {:confirm => 'Archived News Stories will not appear on site. Are you sure?'} %>
+    <% end %>
+    <%= f.submit 'Save Draft', :class => 'btn btn-default' %>
+    <%= f.submit 'Publish', :class => 'btn btn-primary' %>
   </div>
 <% end %>
+
+<style>
+  textarea.bootsy_text_area{
+    height: 400px;
+  }
+</style>
