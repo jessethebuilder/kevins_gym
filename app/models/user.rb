@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     User.where.not(:level => 'member')
   end
 
+  def User.instructors
+    User.joins(:events).where('events.event_type = ?', 'class').uniq
+  end
+
 
 end
 

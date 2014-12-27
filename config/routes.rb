@@ -5,12 +5,19 @@ SGym::Application.routes.draw do
 
   resources :events
 
+
+
+
+
   #resources :gyms
 
   get "tools/home"
 
   devise_for :users, :path_prefix => 'd'
-  resources :users
+
+  resources :users do
+    resources :events, :only => [:index]
+  end
 
   resources :employees
 

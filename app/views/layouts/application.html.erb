@@ -11,10 +11,11 @@
 <%= render :partial => 'parts/top_nav' %>
 <%= render :partial => 'parts/the_flash' %>
 
-<!--<div id="page_content" class="container">-->
+<div id="page_content">
   <%= yield %>
-<!--</div>-->
+</div>
 
+<%= render :partial => 'parts/footer' %>
 
 </body>
 </html>

@@ -18,11 +18,43 @@
 @import 'bootstrap';
 
 
+$footer_shadow: 2px -2px 8px;
+
+#footer{
+  padding-top: 20px;
+  padding-bottom: 30px;
+  background-color: $calendar_medium;
+  margin-top: 50px;
+  box-shadow: $footer_shadow;
+
+  img.social_icon{
+    width: 50px;
+    height: 50px;
+
+  }
+
+  .footer_col{
+  }
+  .footer_center_col{
+    border-left: 2px solid $calendar_light;
+    border-right: 2px solid $calendar_light;
+  }
+
+  address{
+    a:link{
+      color: $calendar-dark;
+    }
+    a:visited{
+      color: $calendar_dark;
+    }
+  }
+}
+//----------------End Footer-----------------------------------
 #the_flash {
 
-}
-.alert{
-  margin-bottom: 0px;
+  .alert{
+    margin-bottom: 0px;
+  }
 }
 
 #top_nav{
@@ -31,6 +63,8 @@
 
 
 .quick_options{
+//  position: fixed;
+//  right: 100px;
   font-size: 20px;
   float: right;
   margin-top: 10px;

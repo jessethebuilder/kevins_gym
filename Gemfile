@@ -33,7 +33,8 @@ group :doc do
 end
 
 
-gem 'farm_tools', :git => 'https://github.com/jessethebuilder/farm_tools'
+#gem 'farm_tools', :git => 'https://github.com/jessethebuilder/farm_tools'
+gem 'farm_tools', :path => 'c:/users/jf/desktop/jesseweb/farm_tools'
 gem 'twitter_express', :git => 'https://github.com/jessethebuilder/TwitterExpress'
 
 gem 'bootstrap-sass', '~> 3.0.3.0'

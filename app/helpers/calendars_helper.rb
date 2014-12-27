@@ -33,11 +33,11 @@ module CalendarsHelper
   end
 
   #specific use methods
-  def calendar_week_time_slots(start_time, end_time, increment_in_minutes)
+  def calendar_day_time_slots(start_time, end_time, increment_in_minutes)
     time = Time.parse(start_time)
     html = ''
     while time <= Time.parse(end_time) do
-      html += content_tag(:div, 'data-time_slot' => time.strftime('%I:%M%P'), :class => 'calendar_week_time_slot') do
+      html += content_tag(:div, 'data-time_slot' => time.strftime('%I:%M%P'), :class => 'calendar_day_time_slot') do
         content_tag(:span, :class => 'pull-left') do
           time.strftime('%l:%M %P')
         end

@@ -6,6 +6,10 @@ RSpec.describe 'Users', :type => :feature do
   let(:staff){ build :staff }
   let(:admin){ create :admin }
 
+  before(:each) do
+    setup_store
+  end
+
   describe 'users#index' do
     specify 'should keep current view between requests' do
       staff = manual_login_as(:staff)

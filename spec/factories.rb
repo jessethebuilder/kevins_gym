@@ -6,6 +6,17 @@ FactoryGirl.define do
     last_name Faker::Name.last_name
   end
 
+  factory :address do
+    factory :address_full do
+      #there is no validation to justify this factory. It needs to be built into farmtools
+      street Faker::Address.street_name
+      city Faker::Address.city
+      state Faker::Address.state
+      zip Faker::Address.zip_code
+    end
+  end
+
+
   factory :news_story do
     title Faker::Company.catch_phrase.titlecase
     association :author, :factory => :staff_plus
@@ -15,7 +26,6 @@ FactoryGirl.define do
     end
 
     factory :draft do
-      published false
     end
 
      factory :archive do
@@ -27,6 +37,7 @@ FactoryGirl.define do
     name Faker::Company.name
     email
     phone Faker::PhoneNumber.phone_number
+    association :address, :factory => :address_full
   end
 
   factory :user do
@@ -73,6 +84,11 @@ FactoryGirl.define do
       event_type :class
       association :user, :factory => :staff
       ends_at event_date + [30, 45, 60, 75, 90].sample.minutes
+    end
+
+    factory :appointment do
+      event_type :appointment
+
     end
   end
 

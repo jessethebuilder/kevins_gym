@@ -61,6 +61,31 @@ RSpec.describe User, :type => :model do
     end
   end
 
+  describe 'Class Methods' do
+    describe '#instructors' do
+      it 'should return all staff with events of :event_type => :class' do
+        s1 = FactoryGirl.create(:staff)
+        s2 = FactoryGirl.create(:staff)
+        s3 = FactoryGirl.create(:staff)
+
+        s1.events << FactoryGirl.create(:class)
+        s2.events << FactoryGirl.create(:appointment)
+
+        User.instructors.count.should == 1
+        User.instructors.first.should == s1
+      end
+
+      it 'should return only unique records' do
+        s1 = FactoryGirl.create(:staff)
+
+        s1.events << FactoryGirl.create(:class)
+        s1.events << FactoryGirl.create(:class)
+
+        User.instructors.count.should == 1
+      end
+    end
+  end
+
   describe UserLevel do
 
   end

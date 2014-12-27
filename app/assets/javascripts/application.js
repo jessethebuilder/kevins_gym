@@ -45,3 +45,28 @@ function onMediaQuery(screen_size, on_methods, off_methods) {
 
 };
 
+//Toolbox ---------------------------------------------
+function splitPath(path){
+  var file = path.match(/(.+\/)(\w+)\.(.+)/);
+  return {
+    path_to_file: file[1],
+    file_name: file[2],
+    extension: file[3]
+  };
+
+}
+function imageHover(selector){
+  //selector is an img tag. This expects that any file that has this class will have a corresponding file
+  //with the name [file_name]_hover.[file-extension] in the same folder.
+  $(selector).hover(function(){
+    var split_path = splitPath($(this).attr('src'));
+    var new_path = split_path.path_to_file + split_path.file_name + "_hover." + split_path.extension;
+    $(this).attr('src', new_path);
+  }, function(){
+    var split_path = splitPath($(this).attr('src'));
+    var new_file_name = split_path.file_name.match(/(.+)_hover/)[1]
+    var new_path = split_path.path_to_file + new_file_name + "." + split_path.extension;
+    $(this).attr('src', new_path);
+  })
+}
+

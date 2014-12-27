@@ -20,11 +20,14 @@
       <ul class='nav navbar-nav navbar-right'>
         <li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Location and Info <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Classes <b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><%= link_to 'Class Schedule', '#'%></li>
-                <li><%= link_to 'Location', '#' %></li>
-                <li><%= link_to 'Contact Us', 'contact_us_path' %></li>
+                <li><%= link_to 'All Classes', events_path %></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Classes by</li>
+                <% User.instructors.each do |i| %>
+                  <li><%= link_to i.name, user_events_path(i) %></li>
+                <% end %>
               </ul>
 
           </li>

@@ -83,3 +83,28 @@ ul#news_list{
   }
 
 }
+
+#news_story_form{
+
+  .well{
+    background-color: $calendar_medium;
+    margin-left: 0px;
+    margin-right: 0px;
+
+  }
+
+  .wysihtml5-toolbar{
+    .btn-default{
+//      background-color: red;
+    }
+
+    .glyphicon{
+//      background-color: white;
+
+    }
+  }
+}
+
+.form_button_row{
+  padding-left: 14px;
+}

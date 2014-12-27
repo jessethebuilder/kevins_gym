@@ -43,6 +43,7 @@ RSpec.describe NewsStory, :type => :model do
       end
 
       it 'should return only what is requested (drafts or archives) if :hide_published => false' do
+        #@x = NewsStory.records(:hide_published => true, :show_drafts => true)
         NewsStory.records(:hide_published => true, :show_drafts => true).count.should == 1
         NewsStory.records(:hide_published => true, :show_archives => true).count.should == 1
         NewsStory.records(:hide_published => true, :show_archives => true, :show_drafts => true).count.should == 2

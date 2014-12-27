@@ -16,7 +16,7 @@ end
 admin = User.create! :email => 'admin@test.com', :password => @pw, :first_name => 'Jesse', :last_name => 'Farmer',
                  :level => :admin
 
-30.times do
+20.times do
   #a bunch of random users
   u = User.new :email => Faker::Internet.email, :password => @pw, :level => User::USER_LEVELS.sample
   unless u.level == :member && Random.rand(1..4) != 1
@@ -52,7 +52,7 @@ end
 
   e = Event.new :name => Faker::Company.name, :starts_at => time, :ends_at => time + [15, 30, 45, 60, 75, 90].sample.minutes,
                 :event_type => :class, :description => description
-  e.user = User.all.sample
+  e.user = User.affiliated.sample
   e.save!
 
 end

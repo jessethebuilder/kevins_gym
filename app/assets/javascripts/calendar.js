@@ -18,7 +18,7 @@ function set_calendar_size(){
 //---------Week Scripts------------------------------------------
 function build_week_columns(){
     var days = $('#calendar_week_table td.day');
-    var day_cols = $('div.day_col');
+    var day_cols = $('div.day_row');
     var class_list
 
     days.each(function(i, day){
@@ -33,34 +33,75 @@ function build_week_columns(){
 
     //hide the original table
     $('#calendar_week_table').detach();
-}
 
-function collapseDaysOnWeek(){
-    collapseDayOnWeek('body', 'close');
-    //collapseDayOnWeek('.today', 'open');
+    //hide elements for day calendar
+    $('div.calendar_day_event').hide();
+    $('.calendar_day_time_slot').hide();
 }
 
 function collapseDayOnWeek(selector, direction){
     if(direction == 'open'){
         $(selector).find('.calendar_week_time_slot').show();
-        $(selector).find('.week_collapse_open').hide();
-        $(selector).find('.week_collapse_close').show();
-        $(selector).find('ul.week_collapse_close_events li').hide();
-        $(selector).find('span.week_collapse_open_event').show();
-
-
-
+//        $(selector).find('.week_collapse_open').hide();
+//        $(selector).find('.week_collapse_close').show();
+        $(selector).find('ul.calendar_week_events li').hide();
+        $(selector).find('div.calendar_week_events').show();
     } else {
         $(selector).find('.calendar_week_time_slot').hide();
-        $(selector).find('.week_collapse_open').show();
-        $(selector).find('.week_collapse_close').hide();
-        $(selector).find('ul.week_collapse_close_events li').show();
-        $(selector).find('span.week_collapse_open_event').hide();
+//        $(selector).find('.week_collapse_open').show();
+//        $(selector).find('.week_collapse_close').hide();
+        $(selector).find('ul.calendar_week_events li').show();
+        $(selector).find('div.calendar_day_event').hide();
     }
 }
 
-function placeEventsOnCollapseOpen(){
+function calendarDaySetup(){
+  $('.day_row').hover(function(){
+    placeEventsOnCalendarDay(this);
+  }, function(){
 
+  })
+
+  placeEventsOnCalendarDay('.today');
+}
+
+function placeEventsOnCalendarDay(selector){
+  $(selector).find('div.calendar_day_event').each(function(j, event){
+    var start = $(event).attr('data-starts');
+    $(selector).find('div.calendar_day_time_slot').each(function(j, slot){
+      //find the slot that matches the starts_at time
+        if($(slot).attr('data-time_slot') == start){
+        $(slot).append(event).addClass('has_event');
+      }
+    })
+  })
+
+  //color calendar day to match current day
+  if($(selector).hasClass('today') == true){
+    $('#calendar_day').addClass('today');
+  } else {
+    $('#calendar_day').removeClass('today');
+  }
+
+  //copy the html into calendar day
+  var content = $(selector).find('.week_calendar_content').html();
+  $('#calendar_day').html(content);
+
+  //show calendar day events
+  $('#calendar_day').find('.calendar_day_time_slot').show();
+  $('#calendar_day').find('.calendar_day_event').show();
+
+  //hide calendar week events
+  $('#calendar_day').find('ul.calendar_week_events').hide();
+
+}
+
+function toggleClass(selector, klass, persist){
+  $(selector).hover(function(){
+    $(this).addClass(klass);
+  }, function(){
+    $(this).removeClass(klass);
+  })
 }
 
 function setUpWeekCalendar(){
@@ -78,10 +119,20 @@ function setUpWeekCalendar(){
         //change label sizes on xs media query
         onMediaQuery(768, shrink_calendar_labels, grow_calendar_labels);
 
-        //set the default view for the calendar.
-        collapseDaysOnWeek();
 
-        //place events on week calendar in the proper time slot
-        placeEventsOnCollapseOpen();
-    })
+      //place events on week calendar in the proper time slot
+        calendarDaySetup();
+
+//        toggleClass('.day_row', 'selected_options')
+      $('.day_row').hover(function(){
+        $('.day_row').removeClass('selected_option');
+        $(this).addClass('selected_option');
+      }, function(){
+//        $(this).removeClass('selected_option');
+      })
+
+
+    }) // end document ready
 }
+
+

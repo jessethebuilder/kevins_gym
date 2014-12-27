@@ -1,11 +1,19 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, :only => [:index]
 
   respond_to :html
 
   def index
     @calendar_view = current_calendar_view
-    @events = Event.all
+
+    if @user
+      @events = Event.where(:user_id => @user.id)
+    else
+      @events = Event.all
+
+    end
+
     respond_with(@events)
   end
 
@@ -40,6 +48,10 @@ class EventsController < ApplicationController
   private
     def set_event
       @event = Event.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find(params[:user_id]) if params[:user_id]
     end
 
     def event_params

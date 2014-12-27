@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'Security Gate Requests', :type => :feature do
+  before(:each) do
+    setup_store
+  end
+
   describe 'News Story Requests' do
     describe 'New/Edit Form' do
       it 'New Form should show Author selector if :admin or higher is signed in' do

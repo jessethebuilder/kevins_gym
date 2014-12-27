@@ -13,4 +13,8 @@ module RequestsSpecHelper
     click_button 'Log in'
     u
   end
+
+  def setup_store
+    gym = create :gym
+  end
 end

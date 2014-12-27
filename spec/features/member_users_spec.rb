@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Member Users', :type => :feature do
+  before(:each) do
+    setup_store
+  end
   let!(:gym){ create :gym }
   #Members use typical Devise routes
   describe 'Signing Up as an unknown user' do
