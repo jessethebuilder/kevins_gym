@@ -36,7 +36,7 @@ module ApplicationHelper
   def social_networking_row(networks: SOCIAL_NETWORKS.keys.collect(&:to_s), icon_class: 'social_icon')
     html = ''
     networks.each do |nw|
-      html += link_to image_tag("icons/#{nw}_icon.png", :class => icon_class), ''
+      html += link_to image_tag("icons/social_networking/#{nw}_icon.png", :class => icon_class), ''
     end
     html.html_safe
   end

@@ -1,0 +1,61 @@
+<div id="features_bar">
+  <ul>
+    <li>
+      <%= link_to events_path do %>
+        <%= image_tag 'icons/fitness/calendar_icon.png' %>
+        <div>Classes</div>
+      <% end %>
+    </li>
+    <li class="icon">
+      <%= image_tag 'icons/fitness/icon_calendar.png' %>
+      <div>adfadaf</div>
+    </li>
+    <li class="icon">
+      <%= image_tag 'icons/fitness/icon_calendar.png' %>
+      <div>cxrayy</div>
+    </li>
+  </ul>
+</div>
+
+<script>
+  setupFeaturesBar();
+
+
+  function centerIconsOnFeaturesBarMini(){
+    var items = $('.features_bar_mini').find('li');
+    if(items.length > 0){
+      //assumes all items are the same width
+      var used_width = $(items[0]).width() * items.length;
+      var free_width = $('#features_bar').width() - used_width;
+
+      //padding is free_width divided by the number of items, divided by 2 (for padding-left/padding-right)
+      var padding_width = (free_width / items.length / 2) - 1;
+
+      items.each(function(i, item){
+        $(item).css('padding-right', padding_width + 'px');
+        $(item).css('padding-left', padding_width + 'px');
+      })
+    }
+  }
+
+//  function
+
+  function setupFeaturesBar(){
+    $(document).ready(function(){
+
+      onMediaQuery('md', function(){
+        $('#features_bar').addClass('features_bar_mini');
+      }, function(){
+        $('#features_bar').removeClass('features_bar_mini');
+      })
+
+      //centerButtons must come after the media query for switching #features_bar
+      centerButtonsOnFeaturesBarMini();
+
+      $(window).resize(function(){
+        centerButtonsOnFeaturesBarMini();
+      });
+
+    })
+  }
+</script>

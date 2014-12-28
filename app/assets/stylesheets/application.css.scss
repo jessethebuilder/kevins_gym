@@ -9,7 +9,6 @@
  *= require_self
  = require_tree .
  */
-@import 'variables';
 @import 'calendar';
 @import 'events';
 @import 'users';
@@ -17,8 +16,19 @@
 @import 'bootsy';
 @import 'bootstrap';
 
+body{
+  background-color: $calendar_very_light;
+}
 
-$footer_shadow: 2px -2px 8px;
+.content_block{
+  box-shadow: $shadow_still;
+  background-color: white;
+  padding: 20px;
+}
+
+#news_stories{
+  background-color: white;
+}
 
 #footer{
   padding-top: 20px;
@@ -99,10 +109,12 @@ $footer_shadow: 2px -2px 8px;
 
 #home_header{
   height: 240px;
-  margin-bottom: 10px;
+//  margin-bottom: 10px;
   background-repeat: no-repeat;
   background-size: 100%;
   margin-top: -20px;
+
+  background-image: url(image_path('home_images/gym_still_1.png'));
 
   h1{
     text-align: left;

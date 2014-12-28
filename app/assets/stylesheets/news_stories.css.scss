@@ -1,80 +1,120 @@
 @import 'variables';
 
-ul#news_list{
 
-  li{
-    list-style: none;
-    margin-left: -30px;
-    color: $calendar_dark;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-left: 10px;
-    border-left: 2px solid $background_color;
-    border-bottom: 1px solid $calendar_medium;
+#news_stories{
+  margin-top: 25px;
 
-    a{
-      @extend .news_headline;
 
+  ul.news_list{
+    .selected_story{
+      border-left: 2px solid $calendar_medium;
     }
 
-    a:hover{
-      background-color: $background_color;
+    li{
+      list-style: none;
+      margin-left: -30px;
       color: $calendar_dark;
-      text-decoration: none;
-    }
-    a.edit_link{
-      color: blue;
-      font-size: 20px;
-    }
-    a.edit_link:hover{
-      text-decoration: underline;
-    }
+      margin-top: 5px;
+      margin-bottom: 5px;
+      padding-left: 10px;
+      border-left: 2px solid $background_color;
+      border-bottom: 1px solid $calendar_medium;
+
+      a{
+        @extend .news_headline;
+
+      }
+
+      a:hover{
+        background-color: $background_color;
+        color: $calendar_dark;
+        text-decoration: none;
+      }
+      a.edit_link{
+        color: blue;
+        font-size: 20px;
+      }
+      a.edit_link:hover{
+        text-decoration: underline;
+      }
 
 
-    p{
-      margin-left: 10px;
+      p{
+        margin-left: 10px;
+      }
     }
   }
-}
 
-#news_list_header{
-  border-bottom: 2px solid $calendar_dark;
+  .news_list_header{
+    border-bottom: 2px solid $calendar_dark;
 
-  h1{
-    @extend .news_headline;
-    font-size: 82px;
-    font-weight: 600px;
-//    text-align: left;
-    padding-bottom: 5px;
-    padding-left: 20px;
+    h1{
+      @extend .news_headline;
+      font-size: 82px;
+      font-weight: 600px;
+      //    text-align: left;
+      padding-bottom: 5px;
+      padding-left: 20px;
+//      margin-top: -10px;
+    }
+  }
 
+} //end #news_stories
+
+.features_bar_mini{
+  //added as a class to modify #features_bar for smaller screens.
+//  text-align:center;
+  min-height: 160px;
+  padding-top: 15px !important;
+  margin-top: 10px !important;
+
+  li{
+    float: left;
+
+    img{
+      width: 100px !important;
+      height: 100px !important;
+    }
   }
 }
 
 #features_bar{
-  margin-top: 10px;
+
+//  text-align: center;
+  background-color: $gym_main_color;
+  margin-top: 25px;
 //  margin-bottom: 30px;
 //  height:100px;
-  background-color: $calendar_light;
+//  background-color: $calendar_light;
   border: 2px solid $calendar_medium;
   border-radius: 25px;
   padding-top: 30px;
   padding-bottom: 30px;
-  list-style: none;
-  text-align: center;
+  padding-left:0px;
+  margin-left: 0px;
+//  text-align: center;
+  box-shadow: $shadow_still;
 //  padding-left: -20px;
 
+  ul{
+    list-style: none;
+    padding-left: 0px;
+  }
   li{
-    margin-left: -30px;
+    margin-bottom: 25px;
+    a:link{
+      color: white;
+    }
+
+    a{
+      color: white;
+
+    }
 
     div{
       margin-top: 5px;
-      margin-bottom: 25px;
       font-size: 24px;
     }
-//    display: inline;
-//    margin-left: -20px;
-//    margin-bottom: 20px;
 
     img{
       width: 150px;

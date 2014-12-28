@@ -25,7 +25,9 @@
 //toolbox---------------------------------------------------------------------------------------
 
 function onMediaQuery(screen_size, on_methods, off_methods) {
-  enquire.register("screen and (max-width:" + screen_size + "px)", [{
+  var size = parseScreenSize(screen_size);
+
+  enquire.register("screen and (max-width:" + size + "px)", [{
       match: function () {
           if(typeof on_methods == "function"){on_methods = [on_methods]}
           on_methods.forEach(function(method){
@@ -41,9 +43,25 @@ function onMediaQuery(screen_size, on_methods, off_methods) {
       }
     }
   ])
+}
 
-
-};
+function parseScreenSize(size){
+  var val
+  switch(size){
+    case 'sm':
+      val = 768;
+      break;
+    case 'md':
+      val = 992;
+      break;
+    case 'lg':
+      val = 1200;
+      break;
+    default:
+      val = size;
+  }
+  return val;
+}
 
 //Toolbox ---------------------------------------------
 function splitPath(path){
@@ -67,6 +85,14 @@ function imageHover(selector){
     var new_file_name = split_path.file_name.match(/(.+)_hover/)[1]
     var new_path = split_path.path_to_file + new_file_name + "." + split_path.extension;
     $(this).attr('src', new_path);
+  })
+}
+
+function toggleClassOnHover(selector, klass, persist){
+  $(selector).hover(function(){
+    $(this).addClass(klass);
+  }, function(){
+    $(this).removeClass(klass);
   })
 }
 

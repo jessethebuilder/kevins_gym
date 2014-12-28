@@ -112,7 +112,7 @@
 
 #calendar_day{
   padding: 5px;
-  box-shadow: 3px 3px 10px $calendar_dark;
+  box-shadow: $shadow_still;
   background-color: $calendar_light;
 
   div.calendar_day_event{

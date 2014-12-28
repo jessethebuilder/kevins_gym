@@ -57,8 +57,9 @@ end
 
 end
 
-30.times do
-  ns = NewsStory.new :title => Faker::Company.bs.titlecase, :content => Faker::Lorem.paragraphs(paragraph_count = Random.rand(3..20)).join('<br>')
+10.times do
+  ns = NewsStory.new :title => Faker::Company.bs.titlecase, :published => true,
+                     :content => Faker::Lorem.paragraphs(paragraph_count = Random.rand(3..20)).join('<br>')
   ns.author = User.where.not(:level => 'member').sample
   ns.save!
 end

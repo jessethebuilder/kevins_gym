@@ -1,10 +1,21 @@
+//<% STYLES.each do |k, v| %>
+//  <%= "$#{k.to_s}: #{v};" %>
+//<% end %>
+
 $calendar_dark: #363636;
 $calendar_medium: #c0c0c0;
 $calendar_light: #dddddd;
+$calendar_very_light: #f0f0f0;
 
 $calendar_today: rgba(108, 177, 255, 0.42);
 
 $background_color: white;
 
 $gym_main_color: #780000;
-//$gym_main_color_shadow_color: ;
+
+$shadow_still: 3px 3px 10px $calendar_dark;
+$footer_shadow: 2px -2px 8px;
+
+
+
+////$gym_main_color_shadow_color: ;

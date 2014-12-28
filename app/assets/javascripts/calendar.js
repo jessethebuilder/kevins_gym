@@ -96,13 +96,6 @@ function placeEventsOnCalendarDay(selector){
 
 }
 
-function toggleClass(selector, klass, persist){
-  $(selector).hover(function(){
-    $(this).addClass(klass);
-  }, function(){
-    $(this).removeClass(klass);
-  })
-}
 
 function setUpWeekCalendar(){
     $(document).ready(function(){
@@ -123,7 +116,7 @@ function setUpWeekCalendar(){
       //place events on week calendar in the proper time slot
         calendarDaySetup();
 
-//        toggleClass('.day_row', 'selected_options')
+//        toggleClassOnHover('.day_row', 'selected_options')
       $('.day_row').hover(function(){
         $('.day_row').removeClass('selected_option');
         $(this).addClass('selected_option');
