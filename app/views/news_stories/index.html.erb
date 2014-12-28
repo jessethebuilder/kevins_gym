@@ -2,7 +2,6 @@
     <!--<h1 class="visible-lg">Kevin's Gym</h1>-->
     <!--<h1 class="visible-md medium">Kevin's Gym</h1>-->
     <!--<h1 class="visible-xs visible-sm smaller">Kevin's Gym</h1>-->
-    <!--&lt;!&ndash;<h3>We also do cupping!</h3>&ndash;&gt;-->
   <!--</div>-->
 <div class="container">
 
@@ -10,17 +9,19 @@
     <div class="col-md-9 col_left">
       <div id="news_stories" class="content_block">
         <div class="news_list_header">
-          <h1>News</h1>
+          <h1>Gym News</h1>
         </div>
         <ul class="news_list">
           <% @news_stories.each do |story| %>
             <li>
               <%= link_to '(edit)', edit_news_story_path(story),
                           :class => 'edit_link pull-right' if user_signed_in? && current_user.level > :member%>
-              <h3><%= link_to story.title, news_story_path(story) %></h3>
-              <p class="subheadline">
-                <%= truncate(story.content.html_safe, :length => 250) %>
-              </p>
+              <%= link_to news_story_path(story) do %>
+                <h3 class="news_headline"><%= story.title %></h3><%#= link_to story.title, news_story_path(story) %>
+                <p class="subheadline">
+                  <%= truncate(story.content.html_safe, :length => 250) %>
+                </p>
+              <% end %>
             </li>
           <% end %>
         </ul>
@@ -30,7 +31,7 @@
 
 
     <div class="col-md-3 col_right text-center">
-      <!-- todo icons offset after sm to md resize %>
+      <!-- todo icons offset after sm to md resize -->
       <%= render :partial => 'parts/features_bar' %>
     </div><!-- col -->
   </div><!-- row -->

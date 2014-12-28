@@ -3,7 +3,7 @@
 
 <%= week_calendar :events => @events, :thead => '', :table => {:id => 'calendar_week_table'} do |date, events| %>
     <%#= content_tag :div, :id => "week_calendar_#{date.strftime('%A')}", :class => 'week_calendar_content' do %>
-    <%= content_tag :div, :class => 'week_calendar_content' do %>
+    <%= content_tag :div, :class => 'week_calendar_content content_block' do %>
 
     <%= content_tag :h4, :class => 'day_name' do %>
         <%= "#{date.strftime('%A')} #{date.day}"  %>

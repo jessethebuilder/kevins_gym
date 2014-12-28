@@ -1,0 +1,40 @@
+@import 'variables';
+
+.quick_option_selected{
+  border-right-color: #363636 !important;
+  a{
+    color: $calendar_light !important;
+  }
+}
+
+.quick_options{
+  font-size: 20px;
+  float: right;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  line-height: 30px;
+
+  li{
+    margin-bottom: 10px;
+    list-style: none;
+    text-align: right;
+    border-right: 2px solid $calendar_medium;
+    margin-bottom: 3px;
+    padding-right: 5px;
+  }
+
+  a{
+    color: $calendar_dark;
+    display: block;
+  }
+  a:hover{
+    background-color: transparent;
+    color: $calendar_dark;
+  }
+  a:link{
+    text-decoration: none;
+  }
+  a:visited{
+    color: $calendar_dark;
+  }
+}

@@ -127,5 +127,3 @@ function setUpWeekCalendar(){
 
     }) // end document ready
 }
-
-

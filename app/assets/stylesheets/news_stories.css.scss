@@ -21,12 +21,10 @@
       border-bottom: 1px solid $calendar_medium;
 
       a{
-        @extend .news_headline;
-
       }
 
       a:hover{
-        background-color: $background_color;
+        background-color: transparent;
         color: $calendar_dark;
         text-decoration: none;
       }
@@ -49,12 +47,15 @@
     border-bottom: 2px solid $calendar_dark;
 
     h1{
+      text-align: center;
       @extend .news_headline;
-      font-size: 82px;
+      font-size: 86px;
       font-weight: 600px;
+      margin-top: 0px;
+      margin-bottom: -16px;
       //    text-align: left;
-      padding-bottom: 5px;
-      padding-left: 20px;
+//      padding-bottom: 5px;
+//      padding-left: 20px;
 //      margin-top: -10px;
     }
   }
@@ -91,6 +92,7 @@
   padding-top: 30px;
   padding-bottom: 30px;
   padding-left:0px;
+
   margin-left: 0px;
 //  text-align: center;
   box-shadow: $shadow_still;
@@ -102,6 +104,9 @@
   }
   li{
     margin-bottom: 25px;
+//    padding-left: 0px !important;
+//    padding-right: 0px !important;
+
     a:link{
       color: white;
     }

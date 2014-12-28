@@ -19,16 +19,17 @@
 body{
   background-color: $calendar_very_light;
   background-image: url(image_path("home_images/gym_still_2.jpg"));
+
+}
+.dropdown-menu{
+  box-shadow: $shadow_still;
+  border-raduis: 5px;
 }
 
 .content_block{
   box-shadow: $shadow_still;
-  background-color: white;
+  background-color: $content_background_color;
   padding: 20px;
-}
-
-#news_stories{
-  background-color: white;
 }
 
 #footer{
@@ -73,40 +74,6 @@ body{
 }
 
 
-.quick_options{
-//  position: fixed;
-//  right: 100px;
-  font-size: 20px;
-  float: right;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  line-height: 30px;
-  li{
-    margin-bottom: 10px;
-    list-style: none;
-    text-align: right;
-    border-right: 2px solid $calendar_medium;
-    margin-bottom: 3px;
-    padding-right: 5px;
-
-//    border-righ
-  }
-
-  a{
-    color: $calendar_dark;
-  }
-  a:hover{
-    background-color: transparent;
-    color: $calendar_dark;
-  }
-  a:link{
-    text-decoration: none;
-  }
-  a:visited{
-    color: $calendar_dark;
-  }
-
-}
 
 #home_header{
   height: 240px;
@@ -140,9 +107,9 @@ body{
 
 //my styles
 .news_headline{
-  font-size: 36px;
+  font-size: 28px;
   font-family: times, Times New Roman, times-roman, georgia, serif;
-  line-height: 44px;
+//  line-height: 30px;
   letter-spacing: -2px;
   font-weight: bold;
   color: $calendar_dark;
