@@ -1,0 +1,33 @@
+@import 'variables';
+
+#features_bar{
+  background-color: black;
+  margin-top: 10px;
+  border: 2px solid $calendar_medium;
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: $shadow_still;
+
+  a:link{
+    color: $calendar_very_light;
+  }
+
+  a{
+    color: $calendar_very_light;
+  }
+  a:hover{
+//    color: $gym_main_color_half_clear;
+    color: $gym_main_light_accent;
+  }
+
+  div{
+    margin-top: 3px;
+    font-size: 18px;
+  }
+
+  img{
+    width: 90px;
+    height: 90px;
+  }
+}

@@ -1,29 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <div id="news_story" class="content_block">
+        <p>
+          <strong>Name:</strong>
+          <%= @news_story.title %>
+        </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @news_story.title %>
-</p>
+        <p>
+          <strong>Content:</strong>
+          <%= @news_story.content %>
+        </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @news_story.content %>
-</p>
+        <p>
+          <strong>Author:</strong>
+          <%= @news_story.author_id %>
+        </p>
 
-<p>
-  <strong>Author:</strong>
-  <%= @news_story.author_id %>
-</p>
+        <p>
+          <strong>Published:</strong>
+          <%= @news_story.published %>
+        </p>
 
-<p>
-  <strong>Published:</strong>
-  <%= @news_story.published %>
-</p>
+        <p>
+          <strong>Archived:</strong>
+          <%= @news_story.archived %>
+        </p>
 
-<p>
-  <strong>Archived:</strong>
-  <%= @news_story.archived %>
-</p>
+      </div>
+
+    </div><!-- col -->
+
+    <div class="col-md-3">
+      <div id="news_story_list_small">
+
+      </div>
+    </div><!-- col -->
+
+  </div><!-- col -->
+</div><!-- row -->
 
 <%= link_to 'Edit', edit_news_story_path(@news_story) %> |
 <%= link_to 'Back', news_stories_path %>

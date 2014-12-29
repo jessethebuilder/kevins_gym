@@ -18,7 +18,7 @@
 
 body{
   background-color: $calendar_very_light;
-  background-image: url(image_path("home_images/gym_still_2.jpg"));
+//  background-image: url(image_path("home_images/gym_still_2.jpg"));
 
 }
 .dropdown-menu{
@@ -30,12 +30,14 @@ body{
   box-shadow: $shadow_still;
   background-color: $content_background_color;
   padding: 20px;
+  margin-top: 10px;
 }
 
 #footer{
   padding-top: 20px;
   padding-bottom: 30px;
-  background-color: $calendar_medium;
+  background-color: rgba(192, 192, 192, 0.85);
+
   margin-top: 50px;
   box-shadow: $footer_shadow;
 

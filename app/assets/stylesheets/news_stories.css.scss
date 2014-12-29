@@ -2,7 +2,7 @@
 
 
 #news_stories{
-  margin-top: 25px;
+
 
 
   ul.news_list{
@@ -62,72 +62,6 @@
 
 } //end #news_stories
 
-.features_bar_mini{
-  //added as a class to modify #features_bar for smaller screens.
-//  text-align:center;
-  min-height: 160px;
-  padding-top: 15px !important;
-  margin-top: 10px !important;
-
-  li{
-    float: left;
-
-    img{
-      width: 100px !important;
-      height: 100px !important;
-    }
-  }
-}
-
-#features_bar{
-
-//  text-align: center;
-  background-color: $gym_main_color;
-  margin-top: 25px;
-//  margin-bottom: 30px;
-//  height:100px;
-//  background-color: $calendar_light;
-  border: 2px solid $calendar_medium;
-  border-radius: 25px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  padding-left:0px;
-
-  margin-left: 0px;
-//  text-align: center;
-  box-shadow: $shadow_still;
-//  padding-left: -20px;
-
-  ul{
-    list-style: none;
-    padding-left: 0px;
-  }
-  li{
-    margin-bottom: 25px;
-//    padding-left: 0px !important;
-//    padding-right: 0px !important;
-
-    a:link{
-      color: white;
-    }
-
-    a{
-      color: white;
-
-    }
-
-    div{
-      margin-top: 5px;
-      font-size: 24px;
-    }
-
-    img{
-      width: 150px;
-      height: 150px;
-    }
-  }
-
-}
 
 #news_story_form{
 
@@ -152,4 +86,8 @@
 
 .form_button_row{
   padding-left: 14px;
+}
+
+#news_story{
+
 }

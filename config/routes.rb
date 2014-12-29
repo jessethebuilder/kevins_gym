@@ -5,13 +5,9 @@ SGym::Application.routes.draw do
 
   resources :events
 
-
-
-
-
-  #resources :gyms
-
-  get "tools/home"
+  #get "tools/home"
+  #placeholder for what will probably be d/users/new (new users though devise controller)
+  get "tools/membership", :as => 'membership'
 
   devise_for :users, :path_prefix => 'd'
 

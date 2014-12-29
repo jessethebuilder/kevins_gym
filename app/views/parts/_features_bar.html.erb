@@ -1,24 +1,55 @@
-<div id="features_bar">
-  <ul>
-    <li>
-      <%= link_to events_path do %>
-        <%= image_tag 'icons/fitness/calendar_icon.png' %>
-        <div>Classes</div>
-      <% end %>
-    </li>
-    <li class="icon">
-      <%= image_tag 'icons/fitness/icon_calendar.png' %>
-      <div>adfadaf</div>
-    </li>
-    <li class="icon">
-      <%= image_tag 'icons/fitness/icon_calendar.png' %>
-      <div>cxrayy</div>
-    </li>
-  </ul>
-</div>
+<div id="features_bar" class="row">
+  <div class="col-xs-3 text-center">
+    <%= link_to events_path do %>
+      <%= image_tag 'icons/fitness/calendar_icon.png' %>
+      <div>Classes</div>
+    <% end %>
+  </div><!-- col -->
+
+
+  <div class="col-xs-3 text-center">
+    <%= link_to membership_path do %>
+      <%= image_tag 'icons/fitness/membership_icon.png' %>
+      <div>Membership</div>
+    <% end %>
+  </div><!-- col -->
+
+  <div class="col-xs-3 text-center">
+    <%= link_to events_path do %>
+      <%= image_tag 'icons/fitness/personal_training_icon.png' %>
+      <div>Personal Training</div>
+    <% end %>
+  </div><!-- col -->
+
+
+  <div class="col-xs-3 text-center">
+    <%= link_to events_path do %>
+      <%= image_tag 'icons/fitness/appointments_icon.png' %>
+      <div>Appointments</div>
+    <% end %>
+  </div><!-- col -->
+
+
+  <!--<ul>-->
+    <!--<li>-->
+      <!--<%= link_to events_path do %>-->
+        <!--<%= image_tag 'icons/fitness/calendar_icon.png' %>-->
+        <!--<div>Classes</div>-->
+      <!--<% end %>-->
+    <!--</li>-->
+    <!--<li class="icon">-->
+      <!--<%= image_tag 'icons/fitness/icon_calendar.png' %>-->
+      <!--<div>adfadaf</div>-->
+    <!--</li>-->
+    <!--<li class="icon">-->
+      <!--<%= image_tag 'icons/fitness/icon_calendar.png' %>-->
+      <!--<div>cxrayy</div>-->
+    <!--</li>-->
+  <!--</ul>-->
+</div><!-- row -->
 
 <script>
-  setupFeaturesBar();
+//  setupFeaturesBar();
 
-  imageChangeOnLinkHover('#features_bar li a');
+  imageChangeOnLinkHover('#features_bar a');
 </script>
