@@ -72,17 +72,26 @@ FactoryGirl.define do
 
   end
 
+  factory :event_category do
+    name Faker::Company.catch_phrase
+  end
+
   factory :event do
     event_date = Random.rand(1.50000).minutes.until
     name Faker::Company.bs
     starts_at event_date
-    events = Event::EVENT_TYPES
+    event_category
+    reoccurs_every Event::REOCCURRENCE_TYPES.sample
+
+    #event is any event EXCEPT a :class
+    events = Event::EVENT_TYPES.dup
     events.delete(:class)
     event_type events.sample
 
+
     factory :class do
       event_type :class
-      association :user, :factory => :staff
+      association :user, :factory => User::AFFILIATED_LEVELS.sample
       ends_at event_date + [30, 45, 60, 75, 90].sample.minutes
     end
 

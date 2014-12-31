@@ -1,9 +1,9 @@
 @import 'variables';
 
 .quick_option_selected{
-  border-right-color: #363636 !important;
+  border-right-color: $calendar_dark !important;
   a{
-    color: $calendar_light !important;
+//    color: $calendar_light !important;
   }
 }
 

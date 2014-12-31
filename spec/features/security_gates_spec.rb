@@ -30,6 +30,30 @@ RSpec.describe 'Security Gate Requests', :type => :feature do
         visit 'news_stories/new'
         page.find(:css, '#news_story_author_id').value.should == staff.id.to_s
       end
+
     end
-   end
+  end
+
+  describe 'Event Requests' do
+    specify 'if current_user is admin or above, there will be an (edit) link' do
+
+    end
+
+    specify 'if current user is staff, but the owner of the event, there will be an (edit) link' do
+
+    end
+
+    specify 'if user is of admin or above, they can visit /event/:id/edit' do
+
+    end
+
+    specify 'if user is the owner of an event, they can visit /event/:id/edit' do
+
+    end
+
+    specify 'if user is NOT the owner and of level :staff or lower, they CANNOT visit /event/:id/edit' do
+
+    end
+  end
+
 end

@@ -41,6 +41,11 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def image_select(form_builder, object, uploader, version: :thumb)
+    render :partial => 'parts/image_select', :locals => {:f => form_builder, :object => object,
+                                                         :uploader => uploader, :version => version}
+  end
+
 
 
 end

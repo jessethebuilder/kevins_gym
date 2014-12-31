@@ -20,6 +20,9 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :alert => 'Access Denied!'
   end
 
+  def set_upcoming_classes
+    @upcoming_classes = Event.upcoming_classes || {}
+  end
 
 
 end

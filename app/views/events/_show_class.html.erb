@@ -1,25 +1,30 @@
 <div id="show_class" class="row">
-  <div class="col-sm-4">
-    <h3>
+  <div class="col-sm-6">
+    <div class="event_name">
       <%= @event.name %>
-    </h3>
+      <%= security_gate 'event', 'edit_from_show', @event do %>
+        <%= link_to '(edit)', edit_event_path(@event), :class => 'staff_edit_link' %>
+      <% end %>
+    </div>
     <div id="event_description">
       <%= @event.description.html_safe %>
     </div>
   </div>
-  <div class="col-sm-4">
+  <div class="col-sm-3">
     <%= image_tag(@event.user.avatar.url(:show), :class => 'image_right') if @event.user.avatar? %>
     <h3>
       <%= @event.user.first_name %>
       <%= @event.user.last_name %>
     </h3>
   </div>
-  <div class="col-sm-4"></div>
+  <div class="col-sm-3"></div>
 </div>
 
 <style>
   .image_right{
     float: right;
   }
+
+
 </style>
 

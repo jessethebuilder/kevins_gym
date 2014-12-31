@@ -12,9 +12,12 @@ $calendar_today: rgba(108, 177, 255, 0.42);
 $background_color: white;
 
 $gym_main_color: #700000;
-$gym_main_light_accent: rgb(243, 144, 140);
+$gym_main_light_accent: lighten($gym_main_color, 50%);
+//
+//: rgb(243, 144, 140);
 
-$shadow_still: 3px 3px 10px $calendar_dark;
+$shadow_still: 3px 3px 10px 5px $calendar_dark;
+$shadow_selected: 6px 6px 10px $calendar_dark;
 $footer_shadow: 2px -2px 8px;
 
 $content_background_color: rgba(255, 255, 255, 0.75);

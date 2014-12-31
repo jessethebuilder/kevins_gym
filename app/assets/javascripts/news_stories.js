@@ -36,14 +36,6 @@ function setupFeaturesBar(){
       $('#features_bar').find('li').css('padding-right', '0px');
       $('#features_bar').find('li').css('padding-left', '0px');
     })
-
-    //centerButtons must come after the media query for switching #features_bar
-    centerIconsOnFeaturesBarMini()
-
-    $(window).resize(function(){
-      centerIconsOnFeaturesBarMini();
-    });
-
   })
 }
 

@@ -1,0 +1,29 @@
+<div id="upcoming_class_list">
+  <div class="class_list_header">Upcoming Classes</div>
+  <% @upcoming_classes.each do |date, events| %>
+    <div class="row">
+      <div class="class_block">
+        <div class="class_date">
+          <span>
+            <% time = Date.parse(date) %>
+            <%= time.strftime('%d') %>
+            <span class="smaller"><%= time.strftime('%A') %></span>
+          </span>
+        </div>
+
+        <% events.each do |e| %>
+          <div class="class_name">
+            <%= link_to "#{e.start_time} - #{e.name}", e %>
+          </div>
+        <% end %>
+      </div><!--  -->
+    </div><!-- row -->
+  <% end %>
+</div>
+
+<style>
+
+ .class_time{
+ }
+
+</style>

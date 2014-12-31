@@ -16,6 +16,10 @@ end
 admin = User.create! :email => 'admin@test.com', :password => @pw, :first_name => 'Jesse', :last_name => 'Farmer',
                  :level => :admin
 
+j = admin.dup
+j.email = 'j@test.com'
+j.save!
+
 20.times do
   #a bunch of random users
   u = User.new :email => Faker::Internet.email, :password => @pw, :level => User::USER_LEVELS.sample
@@ -24,6 +28,11 @@ admin = User.create! :email => 'admin@test.com', :password => @pw, :first_name =
     u.last_name = Faker::Name.last_name
   end
   u.save!
+end
+
+4.times do
+  ec = EventCategory.new :name => Faker::Company.name, :description => Faker::Company.bs
+  ec.save!
 end
 
 30.times do
@@ -53,6 +62,8 @@ end
   e = Event.new :name => Faker::Company.name, :starts_at => time, :ends_at => time + [15, 30, 45, 60, 75, 90].sample.minutes,
                 :event_type => :class, :description => description
   e.user = User.affiliated.sample
+  e.event_category = EventCategory.all.sample
+  e.reoccurs_every = Event::REOCCURRENCE_TYPES.sample
   e.save!
 
 end

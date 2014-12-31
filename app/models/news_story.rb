@@ -45,7 +45,7 @@ class NewsStory < ActiveRecord::Base
   end
 
   def self.empty_query
-    where('published = true AND archived = false')
+    where('published = true AND archived = true')
   end
 
   def self.published

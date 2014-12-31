@@ -1,5 +1,7 @@
 class NewsStoriesController < ApplicationController
   before_action :set_news_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_upcoming_classes, :only => [:index]
+
 
   #before_filter authenticate_user_level!(:staff), :only => [:new, :create, :edit, :update, :destroy]
 
@@ -66,5 +68,9 @@ class NewsStoriesController < ApplicationController
 
     def archive?
       params[:commit] == 'Archive'
+    end
+
+    def set_published_or_archived
+
     end
 end

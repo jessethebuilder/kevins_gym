@@ -1,0 +1,18 @@
+<div class="col-md-6">
+  <div class="form-group">
+    <%= f.label uploader, :class => 'control-label' %>
+    <%= f.file_field uploader, :class => 'form-control' %>
+    <%= f.hidden_field "#{uploader}_cache".to_sym %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label "remote_#{uploader.to_s}_url".to_sym, 'or image URL', :class => 'control-label' %>
+    <%= f.text_field "remote_#{uploader.to_s}_url".to_sym, :class => 'form-control' %>
+  </div>
+</div>
+
+<div class="col-md-4 col-md-offset-2">
+  <% if object.send(uploader).file %>
+    <%= image_tag object.send(uploader).url(version) %>
+  <% end %>
+</div>

@@ -7,7 +7,7 @@
   <%= render :partial => 'parts/features_bar' %>
 
   <div class="row">
-    <div class="col-md-9 col_left">
+    <div class="col-xs-9 col_left">
       <div id="news_stories" class="content_block">
         <div class="news_list_header">
           <h1>Gym News</h1>
@@ -31,15 +31,14 @@
     </div><!-- col -->
 
 
-    <div class="col-md-3 col_right text-center">
-      <!-- todo icons offset after sm to md resize -->
-
+    <div class="col-xs-3 col_right text-center">
+      <%= render :partial => 'events/upcoming_class_list' %>
     </div><!-- col -->
   </div><!-- row -->
 </div>
 
 <script>
-  setupNewsList();
+//  setupNewsList();
 
 
 </script>

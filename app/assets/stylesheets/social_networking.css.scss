@@ -1,0 +1,17 @@
+@import 'variables';
+
+#social_networking_bar{
+
+  height: 26px;
+  background-color: $calendar_medium;
+  padding-top: 3px;
+
+  .follow_button{
+    float: right;
+    padding-left: 15px;
+  }
+
+  .follow_on_twitter_button{
+    padding-top: 1px;
+  }
+}

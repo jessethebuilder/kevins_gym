@@ -1,12 +1,7 @@
-//todo get all of my variables in on file
-//
-//$calendar_dark: #363636;
-//$calendar_medium: #c0c0c0;
-//$calendar_light: #dddddd;
-
 
 /*
  *= require_self
+ *= require bootstrap-datetimepicker.min
  = require_tree .
  */
 @import 'calendar';
@@ -14,23 +9,54 @@
 @import 'users';
 @import 'news_stories';
 @import 'bootsy';
+@import 'bootstrap_customizations';
 @import 'bootstrap';
+
+
 
 body{
   background-color: $calendar_very_light;
+
 //  background-image: url(image_path("home_images/gym_still_2.jpg"));
 
 }
-.dropdown-menu{
-  box-shadow: $shadow_still;
-  border-raduis: 5px;
+
+h1{
+  a:hover{
+    background-color: trasparent;
+  }
 }
+.well{
+  background-color: $calendar_medium;
+  margin-left: 0px;
+  margin-right: 0px;
+
+}
+
+.form_button_row{
+  padding-left: 14px;
+}
+
+
 
 .content_block{
   box-shadow: $shadow_still;
   background-color: $content_background_color;
   padding: 20px;
   margin-top: 10px;
+}
+
+.staff_edit_link{
+  color: blue;
+  font-size: 24px;
+  float: right;
+}
+.staff_edit_link:hover{
+  background-color: transparent;
+  color: $calendar_medium;
+}
+.staff_edit_link:visited{
+  color: blue;
 }
 
 #footer{
@@ -72,8 +98,35 @@ body{
 }
 
 #top_nav{
-//  margin-bottom: 10px;
+
+  .navbar-brand{
+    letter-spacing: .25em;
+    font-size: 18px;
+  }
+
+  a{
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .2em;
+  }
+
+  a:hover{
+    color: $calendar_medium;
+  }
+
+  ul.dropdown-menu{
+    box-shadow: $shadow_still;
+    border-raduis: 5px;
+    background-color: $calendar_light;
+
+    a{
+      color: $calendar_dark;
+
+    }
+  }
 }
+
 
 
 
@@ -110,8 +163,9 @@ body{
 //my styles
 .news_headline{
   font-size: 28px;
-  font-family: times, Times New Roman, times-roman, georgia, serif;
 //  line-height: 30px;
+  font-family: times, Times New Roman, times-roman, georgia, serif;
+
   letter-spacing: -2px;
   font-weight: bold;
   color: $calendar_dark;
@@ -142,6 +196,19 @@ body{
   color: $calendar_dark;
   margin-top: 10px;
   letter-spacing: 0.3em;
+}
+
+.secondary_headline{
+  line-height: 34px;
+  font-size: 34px;
+  font-family: Impact, Charcoal, sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px $calendar_medium;
+}
+
+.page_title{
+
 }
 
 

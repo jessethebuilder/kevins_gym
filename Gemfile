@@ -33,9 +33,14 @@ group :doc do
 end
 
 
-gem 'farm_tools', :git => 'https://github.com/jessethebuilder/farm_tools'
-#gem 'farm_tools', :path => 'c:/users/jf/desktop/jesseweb/farm_tools'
-gem 'twitter_express', :git => 'https://github.com/jessethebuilder/TwitterExpress'
+#gem 'farm_tools', :git => 'https://github.com/jessethebuilder/farm_tools'
+gem 'farm_tools', :path => 'c:/users/jf/desktop/jesseweb/farm_tools'
+
+gem 'twitter_express', :path => 'c:/users/jf/desktop/jesseweb/TwitterExpress'
+#gem 'twitter_express', :git => 'https://github.com/jessethebuilder/TwitterExpress'
+
+gem 'momentjs-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
 gem 'bootstrap-sass', '~> 3.0.3.0'
 

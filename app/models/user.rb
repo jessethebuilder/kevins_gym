@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   USER_LEVELS = [:member, :staff, :admin, :owner]
   AFFILIATED_LEVELS = [:staff, :admin, :owner]
 
+  USER_TYPES = %w|instructor personal_trainer support|
+
   #validates :level, :presence => true
 
   validate :staff_or_higher_has_names, :user_level_is_in_list

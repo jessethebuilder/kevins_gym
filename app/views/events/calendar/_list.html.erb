@@ -1,0 +1,20 @@
+<div id="calendar_list">
+  <h1 class="page_title"><%= @calendar_scope.titlecase %></h1>
+
+  <div class="content_block">
+    <%= quick_options [['Monthly', link_to events_path(:calendar_view => 'month', :calendar_scope => @calendar_scope)],
+                       ['Weekly', link_to events_path(:calendar_view  => 'week', :calendar_scope => @calendar_scope)]
+                      ] %>
+    <table class="table">
+      <thead>
+
+      </thead>
+    </table>
+    <% @events.each do |e| %>
+      <div class="row">
+        <%= e.name %>
+
+      </div>
+    <% end %>
+  </div>
+</div>

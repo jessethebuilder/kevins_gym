@@ -15,12 +15,15 @@
 //= require bootsy
 //= require bootstrap
 //= require turbolinks
+//= require moment
+//= require bootstrap-datetimepicker
+//= require pickers
 //= require_tree .
-//ca
 
-//calendar scripts ------------------------------------------------------------------------
+$(document).ready(function(){
+  $('.datetimepicker').datetimepicker();
+})
 
-//end calendar scripts ------------------------------------------------------------------------
 
 //toolbox---------------------------------------------------------------------------------------
 

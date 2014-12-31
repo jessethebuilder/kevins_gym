@@ -3,83 +3,59 @@
   <%= error_explanation(@news_story) %>
 
   <div id="news_story_form">
-    <div class="col-sm-12">
-
-      <div class="row">
+    <div class="row">
       <div class="col-md-6">
         <div class="form-group">
           <%= f.label :title, :class => 'control-label' %>
           <%= f.text_field :title, :class => 'form-control' %>
         </div>
       </div>
-      <div class="col-md-6 placeholder"></div>
-      </div>
+      <!--<div class="col-md-6 placeholder"></div>-->
+    </div><!-- row -->
 
-      <div class="form-group">
-        <%= f.label :content, :class => 'control-label' %>
-        <%= f.bootsy_area :content, :class => 'form-control' %>
-      </div>
-
-      <div class="row well">
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :main_image, :class => 'control-label' %>
-            <%= f.file_field :main_image, :class => 'form-control' %>
-            <%= f.hidden_field :main_image_cache %>
-          </div>
-
-          <div class="form-group">
-            <%= f.label :remote_main_image_url, 'or image URL', :class => 'control-label' %>
-            <%= f.text_field :remote_main_image_url, :class => 'form-control' %>
-          </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :content, :class => 'control-label' %>
+          <%= f.bootsy_area :content, :class => 'form-control' %>
         </div>
+      </div><!-- col -->
+    </div><!-- row -->
 
-        <div class="col-md-4 col-md-offset-2">
-          <% if @news_story.main_image.file %>
-            <%= image_tag @news_story.main_image.url(:thumb) %>
+    <div class="row well">
+      <%= image_select f, @news_story, :main_image %>
+    </div><!-- row -->
+
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= security_gate('news_story', 'edit_author_of_news_story') do %>
+            <%= f.label :author_id, :class => 'control-label'  %>
+            <%= f.select :author_id, for_select(User.affiliated, :full_name, :id, current_user.id), {}, :class => 'form-control'%>
+          <% end %>
+
+          <%= security_gate('news_story', 'set_author_with_hidden') do %>
+            <%= f.hidden_field :author_id, :value => current_user.id.to_s %>
           <% end %>
         </div>
-      </div>
+      </div><!-- col -->
+    </div><!-- row -->
 
+    <div class="row form_button_row">
+      <div class="col-xs-12">
 
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= security_gate('>= admin') do %>
-              <%= f.label :author_id, :class => 'control-label'  %>
-              <%= f.select :author_id, for_select(User.affiliated, :full_name, :id, current_user.id), {}, :class => 'form-control'%>
-            <% end %>
-
-            <%= security_gate('== staff') do %>
-              <%= f.hidden_field :author_id, :value => current_user.id.to_s %>
-            <% end %>
-          </div>
-        </div><!-- col -->
-
-                <div class="col-md-6"></div><!--col-->
-      </div><!-- row -->
-    </div><!-- col -->
-  </div><!-- row -->
-
-  <div class="row form_button_row">
-    <div class="col-xs-12">
-
-      <div class="form-group ">
-        <%= f.submit 'Publish', :class => 'btn btn-primary' %>
-      <!--</div>-->
-      <!--<div class="form-group">-->
-        <%= f.submit 'Save Draft', :class => 'btn btn-default btn-sm' %>
-        <% unless @news_story.new_record? %>
-          <%= f.submit 'Archive', :class => 'btn btn-warning btn-sm', :data => {:confirm => 'Archived News Stories will not appear on site. Are you sure?'} %>
-        <% end %>
-      </div>
-    </div><!-- col -->
-  </div><!-- row -->
-
-<% end %>
-
-<style>
-  textarea.bootsy_text_area{
-    height: 200px;
-  }
-</style>
+        <div class="form-group ">
+          <%= f.submit 'Publish', :class => 'btn btn-primary' %>
+        <!--</div>-->
+        <!--<div class="form-group">-->
+          <%= f.submit 'Save Draft', :class => 'btn btn-default btn-sm' %>
+          <% unless @news_story.new_record? %>
+            <%= f.submit 'Archive', :class => 'btn btn-warning btn-sm', :data => {:confirm => 'Archived News Stories will not appear on site. Are you sure?'} %>
+          <% end %>
+        </div>
+      </div><!-- col -->
+    </div><!-- row -->
+  <% end %>
+</div>

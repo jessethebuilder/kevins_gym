@@ -6,18 +6,20 @@ RSpec.describe 'Member Users', :type => :feature do
   end
   let!(:gym){ create :gym }
   #Members use typical Devise routes
-  describe 'Signing Up as an unknown user' do
-    it 'A newly created user has :member level' do
-      visit '/'
-      click_link 'Sign Up'
-      fill_in 'Email', :with => '123@gmail.com'
-      fill_in 'Password', :with => 'carltonlasiter'
-      fill_in 'Password confirmation', :with => 'carltonlasiter'
-      within('.new_user') do
-        expect{ click_button 'Sign up' }.to change{ User.count }.by(1)
-      end
-    end
-  end
+  #User sign up is not implemented at this time
+
+  #describe 'Signing Up as an unknown user' do
+  #  it 'A newly created user has :member level' do
+  #    visit '/'
+  #    click_link 'Sign Up'
+  #    fill_in 'Email', :with => '123@gmail.com'
+  #    fill_in 'Password', :with => 'carltonlasiter'
+  #    fill_in 'Password confirmation', :with => 'carltonlasiter'
+  #    within('.new_user') do
+  #      expect{ click_button 'Sign up' }.to change{ User.count }.by(1)
+  #    end
+  #  end
+  #end
 
   describe 'User Requests' do
     specify ':members cannot access User request, except through Devise' do
