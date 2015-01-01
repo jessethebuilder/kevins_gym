@@ -1,0 +1,14 @@
+<div id="user_bio">
+  <%= link_to(user_path(@event.user)) do %>
+
+    <%= image_tag(@event.user.avatar.url(:show), :class => 'pull-left avatar', :style => 'padding-right: 10px;') if @event.user.avatar? %>
+
+    <div class="page_subtitle">
+      <%= "#{@event.user.first_name} #{@event.user.last_name}" %>
+    </div>
+  <% end %>
+
+
+  <%= @event.user.bio.html_safe if @event.user.bio %>
+
+</div>

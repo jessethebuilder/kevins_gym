@@ -1,24 +1,16 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :set_user, :only => [:index]
-  before_action :set_event_categories, :only => [:new, :edit]
-
-  before_action :set_new_event, :only => [:new]
-  before_action :set_event_type, :only => [:new, :edit]
+  before_action :set_event_categories, :only => [:new, :create, :edit, :update]
+  before_action :set_event_type, :only => [:new, :create, :edit, :update, :index]
 
   respond_to :html
 
-  #def set_upcoming_classes
-  #  #Event.recent returns a hash with dates for keys and an array of event for
-  #  @upcoming_classes = Event.upcoming_classes || {}
-  #end
-
-
   def index
     @calendar_view = current_calendar_view
-    @calendar_scope = current_calendar_scope
+    @partial_path = "/events/calendar/#{@calendar_view}"
 
-    scoped_events = Event.send(@calendar_scope.to_sym)
+    scoped_events = Event.send(@event_type.pluralize.to_sym)
 
     if @user
       @events = scoped_events.where(:user_id => @user.id)
@@ -34,7 +26,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    #@event = Event.new
+    @event = Event.new
     respond_with(@event)
   end
 
@@ -43,12 +35,16 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.save
+    if @event.save
+      flash.notice = "#{@event.name} has been created."
+    end
     respond_with(@event)
   end
 
   def update
-    @event.update(event_params)
+    if @event.update(event_params)
+      flash.notice = "#{@event.name} has been updated."
+    end
     respond_with(@event)
   end
 
@@ -66,12 +62,15 @@ class EventsController < ApplicationController
       @user = User.find(params[:user_id]) if params[:user_id]
     end
 
-    def set_new_event
-      @event = Event.new
-    end
     def set_event_type
       #event_type defaults to class
-      @event_type = @event.event_type || params[:event_type] || 'class'
+      if @event
+        @event_type = @event.event_type
+      else
+        #index action relies on this to fall though until 'class' for new, create, etc. where the param isn't give
+        #via URL.
+        @event_type = params[:event_type] || 'class'
+      end
     end
 
     def set_event_categories
@@ -79,7 +78,8 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:start, :end, :name, :description, :reoccurs_every, :user_id,
+      params.require(:event).permit(:start, :end, :name, :description, :reoccurs_every, :user_id, :duration,
+                                    :event_type, :event_category_id, :starts_at, :ends_at,
                                     :bootsy_image_gallery_id,
                                     :main_image, :main_image_cache, :remote_main_image_url)
     end
@@ -88,17 +88,6 @@ class EventsController < ApplicationController
     def current_calendar_view
       #set the session and return
       session[:calendar_view] = params[:calendar_view] || session[:calendar_view] || 'week'
-    end
-
-    def current_calendar_scope
-      #classes is a temporary default, until we implement appointments
-      sanatize_calendar_scope(params[:calendar_scope] || 'classes')
-      #session[:calendar_scope] = sanatize_calendar_scope(params[:calendar_scope] || session[:calendar_scope] || 'classes')
-    end
-
-    def sanatize_calendar_scope(scope)
-      allowed_scopes = %w|classes|
-      allowed_scopes.include?(scope) ? scope : nil
     end
 
     def calendar_start_date

@@ -89,6 +89,7 @@ FactoryGirl.define do
     event_type events.sample
 
 
+
     factory :class do
       event_type :class
       association :user, :factory => User::AFFILIATED_LEVELS.sample

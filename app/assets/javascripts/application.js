@@ -22,6 +22,12 @@
 
 $(document).ready(function(){
   $('.datetimepicker').datetimepicker();
+
+  //----------------footer scripts----------------------------
+  //hover over for social icon links
+  imageChangeOnLinkHover('.social_icon');
+  //set page height so footer is always on bottom
+  $('#page_content').css('min-height', $(window).height() - 400);
 })
 
 

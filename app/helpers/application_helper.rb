@@ -8,17 +8,15 @@ module ApplicationHelper
 
   def quick_options(options)
     html = initiate_quick_options
-    #html += '<div class="row pull-right">'
-    #html += '<div class="col-lg-12 pull-right">'
     html += '<ul class="quick_options">'
+
+    options << yield if block_given?
     options.each do |o|
       html += '<li>'
         html += link_to o[0], o[1]
       html += '</li>'
     end
     html += '</ul>'
-    #html +='</div>'
-    #html += '</div>'
     html.html_safe
   end
 
@@ -44,6 +42,10 @@ module ApplicationHelper
   def image_select(form_builder, object, uploader, version: :thumb)
     render :partial => 'parts/image_select', :locals => {:f => form_builder, :object => object,
                                                          :uploader => uploader, :version => version}
+  end
+
+  def durations_for_select
+    [['Half Hour', 30], ['1 Hour', 60], ['Hour and a Half', 90], ['2 hours', 120]]
   end
 
 

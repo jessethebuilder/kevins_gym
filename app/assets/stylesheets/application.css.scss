@@ -13,11 +13,14 @@
 @import 'bootstrap';
 
 
+img.main_image{
+  width: 100%;
+}
 
 body{
   background-color: $calendar_very_light;
 
-//  background-image: url(image_path("home_images/gym_still_2.jpg"));
+//  background-image: url(image_path("home_images/class_sample2.jpg"));
 
 }
 
@@ -32,23 +35,32 @@ h1{
   margin-right: 0px;
 
 }
-
 .form_button_row{
   padding-left: 14px;
 }
-
-
-
 .content_block{
   box-shadow: $shadow_still;
   background-color: $content_background_color;
-  padding: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.record_description{
+  margin-bottom: 10px;
   margin-top: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top: 1px solid $calendar_dark;
+  border-bottom: 1px solid $calendar_dark;
 }
 
+.staff_new_link{
+  color: $staff_link_color;
+  font-size: $staff_link_size;
+  padding-left: 10px;
+}
 .staff_edit_link{
-  color: blue;
-  font-size: 24px;
+  color: $staff_link_color;
+  font-size: $staff_link_size;
   float: right;
 }
 .staff_edit_link:hover{
@@ -59,37 +71,6 @@ h1{
   color: blue;
 }
 
-#footer{
-  padding-top: 20px;
-  padding-bottom: 30px;
-  background-color: rgba(192, 192, 192, 0.85);
-
-  margin-top: 50px;
-  box-shadow: $footer_shadow;
-
-  img.social_icon{
-    width: 50px;
-    height: 50px;
-
-  }
-
-  .footer_col{
-  }
-  .footer_center_col{
-    border-left: 2px solid $calendar_light;
-    border-right: 2px solid $calendar_light;
-  }
-
-  address{
-    a:link{
-      color: $calendar-dark;
-    }
-    a:visited{
-      color: $calendar_dark;
-    }
-  }
-}
-//----------------End Footer-----------------------------------
 #the_flash {
 
   .alert{
@@ -204,19 +185,54 @@ h1{
   font-family: Impact, Charcoal, sans-serif;
   text-align: center;
   margin-bottom: 20px;
-  text-shadow: 2px 2px $calendar_medium;
+  text-shadow: $text_shadow_accent;
 }
 
 .page_title{
+  font-size: 64px;
+  font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+  font-weight: 800;
+  text-shadow: $text_shadow_accent;
+  color: $calendar_dark;
+}
+.page_subtitle{
+  @extend .page_title;
+  font-size: 40px;
 
+  a{
+    color: $calendar_medium_dark;
+  }
 }
 
+//--------------------------Footer-----------------------------
+#footer{
+  padding-top: 20px;
+  padding-bottom: 30px;
+  background-color: rgba(192, 192, 192, 0.85);
 
+  margin-top: 50px;
+  box-shadow: $footer_shadow;
 
+  img.social_icon{
+    width: 50px;
+    height: 50px;
 
+  }
 
+  .footer_col{
+  }
+  .footer_center_col{
+    border-left: 2px solid $calendar_light;
+    border-right: 2px solid $calendar_light;
+  }
 
-
-
-
-
+  address{
+    a:link{
+      color: $calendar-dark;
+    }
+    a:visited{
+      color: $calendar_dark;
+    }
+  }
+}
+//----------------End Footer-----------------------------------

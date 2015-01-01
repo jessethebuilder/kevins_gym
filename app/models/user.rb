@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  mount_uploader :avatar, AvatarUploader
+
   has_many :events
   has_many :news_stories, :foreign_key => :author_id
 
@@ -41,6 +43,10 @@ class User < ActiveRecord::Base
     names.length > 1 ? names : 'anonymous'
   end
 
+  def classes
+    Event.where('event_type = ? AND user_id = ?', 'class', self.id)
+  end
+
   def level
     UserLevel.new(read_attribute(:level))
   end
@@ -49,7 +55,6 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
-  mount_uploader :avatar, AvatarUploader
 
   #Class Methods
   def User.affiliated

@@ -4,21 +4,12 @@ g = Gym.new :name => "Kevin's Gym", :phone => "360-555-1212", :email => "gym@tes
 g.address = Address.new :street => '4218 S. Mt. Angeles Rd', :city => 'Port Angeles', :state => 'wa', :zip => '98362'
 g.save!
 
-staff_user = User.new :level => :staff, :first_name => 'x', :last_name => 'y', :email => 'staff@test.com', :password => @pw
-
 4.times do
   u = User.new :first_name => Faker::Name.first_name, :last_name => Faker::Name.last_name,
                :email => Faker::Internet.email, :password => @pw, :level => :staff
-  #u.avatar.store!(File.open(File.join(Rails.root, 'app', 'assets', 'images', 'temp', 'Shawn_Spencer.jpg')))
+  #u.avatar.store!(File.open(File.join(Rails.root, 'app', 'assets', 'images', 'temp', 'user_sample1.jpg')))
   u.save!
 end
-
-admin = User.create! :email => 'admin@test.com', :password => @pw, :first_name => 'Jesse', :last_name => 'Farmer',
-                 :level => :admin
-
-j = admin.dup
-j.email = 'j@test.com'
-j.save!
 
 20.times do
   #a bunch of random users
@@ -27,8 +18,18 @@ j.save!
     u.first_name = Faker::Name.first_name
     u.last_name = Faker::Name.last_name
   end
+
+  fn = File.join(Rails.root, "app/assets/images/temp/user_sample2.jpg")
+  u.avatar = File.new(fn)
+
+  u.bio = Faker::Lorem.sentences(sentence_count = Random.rand(1..10)).join('<br>'.html_safe)
   u.save!
 end
+
+admin = User.create! :email => 'admin@test.com', :password => @pw, :first_name => 'Jesse', :last_name => 'Farmer',
+                     :level => :admin, :bio => 'The builder of this site. The builder!!'
+admin.avatar = File.new(File.join(Rails.root, 'app/assets/images/temp/user_sample1.jpg'))
+admin.save!
 
 4.times do
   ec = EventCategory.new :name => Faker::Company.name, :description => Faker::Company.bs
@@ -57,13 +58,18 @@ end
       des_items += "<li>#{Faker::Company.catch_phrase.titlecase}</li>"
   end
   des_end = Faker::Lorem.sentences(sentence_count = Random.rand(1..6)).join(' ')
-  description = [des_start, des_items, des_end].join('<br>').html_safe
+  description = [des_start, des_items, des_end].join('<br>'.html_safe)
 
   e = Event.new :name => Faker::Company.name, :starts_at => time, :ends_at => time + [15, 30, 45, 60, 75, 90].sample.minutes,
                 :event_type => :class, :description => description
   e.user = User.affiliated.sample
   e.event_category = EventCategory.all.sample
   e.reoccurs_every = Event::REOCCURRENCE_TYPES.sample
+
+  #setup main_image
+  fn = File.join(Rails.root, 'app/assets/images/temp', "class_sample#{Random.rand(1..3)}.jpg")
+  e.main_image = File.new(fn)
+
   e.save!
 
 end

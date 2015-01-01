@@ -40,6 +40,20 @@ RSpec.describe Event, :type => :model do
   end
 
   describe 'Methods' do
+    describe '#duration' do
+      it 'should set ends_at val minutes after starts_at' do
+        event.starts_at = Time.parse('1/1/2010 1:00pm')
+        event.duration = 60
+        ends = event.ends_at.date.should == '1/1/2010'
+        ends = event.ends_at.strftime('%I:%M%P').should == '02:00pm'
+      end
+
+      it 'should return the difference between starts_at and ends_at in minutes' do
+        event.starts_at = Time.parse('1/1/2010 1:00pm')
+        event.ends_at = Time.parse('1/1/2010 3:45pm')
+        event.duration.should == 165
+      end
+    end
 
   end
 
@@ -47,10 +61,6 @@ RSpec.describe Event, :type => :model do
     let!(:e1){ FactoryGirl.create :class, :starts_at => Time.parse('1/01/2010 1:00pm') }
     let!(:e2){ FactoryGirl.create :class, :starts_at => Time.parse('2/01/2010') }
     let!(:e3){ FactoryGirl.create :class, :starts_at => Time.parse('1/01/2010 2:00pm') }
-
-    specify 'xxxx' do
-      e3.valid?.should == true
-    end
 
     before(:each) do
       Timecop.freeze(Time.parse('31/12/2009'))

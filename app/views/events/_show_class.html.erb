@@ -1,30 +1,68 @@
-<div id="show_class" class="row">
-  <div class="col-sm-6">
-    <div class="event_name">
-      <%= @event.name %>
-      <%= security_gate 'event', 'edit_from_show', @event do %>
-        <%= link_to '(edit)', edit_event_path(@event), :class => 'staff_edit_link' %>
-      <% end %>
+<% content_for(:facebook_meta){ facebook_meta_tags(@event.name, @event.main_image.url(:large), @event.description, gym.name) } %>
+
+
+<div class="container">
+  <%= security_gate 'event', 'edit_from_show', @event do %>
+    <%= quick_options([['Edit', edit_event_path(@event)]]) %>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-12">
+    </div><!-- col -->
+  </div><!-- row -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="event_name page_title">
+        <%= @event.name %>
+      </div>
     </div>
-    <div id="event_description">
-      <%= @event.description.html_safe %>
+  </div><!-- row -->
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="content_block">
+        <div class="row">
+          <div class="col-md-6">
+            <span>Class Time: </span><strong><%= event_time_in_words(@event) %></strong>
+          </div><!-- col -->
+          <div class="col-md-6">
+            <span>Duration: </span><strong><%= @event.duration %> Minutes</strong>
+          </div><!-- col -->
+        </div><!-- row -->
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="record_description">
+              <%= @event.description.html_safe %>
+            </div>
+          </div><!-- col -->
+        </div><!-- row -->
+
+        <div class="row">
+          <div class="col-sm-12">
+            <%= render :partial => 'users/full_bio' %>
+          </div><!-- col -->
+        </div><!-- row -->
+      </div><!-- content block -->
+    </div><!--col-->
+
+    <div class="col-sm-6">
+      <%= image_tag(@event.main_image.url(:large), :class => 'main_image') if @event.main_image? %>
+
+    </div>
+    <!--<div class="col-sm-3"></div>-->
+  </div><!-- row -->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="facebook_comments text-center">
+        <%= facebook_comments(request.url, :width => 550) %>
+      </div>
     </div>
   </div>
-  <div class="col-sm-3">
-    <%= image_tag(@event.user.avatar.url(:show), :class => 'image_right') if @event.user.avatar? %>
-    <h3>
-      <%= @event.user.first_name %>
-      <%= @event.user.last_name %>
-    </h3>
-  </div>
-  <div class="col-sm-3"></div>
-</div>
+</div><!-- container -->
+
 
 <style>
-  .image_right{
-    float: right;
-  }
-
 
 </style>
-

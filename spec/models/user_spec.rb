@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, :type => :model do
   let(:member){ build :member }
+  let(:staff){ build :staff }
   let(:owner){ build :owner }
 
   describe 'Validations' do
@@ -37,6 +38,38 @@ RSpec.describe User, :type => :model do
   end
 
   describe 'Methods' do
+
+
+    describe '#classes' do
+      let!(:cl1){ create :class }
+      let!(:cl2){ create :class }
+      let!(:apt){ create :appointment }
+
+      it 'should return a list of classes for the user' do
+        staff.events << cl1
+        staff.events << cl2
+        staff.classes.count.should == 2
+      end
+
+      it 'should not return appointments' do
+        staff.events << cl1
+        staff.events << apt
+        staff.classes.count.should == 1
+      end
+
+      it 'should not return classes for other users' do
+        new_staff = FactoryGirl.create :staff
+        new_staff.events << cl1
+        staff.events << cl2
+
+        new_staff.classes.count.should == 1
+        new_staff.classes.first.should == cl1
+
+        staff.classes.count.should == 1
+        staff.classes.first.should == cl2
+      end
+    end
+
     describe '#level_is_at_least(#level)' do
       #USER_LEVELS is described in initializers/globals.rb
       it "should return false parameter is greater than the user's" do

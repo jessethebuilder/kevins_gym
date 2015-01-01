@@ -1,51 +1,46 @@
+
 <div id="features_bar" class="row">
-  <div class="col-xs-3 text-center">
+  <div class="col-xs-1"></div><!--col-->
+
+
+  <div class="col-xs-2 text-center">
     <%= link_to events_path do %>
       <%= image_tag 'icons/fitness/calendar_icon.png' %>
-      <div>Classes</div>
+      <div class="icon_label">Classes</div>
     <% end %>
   </div><!-- col -->
 
 
-  <div class="col-xs-3 text-center">
+  <div class="col-xs-2 text-center">
     <%= link_to membership_path do %>
       <%= image_tag 'icons/fitness/membership_icon.png' %>
-      <div>Membership</div>
+      <div class="icon_label">Membership</div>
     <% end %>
   </div><!-- col -->
 
-  <div class="col-xs-3 text-center">
+  <div class="col-xs-2 text-center">
     <%= link_to events_path do %>
       <%= image_tag 'icons/fitness/personal_training_icon.png' %>
-      <div>Personal Training</div>
+      <div class="icon_label">Personal&nbsp;Training</div>
     <% end %>
   </div><!-- col -->
 
 
-  <div class="col-xs-3 text-center">
+  <div class="col-xs-2 text-center">
     <%= link_to events_path do %>
       <%= image_tag 'icons/fitness/nutrition_icon.png' %>
-      <div>Nutrition</div>
+      <div class="icon_label">Nutrition</div>
     <% end %>
   </div><!-- col -->
 
+  <div class="col-xs-2 text-center">
+    <%= link_to events_path do %>
+      <%= image_tag 'icons/fitness/nutrition_icon.png' %>
+      <div class="icon_label">Nutrition</div>
+    <% end %>
+  </div><!-- col -->
 
-  <!--<ul>-->
-    <!--<li>-->
-      <!--<%= link_to events_path do %>-->
-        <!--<%= image_tag 'icons/fitness/calendar_icon.png' %>-->
-        <!--<div>Classes</div>-->
-      <!--<% end %>-->
-    <!--</li>-->
-    <!--<li class="icon">-->
-      <!--<%= image_tag 'icons/fitness/icon_calendar.png' %>-->
-      <!--<div>adfadaf</div>-->
-    <!--</li>-->
-    <!--<li class="icon">-->
-      <!--<%= image_tag 'icons/fitness/icon_calendar.png' %>-->
-      <!--<div>cxrayy</div>-->
-    <!--</li>-->
-  <!--</ul>-->
+  <div class="col-xs-1"></div><!--col-->
 </div><!-- row -->
 
 <script>
@@ -53,3 +48,4 @@
 
   imageChangeOnLinkHover('#features_bar a');
 </script>
+

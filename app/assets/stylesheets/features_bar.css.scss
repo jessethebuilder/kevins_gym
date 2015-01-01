@@ -3,6 +3,7 @@
 #features_bar{
   background-color: black;
   margin-top: 10px;
+  margin-bottom: 10px;
   border: 2px solid $calendar_medium;
   border-radius: 20px;
   padding-top: 10px;
@@ -21,9 +22,9 @@
     color: $gym_main_light_accent;
   }
 
-  div{
+  div.icon_label{
     margin-top: 3px;
-    font-size: 18px;
+    font-size: 14px;
   }
 
   img{

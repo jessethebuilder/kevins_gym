@@ -1,7 +1,8 @@
-<%= quick_options [['Weekly', events_path(:calendar_view => 'week')]] %>
+<%= quick_options(calendar_quick_options) %>
+
 
 <div id="calendar_month" class="table-responsive">
-  <%= month_calendar :events => @events, :table => {:class => 'table'} do |date, events| %>
+  <%= month_calendar :events => @events, :table => {:class => 'table'}, :day_names => 'date.day_names' do |date, events| %>
       <div class="date_on_calendar">
         <%= date.day %>
       </div>

@@ -2,6 +2,10 @@ class Event < ActiveRecord::Base
   extend SimpleCalendar
   include Bootsy::Container
 
+  before_validation do
+    write_attribute(:ends_at, starts_at + @duration.minutes) if @duration
+  end
+
   has_calendar
 
   belongs_to :user
@@ -34,8 +38,12 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def month
+    starts_at.strftime('%B')
+  end
+
   def day_name
-    starts_at.strftime('%A');
+    starts_at.strftime('%A')
   end
 
   def date
@@ -46,9 +54,29 @@ class Event < ActiveRecord::Base
     starts_at.strftime('%l:%M%P')
   end
 
+  def day_of_event
+    "#{day_name}, #{starts_at.strftime('%B %e')}"
+  end
+
+  def duration=(val)
+    @duration = Integer(val)
+    #write_attribute(:ends_at, starts_at + Integer(val).minutes);
+  end
+
+  def duration
+    if ends_at && starts_at
+      Integer((ends_at - starts_at) / 60)
+    end
+  end
+
+
   #Class Methods-------------------------
-  scope :classes, where(:event_type => 'class')
-  scope :soonest_first, order(:starts_at)
+  scope :classes, -> { where(:event_type => 'class') }
+  scope :soonest_first, -> { order(:starts_at) }
+
+  def Event.events
+    Event.all
+  end
 
   def Event.upcoming_classes(day_count = 7)
     #returns a hash with dates for keys and Arrays of Events (of type :class), ordered by date, soonest first

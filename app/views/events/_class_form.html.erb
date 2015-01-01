@@ -1,5 +1,11 @@
 <div id="class_form">
   <%= form_for @event, :html => {:multipart => true} do |f| %>
+    <div class="row">
+      <div class="col-sm-12">
+        <%= error_explanation(@event) %>
+      </div>
+    </div>
+
     <%= f.hidden_field :event_type, :value => 'class' %>
     <div class="row">
       <div class="col-sm-6">
@@ -21,6 +27,7 @@
     <div class="row">
       <div class="col-sm-4">
         <div class="form-group">
+          <!-- todo datetime selection can be a lot slicker.  -->
           <%= f.label :starts_at, 'Starts', :class => 'control-label' %>
           <%= f.text_field :starts_at, :class => 'datetimepicker form-control' %>
         </div>
@@ -28,8 +35,10 @@
 
       <div class="col-sm-4">
         <div class="form-group">
-          <%= f.label :ends_at, 'Ends', :class => 'control-label' %>
-          <%= f.text_field :ends_at, :class => 'datetimepicker form-control' %>
+          <%= f.label :duration, :class => 'control-label' %>
+          <%= f.select :duration, durations_for_select, {}, :class => 'form-control' %>
+          <%#= f.label :ends_at, 'Ends', :class => 'control-label' %>
+          <%#= f.text_field :ends_at, :class => 'datetimepicker form-control' %>
         </div>
       </div><!-- col -->
 
@@ -54,10 +63,38 @@
     </div><!-- row -->
 
     <div class="row well">
-      <%= image_select f, @event, :main_image %>
+      <div class="col-sm-12">
+        <%= image_select f, @event, :main_image %>
+      </div><!-- col -->
     </div><!-- row -->
-        <!--<div class="form-group"></div>-->
-        <!--<div class="form-group"></div>-->
+
+
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="form-group">
+          <!-- this is copied from news_stories/_form, and may get abstracted. -->
+          <%= security_gate('news_story', 'edit_author_of_news_story') do %>
+            <%= f.label :user_id, :class => 'control-label'  %>
+            <%= f.select :user_id, for_select(User.affiliated, :full_name, :id, current_user.id), {}, :class => 'form-control'%>
+          <% end %>
+        </div>
+
+        <%= security_gate('news_story', 'set_author_with_hidden') do %>
+          <%= f.hidden_field :author_id, :value => current_user.id.to_s %>
+        <% end %>
+      </div><!-- col -->
+    </div><!-- row -->
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <%= f.submit :class => 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
+
+
+
 

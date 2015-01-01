@@ -6,6 +6,7 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 
+  <%= content_for :facebook_meta %>
 
   <%= favicon_link_tag "favicon.ico" %>
 
@@ -18,7 +19,9 @@
 <%= render :partial => 'parts/social_networking_bar' %>
 <%= render :partial => 'parts/the_flash' %>
 
-<%= yield %>
+<div id="page_content">
+  <%= yield %>
+</div>
 
 <%= render :partial => 'parts/footer' %>
 

@@ -1,21 +1,6 @@
 @import 'variables';
 
 
-#show_class{
-  margin-top: 20px;
-
-  #event_description{
-    margin-left: 15px;
-  }
-
-  .event_name{
-    @extend .news_headline;
-    margin-bottom: 20px;
-    font-size: 36px;
-  }
-
-}
-
 #upcoming_class_list{
   margin-top: 20px;
   text-align: left;

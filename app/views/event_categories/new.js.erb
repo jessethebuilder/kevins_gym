@@ -1,2 +1,2 @@
-$('body').append('<%= j express_modal('New Category', nil, true){ render :partial => 'event_categories/new' } %>');
+$('body').append('<%= j express_modal('New Category', :destroy_on_close => true){ render :partial => 'event_categories/new' } %>');
 $('#express_modal').modal('show');

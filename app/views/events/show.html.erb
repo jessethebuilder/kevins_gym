@@ -1,5 +1,3 @@
-<div class="container">
-  <% if @event.event_type == 'class' %>
-    <%= render :partial => 'events/show_class' %>
-  <% end %>
-</div>
+<% if @event.event_type == 'class' %>
+  <%= render :partial => 'events/show_class' %>
+<% end %>
