@@ -1,5 +1,16 @@
 @import 'variables';
 
+.user_bio{
+  @include main_link;
+}
+
+#users{
+  .user{
+//    border: 1px solid $calendar_dark;
+
+  }
+}
+
 #user_list{
 //  margin-top: 10px;
 

@@ -77,7 +77,7 @@ FactoryGirl.define do
   end
 
   factory :event do
-    event_date = Random.rand(1.50000).minutes.until
+    event_date = Random.rand(10..50000).minutes.until
     name Faker::Company.bs
     starts_at event_date
     event_category

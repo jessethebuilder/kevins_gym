@@ -6,6 +6,35 @@ RSpec.describe 'Security Gate Requests', :type => :feature do
   end
 
   describe 'News Story Requests' do
+    describe 'Index' do
+      describe 'index_edit_story' do
+        specify 'user user is not signed in, quick options should not show' do
+          visit 'news_stories'
+          page.should_not have(:css, 'ul.quick_options')
+        end
+
+        specify 'if user is of level :admin or above, it should should an edit link on every story' do
+          manual_login_as(FactoryGirl.create :admin)
+          visit 'news_stories'
+          all('.news_story').each do |story|
+            story.should have_css('.quick_options')
+          end
+        end
+
+        specify 'if user is of level staff, then only stories they wrote should have an edit link' do
+          staff = FactoryGirl.create :staff
+          story = FactoryGirl.create :news_story
+          story.author = staff
+          story.save
+
+          manual_login_as(staff)
+          visit 'news_stories'
+
+          1.should > 2
+        end
+      end
+    end
+
     describe 'New/Edit Form' do
       it 'New Form should show Author selector if :admin or higher is signed in' do
         admin = manual_login_as(:admin)

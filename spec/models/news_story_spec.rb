@@ -30,6 +30,31 @@ RSpec.describe NewsStory, :type => :model do
       story.archived.should == false
     end
   end
+  
+  describe 'Methods' do
+    describe '#publication_status' do
+      specify 'if :published == true, publication_status == published' do
+        story.published = true
+        story.publication_status.should == 'published'
+      end
+      
+      specify 'if :published == false AND :archived == false, publication_status should be "draft"' do
+        story.published = false
+        story.archived = false
+        story.publication_status.should == 'draft'
+      end
+      
+      specify 'if :archived == true, publication_status should be "archived"' do
+        story.archived = true
+        story.publication_status.should == 'archived'
+      end
+      
+      specify 'a newly created object should be of type draft' do
+        ns = NewsStory.new
+        ns.publication_status.should == 'draft'
+      end
+    end
+  end
 
   describe 'Class Methods' do
     let!(:pub){ create :published }

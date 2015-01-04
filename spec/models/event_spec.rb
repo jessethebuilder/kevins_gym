@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Event, :type => :model do
+RSpec.describe Event, :type => :model, :js => false do
   let(:event){ build :event }
   let(:cl){ build :class }
 
@@ -44,7 +44,9 @@ RSpec.describe Event, :type => :model do
       it 'should set ends_at val minutes after starts_at' do
         event.starts_at = Time.parse('1/1/2010 1:00pm')
         event.duration = 60
-        ends = event.ends_at.date.should == '1/1/2010'
+        #ends_at gets set with a filter, so the file must be saved here.
+        event.save
+        ends = event.ends_at.strftime('%d/%m/%Y').should == '01/01/2010'
         ends = event.ends_at.strftime('%I:%M%P').should == '02:00pm'
       end
 
@@ -54,6 +56,7 @@ RSpec.describe Event, :type => :model do
         event.duration.should == 165
       end
     end
+
 
   end
 
@@ -69,7 +72,7 @@ RSpec.describe Event, :type => :model do
     describe '#soonest_first' do
       it 'should return the newest event first' do
         #this works in field tests
-        Event.soonest_first.first.should == e3
+        Event.soonest_first.first.should == e1
       end
     end
 

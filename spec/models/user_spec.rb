@@ -4,8 +4,12 @@ RSpec.describe User, :type => :model do
   let(:member){ build :member }
   let(:staff){ build :staff }
   let(:owner){ build :owner }
+  let(:admin){ build :admin }
 
   describe 'Validations' do
+    it{ should validate_presence_of(:user_type) }
+    it{ should validate_inclusion_of(:user_type).in_array(User::USER_TYPES)}
+
     it 'should validate presence of level' do
       member.level = nil
       member.save
@@ -48,12 +52,14 @@ RSpec.describe User, :type => :model do
       it 'should return a list of classes for the user' do
         staff.events << cl1
         staff.events << cl2
+        staff.save
         staff.classes.count.should == 2
       end
 
       it 'should not return appointments' do
         staff.events << cl1
         staff.events << apt
+        staff.save
         staff.classes.count.should == 1
       end
 
@@ -61,6 +67,7 @@ RSpec.describe User, :type => :model do
         new_staff = FactoryGirl.create :staff
         new_staff.events << cl1
         staff.events << cl2
+        staff.save
 
         new_staff.classes.count.should == 1
         new_staff.classes.first.should == cl1

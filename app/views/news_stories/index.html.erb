@@ -3,43 +3,44 @@
     <!--<h1 class="visible-md medium">Kevin's Gym</h1>-->
     <!--<h1 class="visible-xs visible-sm smaller">Kevin's Gym</h1>-->
   <!--</div>-->
+
 <div class="container">
   <%= render :partial => 'parts/features_bar' %>
 
   <div class="row">
-    <div class="col-xs-9 col_left">
+    <div class="col-sm-9 col_left">
       <div id="news_stories" class="content_block">
         <div class="news_list_header">
           <h1>Gym News</h1>
         </div>
-        <ul class="news_list">
+        <div class="news_list">
           <% @news_stories.each do |story| %>
-            <li>
-              <%= link_to '(edit)', edit_news_story_path(story),
-                          :class => 'edit_link pull-right' if user_signed_in? && current_user.level > :member%>
-              <%= link_to news_story_path(story) do %>
-                <h3 class="news_headline"><%= story.title %></h3><%#= link_to story.title, news_story_path(story) %>
-                <p class="subheadline">
-                  <%= truncate(story.content.html_safe, :length => 250) %>
-                </p>
-              <% end %>
+            <%= security_gate('news_story', 'index_edit_story') do %>
+              <%= quick_options [['Edit', edit_news_story_path(story)]] %>
+            <% end %>
+            <div class="news_story">
+                <div class="news_story_headline">
+                  <%= link_to story.title, news_story_path(story) %>
+                  <%= image_tag(story.main_image.url(:thumb), :class => "story_image pull-#{cycle('right', 'left')}") if story.main_image? %>
+                </div>
+
+                <div class="news_story_content">
+                  <%= truncate(story.content, :length => 250).html_safe %>
+                </div>
+              <div class="clearfix"></div>
+
+              </div><!-- news_story -->
             </li>
           <% end %>
-        </ul>
+        </div>
       </div>
 
     </div><!-- col -->
 
 
-    <div class="col-xs-3 col_right text-center">
+    <div class="col-sm-3 col_right text-center">
       <%= render :partial => 'events/upcoming_class_list' %>
     </div><!-- col -->
   </div><!-- row -->
 </div>
-
-<script>
-//  setupNewsList();
-
-
-</script>
 

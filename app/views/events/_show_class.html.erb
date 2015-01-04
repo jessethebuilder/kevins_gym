@@ -2,67 +2,69 @@
 
 
 <div class="container">
-  <%= security_gate 'event', 'edit_from_show', @event do %>
-    <%= quick_options([['Edit', edit_event_path(@event)]]) %>
-  <% end %>
+  <div class="show_class">
+    <%= security_gate 'event', 'edit_from_show', @event do %>
+      <%= quick_options([['Edit', edit_event_path(@event)]]) %>
+    <% end %>
 
-  <div class="row">
-    <div class="col-sm-12">
-    </div><!-- col -->
-  </div><!-- row -->
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="event_name page_title">
-        <%= @event.name %>
+    <div class="row">
+      <div class="col-sm-12">
+      </div><!-- col -->
+    </div><!-- row -->
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="event_name page_title">
+          <%= @event.name %>
+        </div>
       </div>
-    </div>
-  </div><!-- row -->
+    </div><!-- row -->
 
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="content_block">
-        <div class="row">
-          <div class="col-md-6">
-            <span>Class Time: </span><strong><%= event_time_in_words(@event) %></strong>
-          </div><!-- col -->
-          <div class="col-md-6">
-            <span>Duration: </span><strong><%= @event.duration %> Minutes</strong>
-          </div><!-- col -->
-        </div><!-- row -->
+    <div class="row">
+      <div class="col-sm-7">
+        <div class="first_details">
+
+          <div class="row">
+            <div class="col-md-6">
+              Class Time: <strong><%= event_time_in_words(@event) %></strong>
+            </div><!-- col -->
+            <div class="col-md-6">
+              <span>Duration: </span><strong><%= @event.duration %> Minutes</strong>
+            </div><!-- col -->
+          </div><!-- row -->
+        </div>
+
+        <div class="content_block">
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="record_description">
+                <%= @event.description.html_safe %>
+              </div>
+            </div><!-- col -->
+          </div><!-- row -->
+        </div><!-- content_block -->
 
         <div class="row">
           <div class="col-sm-12">
-            <div class="record_description">
-              <%= @event.description.html_safe %>
-            </div>
-          </div><!-- col -->
-        </div><!-- row -->
+            <%= user_bio(@event.user) %>
+          </div>
+        </div>
 
-        <div class="row">
-          <div class="col-sm-12">
-            <%= render :partial => 'users/full_bio' %>
-          </div><!-- col -->
-        </div><!-- row -->
-      </div><!-- content block -->
-    </div><!--col-->
+      </div><!--col-->
 
-    <div class="col-sm-6">
-      <%= image_tag(@event.main_image.url(:large), :class => 'main_image') if @event.main_image? %>
+      <div class="col-sm-5">
+        <%= image_tag(@event.main_image.url(:large), :class => 'main_image') if @event.main_image? %>
+      </div>
+      <!--<div class="col-sm-3"></div>-->
+    </div><!-- row -->
 
-    </div>
-    <!--<div class="col-sm-3"></div>-->
-  </div><!-- row -->
-
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="facebook_comments text-center">
-        <%= facebook_comments(request.url, :width => 550) %>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="facebook_comments text-center">
+          <%= facebook_comments(request.url, :width => 550) %>
+        </div>
       </div>
     </div>
   </div>
+
 </div><!-- container -->
-
-
-<style>
-
-</style>

@@ -12,11 +12,18 @@ class User < ActiveRecord::Base
   USER_LEVELS = [:member, :staff, :admin, :owner]
   AFFILIATED_LEVELS = [:staff, :admin, :owner]
 
-  USER_TYPES = %w|instructor personal_trainer support|
+  USER_TYPES = %w|instructor personal_trainer support management|
+  validates :user_type, :inclusion => {:in => USER_TYPES, :allow_nil => true}
+  def staff_has_user_type
+    errors.add(:user_type, 'must have a type') unless level == 'member'
+  end
+
+  scope :group_by_type, -> { all.group_by{ |user| user.user_type } }
 
   #validates :level, :presence => true
 
   validate :staff_or_higher_has_names, :user_level_is_in_list
+
 
   def user_level_is_in_list
     l = read_attribute(:level)

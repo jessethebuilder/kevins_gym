@@ -1,55 +1,31 @@
-<div id="user_list" class="container">
-  <h1>User List</h1>
-
-  <div class="row">
-    <% if @filter_users == 'all' %>
-      <%= quick_options [['Staff Users', users_path(:filter_users => 'staff')], ['Create New User', new_user_path]] %>
-    <% else %>
-      <%= quick_options [['All Users', users_path(:filter_users => 'all')], ['Create New User', new_user_path]] %>
-    <% end %>
-  </div>
+<div class="container">
+  <div id="users" class="page_content">
+    <% @users.in_groups_of(2) do |grp|  %>
 
 
-  <% @users.each do |u| %>
-    <div class="row user_row">
-      <div class="col-sm-3 name_col">
-        <%= link_to edit_user_path(u) do %>
-          <%= u.name %>
+      <div class="row user_row">
+        <% grp.each do |user| %>
+        <div class="col-md-6">
+          <div class="user content_block">
+            <%= user_bio(user) if user %>
+          </div>
+        </div><!-- col -->
         <% end %>
-      </div>
-      <div class="col-sm-4 email_col">
-        <%= mail_to u.email, u.email %>
-      </div>
-
-      <div class="col-sm-2 level_col">
-        <%= u.level.to_s.titlecase %>
-      </div>
-
-      <div class="col-sm-2">
-        <%= link_to 'delete', user_path(u), :method => :delete, :class => 'btn btn-danger btn-xs' %>
-
-      </div>
-    </div>
-  <% end %>
+      </div><!-- row -->
+    <% end %>
+  </div><!-- news_stories -->
 </div>
 
-<style>
-  #user_list .user_row{
-    border-left: 2px solid white;
-  }
-</style>
-
 <script>
-  $(document).ready(function(){
-    $('.name_col a').hover(function(){
-      $(this).closest('.row').css('border-left', '2px solid #363636');
-    },
-    function(){
-      $(this).closest('.row').css('border-left-color', 'transparent');
+  //normalize_user_cols();
 
+  function normalize_user_cols(){
+    $('.user_row').each(function(i, row){
+      //There are two columns. Probably start to abstract this before you finish this comment
+      var cols = $(row).find('user');
+      var tallest_col = cols[0].height() > cols[1].height() ? cols[0].height() : cols[1].height();
+      $(tallest_col).css('min-height', tallest_col.height());
     })
-  })
+  }
 
-  quickOptionsBehaviors();
 </script>
-

@@ -1,9 +1,8 @@
 class NewsStoriesController < ApplicationController
+  include SaveDraftArchiveDeleteControllerHelper
+
   before_action :set_news_story, only: [:show, :edit, :update, :destroy]
   before_action :set_upcoming_classes, :only => [:index]
-
-
-  #before_filter authenticate_user_level!(:staff), :only => [:new, :create, :edit, :update, :destroy]
 
   before_action :except => [:index, :show] do |controller|
     authenticate_user_level!(controller, :staff)
@@ -12,7 +11,7 @@ class NewsStoriesController < ApplicationController
   respond_to :html
 
   def index
-    @news_stories = NewsStory.records
+    @news_stories = NewsStory.records(:order => 'updated_at DESC')
     respond_with(@news_stories)
   end
 
@@ -30,30 +29,34 @@ class NewsStoriesController < ApplicationController
 
   def create
     @news_story = NewsStory.new(news_story_params)
-    @news_story.published = publish?
-    @news_story.archived = archive?
+
+    publish_or_archive(@news_story)
 
     @news_story.save
     respond_with(@news_story)
   end
 
   def update
-    @news_story.published = publish?
-    @news_story.archived = archive?
+    publish_or_archive(@news_story)
+
 
     @news_story.update(news_story_params)
-    @news_story.save
     respond_with(@news_story)
   end
 
   def destroy
     @news_story.destroy
+    notice << "#{@news_story.title} has been destroyed forever"
     respond_with(@news_story)
   end
 
   private
     def set_news_story
-      @news_story = NewsStory.find(params[:id])
+      if p = params[:id]
+        @news_story = NewsStory.find(p)
+      else
+        @news_story = NewsStory.new
+      end
     end
 
     def news_story_params
@@ -62,15 +65,11 @@ class NewsStoriesController < ApplicationController
                                          :main_image, :main_image_cache, :remote_main_image_url)
     end
 
-    def publish?
-      params[:commit] == 'Publish'
-    end
-
-    def archive?
-      params[:commit] == 'Archive'
-    end
-
-    def set_published_or_archived
-
-    end
+    #def publish?
+    #  params[:commit] == 'Publish'
+    #end
+    #
+    #def archive?
+    #  params[:commit] == 'Archive'
+    #end
 end

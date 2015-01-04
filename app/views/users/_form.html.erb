@@ -30,6 +30,11 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :user_type, :class => 'control-label' %>
+        <%= f.select :user_type, array_for_select(User::USER_TYPES), {}, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :level, :class => 'control-label' %>
         <%= f.select :level, User::USER_LEVELS.map{ |l| [l.to_s.titlecase, l]}, {}, :class => 'form-control' %>
       </div>

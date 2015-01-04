@@ -22,6 +22,7 @@ class Event < ActiveRecord::Base
   validates :starts_at, :presence => true
   validates :event_type, :presence => true, :inclusion => {:in => symbols_and_strings(EVENT_TYPES)}
 
+  #----------------Custom Validations ------------------------------
   validate :has_ends_at_if_class, :has_user_if_class, :ends_at_is_after_starts_at
 
   def has_ends_at_if_class
@@ -72,7 +73,8 @@ class Event < ActiveRecord::Base
 
   #Class Methods-------------------------
   scope :classes, -> { where(:event_type => 'class') }
-  scope :soonest_first, -> { order(:starts_at) }
+  scope :after_now, ->{ where('starts_at >= ?', Time.now) }
+  scope :soonest_first, -> { after_now.order(:starts_at) }
 
   def Event.events
     Event.all
@@ -82,7 +84,6 @@ class Event < ActiveRecord::Base
     #returns a hash with dates for keys and Arrays of Events (of type :class), ordered by date, soonest first
     all_hash = classes.soonest_first.group_by{ |event| event.date }
     #limit the number of days
-
     h = {}
     i = 0
     all_hash.each do |k, v|

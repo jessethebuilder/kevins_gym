@@ -1,0 +1,63 @@
+<div class="container">
+  <div id="user_list">
+
+
+    <div class="page_title">User List</div>
+    <div class="row">
+      <% if @filter_users == 'all' %>
+        <%= quick_options [['Staff Users', users_path(:filter_users => 'staff')], ['Create New User', new_user_path]] %>
+      <% else %>
+        <%= quick_options [['All Users', users_path(:filter_users => 'all')], ['Create New User', new_user_path]] %>
+      <% end %>
+
+    </div>
+
+
+    <div class="row">
+      <% @users.each do |u| %>
+        <div class="row user_row">
+          <div class="col-sm-3 name_col">
+            <%= link_to edit_user_path(u) do %>
+              <%= u.name %>
+            <% end %>
+          </div>
+          <div class="col-sm-4 email_col">
+            <%= mail_to u.email, u.email %>
+          </div>
+
+          <div class="col-sm-2 level_col">
+            <%= u.level.to_s.titlecase %>
+          </div>
+
+          <div class="col-sm-2">
+            <%= link_to 'delete', user_path(u), :method => :delete, :class => 'btn btn-danger btn-xs' %>
+
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+
+  </div>
+</div><!-- container -->
+
+<style>
+  #user_list .user_row{
+    border-left: 2px solid white;
+  }
+</style>
+
+<script>
+  $(document).ready(function(){
+    $('.name_col a').hover(function(){
+          $(this).closest('.row').css('border-left', '2px solid #363636');
+        },
+        function(){
+          $(this).closest('.row').css('border-left-color', 'transparent');
+
+        })
+  })
+
+  quickOptionsBehaviors();
+</script>
+

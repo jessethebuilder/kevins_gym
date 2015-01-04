@@ -60,7 +60,7 @@ gem 'bootsy'
 
 group :test, :development do
 
-
+  gem 'poltergeist'
   gem 'rspec-rails'
   gem 'wdm'
   gem 'database_cleaner', '~> 1.0.0rc'
@@ -76,8 +76,8 @@ group :test do
   gem 'capybara'
   #https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit
   #gem 'capybara-webkit'
+  #gem 'selenium-webdriver'
   gem 'guard-rspec'
-  gem 'selenium-webdriver'
   gem 'shoulda'
   gem 'shoulda-matchers'
   gem 'launchy', '~> 2.3.0'

@@ -8,6 +8,7 @@ module ApplicationHelper
 
   def quick_options(options)
     html = initiate_quick_options
+    #html += '<div class="row">'
     html += '<ul class="quick_options">'
 
     options << yield if block_given?
@@ -17,6 +18,8 @@ module ApplicationHelper
       html += '</li>'
     end
     html += '</ul>'
+    #html += '</div>'
+
     html.html_safe
   end
 
@@ -48,6 +51,9 @@ module ApplicationHelper
     [['Half Hour', 30], ['1 Hour', 60], ['Hour and a Half', 90], ['2 hours', 120]]
   end
 
+  def user_bio(user_record)
+    render :partial => 'users/full_bio', :locals => {:user_record => user_record}
+  end
 
 
 end

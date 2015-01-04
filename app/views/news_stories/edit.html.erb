@@ -1,5 +1,7 @@
 <div class="container">
-  <h1>Editing <%= link_to @news_story.title, @news_story %></h1>
+  <%= quick_options [['List', news_stories_path]] %>
+
+  <h1>Editing News Story <small><%= link_to @news_story.title, @news_story %></small></h1>
 
   <%= render 'form' %>
 </div>

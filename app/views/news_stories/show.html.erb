@@ -1,44 +1,46 @@
+<% content_for(:facebook_meta){ facebook_meta_tags(@news_story.title, @news_story.main_image.url(:large).to_s, @news_story.content, gym.name) } %>
+
+
 <div class="container">
-  <div class="row">
-    <div class="col-md-9">
-      <div id="news_story" class="content_block">
-        <p>
-          <strong>Name:</strong>
+  <%= security_gate 'news_story', 'show_quick_menu', @news_story do %>
+    <%= quick_options([['Edit', edit_news_story_path(@news_story)],['List', news_stories_path]]) %>
+  <% end %>
+
+  <div id="news_story">
+    <div class="row">
+      <div class="col-12">
+        <div class="page_title story_title">
           <%= @news_story.title %>
-        </p>
-
-        <p>
-          <strong>Content:</strong>
-          <%= @news_story.content %>
-        </p>
-
-        <p>
-          <strong>Author:</strong>
-          <%= @news_story.author_id %>
-        </p>
-
-        <p>
-          <strong>Published:</strong>
-          <%= @news_story.published %>
-        </p>
-
-        <p>
-          <strong>Archived:</strong>
-          <%= @news_story.archived %>
-        </p>
-
+        </div>
       </div>
+    </div>
+    <div class="row">
+      <div class="col-md-7">
 
-    </div><!-- col -->
+          <div class="story_author">
+            by <strong><%= link_to @news_story.author.name, user_path(@news_story.author) %></strong>
+          </div>
 
-    <div class="col-md-3">
-      <div id="news_story_list_small">
 
+          <div class="story_content content_block">
+            <%= @news_story.content.html_safe %>
+          </div>
+
+
+      </div><!-- col -->
+
+      <div class="col-md-5">
+        <%#= user_bio(@news_story.author) %>
+        <%= image_tag(@news_story.main_image.url(:large), :class => 'main_image') if @news_story.main_image? %>
+      </div><!-- col -->
+    </div><!-- row -->
+  </div><!-- news_story -->
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="facebook_comments text-center">
+        <%= facebook_comments(request.url, :width => 550) %>
       </div>
-    </div><!-- col -->
-
-  </div><!-- col -->
-</div><!-- row -->
-
-<%= link_to 'Edit', edit_news_story_path(@news_story) %> |
-<%= link_to 'Back', news_stories_path %>
+    </div>
+  </div>
+</div><!-- container -->

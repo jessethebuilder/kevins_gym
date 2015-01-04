@@ -12,9 +12,17 @@
 @import 'bootstrap_customizations';
 @import 'bootstrap';
 
+.page_content{
+  //the whole page
+  margin-top: 15px;
+}
 
 img.main_image{
   width: 100%;
+  margin-top: 15px;
+}
+img.story_image{
+  margin: 5px;
 }
 
 body{
@@ -23,7 +31,10 @@ body{
 //  background-image: url(image_path("home_images/class_sample2.jpg"));
 
 }
-
+.first_details{
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
 h1{
   a:hover{
     background-color: trasparent;
@@ -49,8 +60,8 @@ h1{
   margin-top: 10px;
   padding-top: 5px;
   padding-bottom: 5px;
-  border-top: 1px solid $calendar_dark;
-  border-bottom: 1px solid $calendar_dark;
+//  border-top: 1px solid $calendar_dark;
+//  border-bottom: 1px solid $calendar_dark;
 }
 
 .staff_new_link{
@@ -110,7 +121,7 @@ h1{
 
 
 
-
+//-----------------------home_header-------------------------------------
 #home_header{
   height: 240px;
 //  margin-bottom: 10px;
@@ -118,9 +129,13 @@ h1{
   background-size: 100%;
   margin-top: -20px;
 
-  background-image: url(image_path('home_images/gym_still_1.png'));
+  background-image: url(image_path('temp/gym_still_2_top_half.png'));
 
   h1{
+
+    color: $gym_main_color;
+    text-shadow: 3px 3px $calendar_dark;
+
     text-align: left;
     font-size: 98px;
     font-weight: 600;
@@ -141,17 +156,8 @@ h1{
 
 }
 
-//my styles
-.news_headline{
-  font-size: 28px;
-//  line-height: 30px;
-  font-family: times, Times New Roman, times-roman, georgia, serif;
+//-----------------------my styles---------------------------------------
 
-  letter-spacing: -2px;
-  font-weight: bold;
-  color: $calendar_dark;
-
-}
 
 .fancy_quote{
   color: $calendar_medium;
@@ -189,7 +195,7 @@ h1{
 }
 
 .page_title{
-  font-size: 64px;
+  font-size: 58px;
   font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
   font-weight: 800;
   text-shadow: $text_shadow_accent;
@@ -197,12 +203,13 @@ h1{
 }
 .page_subtitle{
   @extend .page_title;
+  @include main_link;
   font-size: 40px;
-
-  a{
-    color: $calendar_medium_dark;
-  }
 }
+
+//------------------------End MY Styles-----------------------
+
+
 
 //--------------------------Footer-----------------------------
 #footer{

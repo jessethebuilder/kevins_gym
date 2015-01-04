@@ -4,7 +4,7 @@
 
 $calendar_dark: #363636;
 $calendar_medium_dark: lighten($calendar_dark, 10%);
-$calendar_medium: #c0c0c0;
+$calendar_medium: #b2b2b2;
 $calendar_light: #dddddd;
 $calendar_very_light: #f0f0f0;
 
@@ -29,3 +29,22 @@ $staff_link_size: 24px;
 
 
 ////$gym_main_color_shadow_color: ;
+@mixin main_link{
+  a{
+    color: $calendar_dark;
+  }
+  a:hover{
+    color: $calendar_medium;
+    text-decoration: none;
+    text-shadow: 0px 0px;
+  }
+}
+
+@mixin news_headline($font_size, $font_color){
+  @include main_link;
+  font-size: $font-size;
+  font-family: times, Times New Roman, times-roman, georgia, serif;
+  letter-spacing: -2px;
+  font-weight: bold;
+  color: $font_color;
+}

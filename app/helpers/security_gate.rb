@@ -20,15 +20,15 @@ module SecurityGate
     pass
   end
 
-  def security_gate(gate, key, object_to_check_for_ownership = nil,  &block)
-    #if an object_to_check_for_ownership is passed, block will be executed if current_user owns the object (if object has
-    # as user_id that equals current_user.id)
-    if user_signed_in? && object_to_check_for_ownership
-      object_ownership = object_to_check_for_ownership.user_id == current_user.id
-    end
+  def security_gate(gate, key, record = nil, record_owner_key: :user_id, &block)
     rules = SECURITY_GATES[gate][key]
-    pass = user_passes_locks?(rules) || object_ownership
-    capture(&block) if pass
+    capture(&block) if user_passes_locks?(rules) || user_owns?(record, :owner_key => record_owner_key)
+  end
+  
+  def user_owns?(record, owner_key: :user_id)
+    if user_signed_in? && record
+      record.send(owner_key) == current_user.id
+    end
   end
 
   SECURITY_GATES = {'top_nav' => {
@@ -39,7 +39,9 @@ module SecurityGate
                     },
                     'news_story' => {
                         'edit_author_of_news_story' => ['>= admin'],
-                        'set_author_with_hidden' => ['== staff']
+                        'set_author_with_hidden' => ['== staff'],
+                        'show_quick_menu' => ['>= admin'],
+                        'index_edit_story' => ['>= admin']
                     }
 
   }
