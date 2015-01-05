@@ -15,7 +15,7 @@ GIT
 
 GIT
   remote: https://github.com/jessethebuilder/farm_tools
-  revision: 36fc80245520dabde7cd90fdacf91b4ba3ffd2b8
+  revision: 2c645dc00ad6831f66de3592deb3663a8f187770
   specs:
     farm_tools (0.0.1)
       rails
