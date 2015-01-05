@@ -33,6 +33,7 @@ group :doc do
 end
 
 
+#gem 'simple-form'
 gem 'momentjs-rails'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
