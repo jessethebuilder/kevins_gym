@@ -33,12 +33,6 @@ group :doc do
 end
 
 
-#gem 'farm_tools', :git => 'https://github.com/jessethebuilder/farm_tools'
-gem 'farm_tools', :path => 'c:/users/jf/desktop/jesseweb/farm_tools'
-
-gem 'twitter_express', :path => 'c:/users/jf/desktop/jesseweb/TwitterExpress'
-#gem 'twitter_express', :git => 'https://github.com/jessethebuilder/TwitterExpress'
-
 gem 'momentjs-rails'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
@@ -68,6 +62,9 @@ group :test, :development do
 
   gem 'ruby-debug-ide'
   gem 'debase'
+
+  #gem 'farm_tools', :path => 'c:/users/jf/desktop/jesseweb/farm_tools'
+  #gem 'twitter_express', :path => 'c:/users/jf/desktop/jesseweb/TwitterExpress'
 end
 
 group :test do
@@ -86,8 +83,10 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'farm_tools', :git => 'https://github.com/jessethebuilder/farm_tools'
+  gem 'twitter_express', :git => 'https://github.com/jessethebuilder/TwitterExpress'
 end
 
-gem 'webrat'
+#gem 'webrat'
 
 ruby '2.0.0'

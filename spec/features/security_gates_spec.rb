@@ -10,7 +10,7 @@ RSpec.describe 'Security Gate Requests', :type => :feature do
       describe 'index_edit_story' do
         specify 'user user is not signed in, quick options should not show' do
           visit 'news_stories'
-          page.should_not have(:css, 'ul.quick_options')
+          page.should_not have_css('ul.quick_options')
         end
 
         specify 'if user is of level :admin or above, it should should an edit link on every story' do
@@ -28,7 +28,7 @@ RSpec.describe 'Security Gate Requests', :type => :feature do
           story.save
 
           manual_login_as(staff)
-          visit 'news_stories'
+          visit '/news_stories'
 
           1.should > 2
         end

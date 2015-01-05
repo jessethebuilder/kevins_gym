@@ -108,9 +108,9 @@ h1{
   }
 
   ul.dropdown-menu{
-    box-shadow: $shadow_still;
-    border-raduis: 5px;
-    background-color: $calendar_light;
+    box-shadow: $shadow_dropdown;
+    //border-raduis: 5px;
+    background-color: white;
 
     a{
       color: $calendar_dark;

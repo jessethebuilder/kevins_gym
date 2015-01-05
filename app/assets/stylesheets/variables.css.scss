@@ -17,6 +17,8 @@ $gym_main_light_accent: lighten($gym_main_color, 50%);
 //
 //: rgb(243, 144, 140);
 
+
+$shadow_dropdown: 3px 3px $calendar_dark;
 $shadow_still: 3px 3px 10px 5px $calendar_dark;
 $shadow_selected: 6px 6px 10px $calendar_dark;
 $text_shadow_accent: 2px 2px $calendar_medium;

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', :type => :feature do
-  let!(:gym){ create :gym }
+  #let!(:gym){ create :gym }
   let(:user){ build :user }
   let(:staff){ build :staff }
   let(:admin){ create :admin }
@@ -10,7 +10,20 @@ RSpec.describe 'Users', :type => :feature do
     setup_store
   end
 
-  describe 'users#index' do
+  describe 'Show' do
+    before(:each) do
+      staff.save
+    end
+
+    it 'should show a User' do
+      visit "/users/#{staff.id}"
+      within('.page_title') do
+        page.should have_content(staff.name)
+      end
+    end
+  end
+
+  describe 'Index' do
     specify 'should keep current view between requests' do
       staff = manual_login_as(:staff)
       visit '/users'

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'News Story Requests', :type => :feature, :js => true do
+RSpec.describe 'News Story Requests', :type => :feature do
   let!(:ns){ create :news_story }
   before(:each) do
     setup_store

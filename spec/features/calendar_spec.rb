@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Calendar', :type => :feature, :us => true do
+RSpec.describe 'Calendar', :type => :feature do
   let(:event){ create :event }
 
   before(:each) do
