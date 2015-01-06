@@ -35,7 +35,7 @@ end
 
 #gem 'simple-form'
 gem 'momentjs-rails'
-gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+#gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
 gem 'bootstrap-sass', '~> 3.0.3.0'
 
