@@ -64,8 +64,6 @@ group :test, :development do
   gem 'ruby-debug-ide'
   gem 'debase'
 
-  #gem 'farm_tools', :path => 'c:/users/jf/desktop/jesseweb/farm_tools'
-  #gem 'twitter_express', :path => 'c:/users/jf/desktop/jesseweb/TwitterExpress'
 end
 
 group :test do
@@ -84,10 +82,15 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'farm_tools', :git => 'https://github.com/jessethebuilder/farm_tools'
-  gem 'twitter_express', :git => 'https://github.com/jessethebuilder/TwitterExpress'
+
 end
 
 #gem 'webrat'
+
+gem 'farm_tools', :git => 'https://github.com/jessethebuilder/farm_tools'
+gem 'twitter_express', :git => 'https://github.com/jessethebuilder/TwitterExpress'
+
+#gem 'farm_tools', :path => 'c:/users/jf/desktop/jesseweb/farm_tools'
+#gem 'twitter_express', :path => 'c:/users/jf/desktop/jesseweb/TwitterExpress'
 
 ruby '2.0.0'
