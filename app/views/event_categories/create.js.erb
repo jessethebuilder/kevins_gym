@@ -1,0 +1,5 @@
+$('#express_modal').modal('hide');
+$('#event_event_category_id').append('<option value="<%= j @event_category.id.to_s %>"><%= j @event_category.name %></option>');
+$('#event_event_category_id').val('<%= j @event_category.id.to_s %>');
+
+//todo add scaffold for editing, deleting event_categories

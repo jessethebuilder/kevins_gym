@@ -11,10 +11,10 @@ g.save!
 #  u.save!
 #end
 
-20.times do
+10.times do
   #a bunch of random users
-  u = User.new :email => Faker::Internet.email, :password => @pw, :level => User::USER_LEVELS.sample
-  unless u.level == :member && Random.rand(1..4) != 1
+  u = User.new :email => Faker::Internet.email, :password => @pw, :level => 'staff', :skills => [User::SKILLS.sample]
+  unless u.level == 'member' && Random.rand(1..4) != 1
     u.first_name = Faker::Name.first_name
     u.last_name = Faker::Name.last_name
   end
@@ -22,14 +22,13 @@ g.save!
   fn = File.join(Rails.root, "app/assets/images/temp/user_sample#{Random.rand(1..2)}.jpg")
   u.avatar = File.new(fn)
 
-  u.user_type = User::USER_TYPES.sample
 
   u.bio = Faker::Lorem.sentences(sentence_count = Random.rand(1..10)).join('<p>'.html_safe)
   u.save!
 end
 
 admin = User.create! :email => 'admin@test.com', :password => @pw, :first_name => 'Jesse', :last_name => 'Farmer',
-                     :level => :admin, :bio => 'The builder of this site. The builder!!', :user_type => User::USER_TYPES.sample
+                     :level => 'admin', :bio => 'The builder of this site. The builder!!', :skills => [User::SKILLS.sample]
 admin.avatar = File.new(File.join(Rails.root, 'app/assets/images/temp/user_sample1.jpg'))
 admin.save!
 

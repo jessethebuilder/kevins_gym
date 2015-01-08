@@ -22,8 +22,11 @@ class EventCategoriesController < ApplicationController
 
   def create
     @event_category = EventCategory.new(event_category_params)
-    @event_category.save
-    respond_with(@event_category)
+    if @event_category.save
+      respond_with(@event_category)
+    else
+      render :new
+    end
   end
 
   def update

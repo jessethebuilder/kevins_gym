@@ -1,2 +1,14 @@
-$('body').append('<%= j express_modal('New Category', :destroy_on_close => true){ render :partial => 'event_categories/new' } %>');
-$('#express_modal').modal('show');
+<%# todo abstract this %>
+if($('#express_modal').length){
+  $('#express_modal').on('hidden.bs.modal', function(){
+    showEventCategoriesNew();
+  })
+  $('#express_modal').modal('hide');
+} else {
+  showEventCategoriesNew();
+
+}
+function showEventCategoriesNew(){
+  $('body').append('<%= j express_modal('New Category', :destroy_on_close => true){ render :partial => 'event_categories/new' } %>');
+  $('#express_modal').modal('show');
+}

@@ -1,5 +1,14 @@
 <div class="container">
-  <h2>Edit <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user) %></h2>
+  <%= quick_options([['User List', users_path], ['Create User', new_user_path]]) %>
 
-  <%= render :partial => 'users/form' %>
+  <div class="row">
+    <div class="col-12">
+      <div class="page_title">Edit <%= link_to "#{@user.first_name} #{@user.last_name}", user_path(@user) %></div>
+
+    </div>
+  </div>
+
+  <!--<div class="form_block">-->
+    <%= render :partial => 'users/form' %>
+  <!--</div>-->
 </div>

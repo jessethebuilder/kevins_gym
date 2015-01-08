@@ -5,11 +5,17 @@
   <!--</div>-->
 
 <div class="container">
+  <!--<div style="font-family: president; font-size: 128px;">Sequim Gym</div>-->
+
+
   <%= render :partial => 'parts/features_bar' %>
 
   <div class="row">
     <div class="col-sm-9 col_left">
       <div id="news_stories" class="content_block">
+        <%= security_gate 'quick_options', 'view' do %>
+          <%= quick_options [["New Story", new_news_story_path]] %>
+        <% end %>
         <div class="news_list_header">
           <h1>Gym News</h1>
         </div>
@@ -36,6 +42,7 @@
       </div>
 
     </div><!-- col -->
+
 
 
     <div class="col-sm-3 col_right text-center">

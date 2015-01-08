@@ -1,0 +1,44 @@
+<div class="container">
+  <%= security_gate 'quick_options', 'view' do %>
+    <%= quick_options([['Edit', edit_user_path(@user)]]) %>
+  <% end %>
+  <div id="user">
+    <div class="row">
+      <div class="col-sm-12">
+      </div><!-- col -->
+    </div><!-- row -->
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="page_title">
+          <%= @user.name %>
+          <%= image_tag(@user.avatar.url(:show), :class => 'avatar') if @user.avatar? %>
+        </div>
+
+        <div class="content_block">
+          <div class="page_subtitle">
+            Skills
+          </div>
+          <ul class="attribute_list">
+            <% @user.skills.each do |s| %>
+              <li><%= s.titlecase %></li>
+            <% end %>
+          </ul>
+
+          <div class="page_subtitle">
+            Bio
+          </div>
+          <div class="text_block">
+            <%= @user.bio.to_s %>
+          </div>
+        </div>
+
+
+
+        </div><!-- col -->
+        <div class="col-sm-6">
+          <%= render :partial => 'events/calendar/week', :locals => {:hide_quick_options => true} %>
+        </div><!-- col -->
+    </div><!-- row -->
+  </div><!-- user -->
+</div>

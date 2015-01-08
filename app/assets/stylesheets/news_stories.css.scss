@@ -54,16 +54,17 @@
     .news_story_content{
       @extend .subheadline;
       margin-top: 0px;
-      padding-left: 15px;
-      padding-bottom: 10px;
+//      padding-left: 15px;
+//      padding-bottom: 10px;
     }
 
+    img.story_image.pull-left{
+      //this is so the stories with the image to the left indent properly
+      margin-right: 10px;
 
+    }
   }
 
 } //end #news_stories
 
 
-#news_story_form{
-
-}

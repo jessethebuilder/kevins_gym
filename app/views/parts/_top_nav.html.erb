@@ -19,7 +19,7 @@
     <div id='top_nav_body' class='collapse navbar-collapse'>
       <ul class='nav navbar-nav navbar-right'>
         <li>
-          <%= link_to 'Staff', '#' %>
+          <%= link_to 'Staff', users_path %>
         </li>
         <li>
           <%= link_to 'Membership', '#' %>
@@ -39,16 +39,16 @@
           </li>
         </li>
 
-        <%= security_gate('top_nav', 'tools_menu') do %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to 'Classes', events_path(:calendar_scope => 'classes', :calendar_view => 'list') %></li>
-                <li><%= link_to 'Users', users_path %></li>
-                <li><%= link_to 'New News Story', new_news_story_path %></li>
-              </ul>
-            </li>
-        <% end %>
+        <!--<%#= security_gate('top_nav', 'tools_menu') do %>-->
+            <!--<li class="dropdown">-->
+              <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Tools <b class="caret"></b></a>-->
+              <!--<ul class="dropdown-menu">-->
+                <!--<li><%#= link_to 'Classes', events_path(:calendar_scope => 'classes', :calendar_view => 'list') %></li>-->
+                <!--&lt;!&ndash;<li><%#= link_to 'Users', users_path %></li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<li><%#= link_to 'New News Story', new_news_story_path %></li>&ndash;&gt;-->
+              <!--</ul>-->
+            <!--</li>-->
+        <!--<%# end %>-->
 
 
           <% if user_signed_in? %>

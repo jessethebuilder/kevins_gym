@@ -1,24 +1,26 @@
 class UsersController < ApplicationController
   before_action :set_user, :only => [:edit, :destroy, :update, :show]
+  #before_action :set_events, :only => [:show]
 
   before_action :except => [:index, :show] do |controller|
-    authenticate_user_level!(controller, :admin)
+    authenticate_user_level!(controller, 'admin')
   end
 
   respond_to :html
 
   def index
     @filter_users = filter_users
-    if @filter_users == 'staff'
-      @users = User.where.not(:level => 'member').order(:level)
-    else
+    if @filter_users == 'all'
       @users = User.all.order(:level)
+    else
+      @users = User.where.not(:level => 'member').order(:level)
     end
 
     respond_with @users
   end
 
   def show
+    @events = Event.classes_by(@user)
     respond_with(@users)
   end
 
@@ -62,7 +64,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :level, :avatar, :avatar_cache)
+    params.require(:user).permit(:email, :first_name, :last_name, :level, :avatar, :avatar_cache, :password, :remote_avatar_url, {:skills => []})
   end
 
   def filter_users

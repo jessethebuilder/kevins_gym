@@ -12,6 +12,7 @@
 @import 'bootstrap_customizations';
 @import 'bootstrap';
 
+
 .page_content{
   //the whole page
   margin-top: 15px;
@@ -27,8 +28,7 @@ img.story_image{
 
 body{
   background-color: $calendar_very_light;
-
-//  background-image: url(image_path("home_images/class_sample2.jpg"));
+//  background-image: url(image_path("backgrounds/gym_still_2.jpg"));
 
 }
 .first_details{
@@ -55,7 +55,15 @@ h1{
   padding: 10px;
   margin-bottom: 20px;
 }
-.record_description{
+.form_block{
+  @extend .content_block;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding: 30px;
+}
+.text_block{
+  font-size: 18px;
+  color: $calendar_dark;
   margin-bottom: 10px;
   margin-top: 10px;
   padding-top: 5px;
@@ -64,22 +72,26 @@ h1{
 //  border-bottom: 1px solid $calendar_dark;
 }
 
-.staff_new_link{
-  color: $staff_link_color;
-  font-size: $staff_link_size;
-  padding-left: 10px;
-}
-.staff_edit_link{
-  color: $staff_link_color;
-  font-size: $staff_link_size;
-  float: right;
-}
-.staff_edit_link:hover{
-  background-color: transparent;
-  color: $calendar_medium;
-}
-.staff_edit_link:visited{
+.edit_link:link{
   color: blue;
+  font-size: 18px;
+//  float: right;
+
+}
+.edit_link:visited{
+  color: blue;
+}
+
+.attribute_list{
+  list-style: none;
+//  border-bottom: 2px solid $calendar-dark;
+
+  li{
+
+    border-bottom: 1px solid $calendar_medium;
+
+  }
+
 }
 
 #the_flash {
@@ -164,7 +176,7 @@ h1{
   font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
   letter-spacing:0.1em;
   text-align:center;
-  margin: 40px auto;
+//  margin: 40px auto;
   text-transform: lowercase;
   line-height: 145%;
   font-size: 14pt;
@@ -204,7 +216,9 @@ h1{
 .page_subtitle{
   @extend .page_title;
   @include main_link;
-  font-size: 40px;
+  font-weight: 400;
+  font-size: 36px;
+  text-shadow: 0px 0px;
 }
 
 //------------------------End MY Styles-----------------------

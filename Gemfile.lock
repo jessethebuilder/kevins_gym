@@ -6,16 +6,14 @@ GIT
   specs:
     datetimepicker-rails (3.1.1)
 
-GIT
-  remote: https://github.com/jessethebuilder/TwitterExpress
-  revision: 780ede7751afe8e03acb71b10585eefba22fe542
+PATH
+  remote: c:/users/jf/desktop/jesseweb/TwitterExpress
   specs:
     twitter_express (0.0.1)
       rails (~> 4.0.2)
 
-GIT
-  remote: https://github.com/jessethebuilder/farm_tools
-  revision: 25871f9f13fc3201a0a258f76d49b698134325d1
+PATH
+  remote: c:/users/jf/desktop/jesseweb/farm_tools
   specs:
     farm_tools (0.0.1)
       rails
@@ -100,6 +98,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.4.3)
       i18n (~> 0.5)
+    ffi (1.9.6)
     ffi (1.9.6-x86-mingw32)
     formatador (0.2.5)
     guard (2.10.5)
@@ -264,7 +263,6 @@ GEM
     websocket-driver (0.5.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.1)
-    win32console (1.3.2)
     win32console (1.3.2-x86-mingw32)
     xpath (2.0.0)
       nokogiri (~> 1.3)

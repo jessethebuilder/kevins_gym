@@ -5,13 +5,13 @@ class NewsStoriesController < ApplicationController
   before_action :set_upcoming_classes, :only => [:index]
 
   before_action :except => [:index, :show] do |controller|
-    authenticate_user_level!(controller, :staff)
+    authenticate_user_level!(controller, 'admin')
   end
 
   respond_to :html
 
   def index
-    @news_stories = NewsStory.records(:order => 'updated_at DESC')
+    @news_stories = NewsStory.records(:order => 'updated_at DESC').limit(6)
     respond_with(@news_stories)
   end
 

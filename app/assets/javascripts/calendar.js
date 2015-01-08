@@ -117,12 +117,12 @@ function setUpWeekCalendar(){
         calendarDaySetup();
 
 //        toggleClassOnHover('.day_row', 'selected_options')
-      $('.day_row').hover(function(){
-        $('.day_row').removeClass('selected_option');
-        $(this).addClass('selected_option');
-      }, function(){
+//      $('.day_row').hover(function(){
+//        $('.day_row').removeClass('selected_option');
+//        $(this).addClass('selected_option');
+//      }, function(){
 //        $(this).removeClass('selected_option');
-      })
+//      })
 
 
     }) // end document ready

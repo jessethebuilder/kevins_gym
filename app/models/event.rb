@@ -3,7 +3,9 @@ class Event < ActiveRecord::Base
   include Bootsy::Container
 
   before_validation do
-    write_attribute(:ends_at, starts_at + @duration.minutes) if @duration
+    #this is the only callback that would pass all specs, but it's a bit dirty.
+    #it needs to check that both duration and starts_at. Maybe refactor soon.
+   write_attribute(:ends_at, starts_at + @duration.minutes) if @duration && starts_at
   end
 
   has_calendar
@@ -14,7 +16,8 @@ class Event < ActiveRecord::Base
   mount_uploader :main_image, MainImageUploader
 
   EVENT_TYPES = [:class, :appointment, :appointment_request]
-  REOCCURRENCE_TYPES = %w|never week every_other_week every_month_on_this_day every_month_on_this_date|
+  #REOCCURRENCE_TYPES = %w|week never every_other_week every_month_on_this_day every_month_on_this_date|
+  REOCCURRENCE_TYPES = %w|week day never|
 
   validates :event_category_id, :presence => true
   validates :reoccurs_every, :presence => true, :inclusion => {:in => REOCCURRENCE_TYPES}
@@ -56,7 +59,7 @@ class Event < ActiveRecord::Base
   end
 
   def day_of_event
-    "#{day_name}, #{starts_at.strftime('%B %e')}"
+    "#{day_name}, #{starts_at.strftime('%B')}#{ActiveSupport::Inflector.ordinalize(starts_at.strftime('%e'))}"
   end
 
   def duration=(val)
@@ -75,6 +78,10 @@ class Event < ActiveRecord::Base
   scope :classes, -> { where(:event_type => 'class') }
   scope :after_now, ->{ where('starts_at >= ?', Time.now) }
   scope :soonest_first, -> { after_now.order(:starts_at) }
+
+  def Event.classes_by(user)
+    classes.where(:user_id => user.id).soonest_first
+  end
 
   def Event.events
     Event.all

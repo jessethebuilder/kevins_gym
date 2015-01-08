@@ -1,69 +1,68 @@
-<ul class="quick_options">
-  <li><%= link_to 'User List', users_path %></li>
-</ul>
+<%= error_explanation(@user) %>
 
-<script>
-  quickOptionsBehaviors();
-</script>
-
-<%= form_for(@user, html: {:multipart => true }) do |f| %>
-  <div class="row">
-    <%= error_explanation(@user) %>
-  </div>
-
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="form-group">
-        <%= f.label :email, :class => 'control-label' %>
-        <%= f.email_field :email, autofocus: true, :class => 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :first_name, :class => 'control-label' %>
-        <%= f.text_field :first_name, :class => 'form-control' %>
-      </div>
-
-
-      <div class="form-group">
-        <%= f.label :last_name, :class => 'control-label' %>
-        <%= f.text_field :last_name, :class => 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :user_type, :class => 'control-label' %>
-        <%= f.select :user_type, array_for_select(User::USER_TYPES), {}, :class => 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :level, :class => 'control-label' %>
-        <%= f.select :level, User::USER_LEVELS.map{ |l| [l.to_s.titlecase, l]}, {}, :class => 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :avatar, :class => 'control-label' %>
-        <%= f.file_field :avatar, :class => 'form-control' %>
-        <%= f.hidden_field :avatar_cache %>
-
-        <br>
-        <%= image_tag @user.avatar.url(:thumb) if @user.avatar? %>
-      </div>
-
-    </div><!-- col -->
-  </div><!-- row -->
-
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="form-group">
-        <%= f.submit "Update", :class => 'btn btn-primary' %>
-      </div>
-
-      <% unless @user.new_record? %>
+<div class="form_block">
+  <%= form_for(@user, html: {:multipart => true }) do |f| %>
+    <div class="row">
+      <div class="col-sm-6">
         <div class="form-group">
-          <%= link_to "Delete", user_path(@user), :class => 'btn btn-danger',
-                    data: { confirm: "Are you sure?" }, method: :delete %></p>
+          <%= f.label :first_name, :class => 'control-label' %>
+          <%= f.text_field :first_name, :class => 'form-control' %>
         </div>
-      <% end %>
+      </div><!-- col -->
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :last_name, :class => 'control-label' %>
+          <%= f.text_field :last_name, :class => 'form-control' %>
+        </div>
+      </div><!-- col -->
+    </div><!-- row-->
 
-    </div><!-- col -->
-  </div><!-- row -->
-<% end %>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :email, :class => 'control-label' %>
+          <%= f.email_field :email, autofocus: true, :class => 'form-control' %>
+        </div>
+      </div><!-- col -->
+
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :level, :class => 'control-label' %>
+          <%= f.select :level, array_for_select(User::AFFILIATED_LEVELS, @user.level), {}, :class => 'form-control' %>
+        </div>
+      </div><!-- col -->
+    </div><!-- row -->
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= f.label :skills, :class => 'control-label' %>
+          <%= f.select :skills, array_for_select(User::SKILLS, @user.skills), {}, :multiple => true, :size => 5, :class => 'form-control' %>
+        </div>
+      </div><!-- col -->
+    </div><!-- row -->
+
+    <div class="row">
+      <div class="col-12">
+        <%= image_select f, @user, :avatar, :version => :show %>
+      </div><!-- col -->
+    </div><!-- row -->
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="form-group">
+          <%= f.submit :class => 'btn btn-primary' %>
+
+          <% if @user.new_record? %>
+            <%= f.hidden_field :password, :val => User.temporary_password %>
+          <% else %>
+            <%= link_to "Delete", user_path(@user), :class => 'btn btn-danger',
+                      data: { confirm: "Are you sure? This action is permanent!" }, method: :delete %></p>
+          <% end %>
+        </div>
+
+      </div><!-- col -->
+    </div><!-- row -->
+  <% end %>
+
+</div>

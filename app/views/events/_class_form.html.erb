@@ -78,10 +78,6 @@
             <%= f.select :user_id, for_select(User.affiliated, :full_name, :id, current_user.id), {}, :class => 'form-control'%>
           <% end %>
         </div>
-
-        <%= security_gate('news_story', 'set_author_with_hidden') do %>
-          <%= f.hidden_field :author_id, :value => current_user.id.to_s %>
-        <% end %>
       </div><!-- col -->
     </div><!-- row -->
 

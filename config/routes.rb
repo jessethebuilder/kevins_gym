@@ -18,6 +18,9 @@ SGym::Application.routes.draw do
     resources :events, :only => [:index]
   end
 
+  resources :users
+
+
   root :to => 'news_stories#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

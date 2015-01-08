@@ -42,10 +42,6 @@
             <% selected = @news_story.new_record? ? current_user.id : @news_story.author_id %>
             <%= f.select :author_id, for_select(User.affiliated, :full_name, :id, selected), {}, :class => 'form-control'%>
           <% end %>
-
-          <%= security_gate('news_story', 'set_author_with_hidden') do %>
-            <%= f.hidden_field :author_id, :value => current_user.id.to_s %>
-          <% end %>
         </div>
       </div><!-- col -->
     </div><!-- row -->

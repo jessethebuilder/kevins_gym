@@ -15,7 +15,8 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user_level!(controller, min_level)
     if controller.send(:user_signed_in?)
-      return if controller.send(:current_user).level >= min_level
+      ul = controller.send(:current_user).level
+      return if User::USER_LEVELS.index(ul) >= User::USER_LEVELS.index(min_level)
     end
     redirect_to root_path, :alert => 'Access Denied!'
   end

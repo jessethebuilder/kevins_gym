@@ -9,20 +9,22 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :news_stories, :foreign_key => :author_id
 
-  USER_LEVELS = [:member, :staff, :admin, :owner]
-  AFFILIATED_LEVELS = [:staff, :admin, :owner]
+  USER_LEVELS = %w|nonuser member staff admin|
+  AFFILIATED_LEVELS = %w|staff admin|
 
-  USER_TYPES = %w|instructor personal_trainer support management|
-  validates :user_type, :inclusion => {:in => USER_TYPES, :allow_nil => true}
-  def staff_has_user_type
-    errors.add(:user_type, 'must have a type') unless level == 'member'
+  SKILLS = %w|instructor personal_trainer massage_therapist support management nutritionist|
+  #todo
+  #validates :skills, :inclusion => {:in => SKILLS, :allow_nil => true}
+  def staff_has_skills
+    #errors.add(:skills, 'must have at least one skill') unless level == 'member'
   end
 
-  scope :group_by_type, -> { all.group_by{ |user| user.user_type } }
+  #scope :group_by_type, -> { all.group_by{ |user| user.user_type } }
+
 
   #validates :level, :presence => true
 
-  validate :staff_or_higher_has_names, :user_level_is_in_list
+  validate :staff_or_higher_has_names, :user_level_is_in_list, :staff_has_skills
 
 
   def user_level_is_in_list
@@ -32,16 +34,16 @@ class User < ActiveRecord::Base
   end
 
   def staff_or_higher_has_names
-    if level_is_at_least :staff
+    if level_is_at_least 'staff'
       errors.add(:first_name, 'cannot be blank') if first_name.blank?
       errors.add(:last_name, 'cannot be blank') if last_name.blank?
     end
   end
 
   def level_is_at_least(level)
-    raise ArgumentError, "#{level} is not a valid User level" unless symbols_and_strings(USER_LEVELS).include?(level.to_sym)
+    raise ArgumentError, "#{level} is not a valid User level" unless USER_LEVELS.include?(level)
     #self.level && USER_LEVELS.index(self.level.to_sym) >= USER_LEVELS.index(level.to_sym)
-    self.level.level && self.level >= level
+    self.level && self.level >= level
   end
 
   def name
@@ -54,9 +56,9 @@ class User < ActiveRecord::Base
     Event.where('event_type = ? AND user_id = ?', 'class', self.id)
   end
 
-  def level
-    UserLevel.new(read_attribute(:level))
-  end
+  #def level
+  #  UserLevel.new(read_attribute(:level))
+  #end
 
   def full_name
     "#{first_name} #{last_name}"
@@ -72,29 +74,37 @@ class User < ActiveRecord::Base
     User.joins(:events).where('events.event_type = ?', 'class').uniq
   end
 
+  def User.temporary_password
+    s = ''
+    Random.rand(10..20).times do
+      s += Random.rand(0..9).to_s
+    end
+    s
+  end
+
 
 end
 
-class UserLevel
-  include Comparable
-  L = User::USER_LEVELS.dup.insert(0, :nonuser)
-
-  attr_accessor :level
-
-  def initialize(level)
-    @level = level.to_sym unless level.nil?
-  end
-
-  def <=>(other)
-    L.index(self.level) <=> L.index(other.to_sym)
-  end
-
-  def to_s
-    @level.to_s
-  end
-
-  def to_sym
-    @level
-  end
-
-end
+#class UserLevel
+#  include Comparable
+#  L = User::USER_LEVELS.dup.insert(0, 'nonuser')
+#
+#  attr_accessor :level
+#
+#  def initialize(level)
+#    @level = level.to_sym unless level.nil?
+#  end
+#
+#  def <=>(other)
+#    L.index(self.level) <=> L.index(other.to_sym)
+#  end
+#
+#  def to_s
+#    @level.to_s
+#  end
+#
+#  def to_sym
+#    @level
+#  end
+#
+#end
