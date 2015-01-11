@@ -62,7 +62,7 @@ end
   description = [des_start, des_items, des_end].join('<p>'.html_safe)
 
   e = Event.new :name => Faker::Company.name, :starts_at => time, :ends_at => time + [15, 30, 45, 60, 75, 90].sample.minutes,
-                :event_type => :class, :description => description
+                :event_type => 'class', :description => description
   e.user = User.affiliated.sample
   e.event_category = EventCategory.all.sample
   e.reoccurs_every = Event::REOCCURRENCE_TYPES.sample
