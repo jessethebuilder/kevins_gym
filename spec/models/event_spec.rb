@@ -12,16 +12,10 @@ RSpec.describe Event, :type => :model, :js => false do
     it{ should validate_inclusion_of(:reoccurs_every).in_array(Event::REOCCURRENCE_TYPES)}
     it{ should validate_presence_of(:reoccurs_every) }
 
-    it 'should validate presence of :ends_at IF :type == :class' do
-      cl.ends_at = nil
+    it 'should validate presence of :duration IF :type == :class' do
+      cl.duration = nil
       cl.valid?
-      cl.errors.messages[:ends_at].include?('classes must have end time').should == true
-    end
-
-    it 'should validate that ends_at is AFTER starts_at' do
-      cl.ends_at = event.starts_at - 15.minutes
-      cl.valid?
-      cl.errors.messages[:ends_at].include?('must be after start time').should == true
+      cl.errors.messages[:duration].include?('cannot be blank').should == true
     end
 
     it 'should validate that an event of type :class has a user' do
@@ -113,6 +107,10 @@ RSpec.describe Event, :type => :model, :js => false do
         Event.upcoming_classes.count.should == 2
         Event.upcoming_classes.has_key?('30/12/2009').should == false
       end
+
+    end
+
+    describe 'Reoccuring Events' do
 
     end
   end

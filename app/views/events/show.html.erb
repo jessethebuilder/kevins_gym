@@ -1,3 +1,6 @@
+<% content_for(:facebook_meta){ facebook_meta_tags(@event.name, @event.main_image.url(:large), @event.description, gym.name) } %>
+
+
 <% if @event.event_type == 'class' %>
   <%= render :partial => 'events/show_class' %>
 <% end %>

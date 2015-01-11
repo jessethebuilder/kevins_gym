@@ -15,22 +15,10 @@ RSpec.describe 'Security Gate Requests', :type => :feature do
 
         specify 'if user is of level :admin or above, it should should an edit link on every story' do
           manual_login_as(FactoryGirl.create :admin)
-          visit 'news_stories'
+          visit '/news_stories'
           all('.news_story').each do |story|
             story.should have_css('.quick_options')
           end
-        end
-
-        specify 'if user is of level staff, then only stories they wrote should have an edit link' do
-          staff = FactoryGirl.create :staff
-          story = FactoryGirl.create :news_story
-          story.author = staff
-          story.save
-
-          manual_login_as(staff)
-          visit '/news_stories'
-
-          1.should > 2
         end
       end
     end
@@ -53,13 +41,6 @@ RSpec.describe 'Security Gate Requests', :type => :feature do
         visit 'news_stories/new'
         expect(page).not_to have_select('author_id')
       end
-
-      specify 'Page should have hidden field for author if lower User is lower than :admin' do
-        staff = manual_login_as(:staff)
-        visit 'news_stories/new'
-        page.find(:css, '#news_story_author_id').value.should == staff.id.to_s
-      end
-
     end
   end
 

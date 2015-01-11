@@ -1,4 +1,9 @@
 <div class="container">
-  <div class="page_title">Editing <%= link_to @event.name, @event %></div>
+  <%= quick_options(*calendar_quick_options) if user_is_admin? %>
+
+  <div class="row">
+    <div class="page_title">Editing <%= link_to @event.name, @event %></div>
+  </div>
+
   <%= render 'form' %>
 </div>

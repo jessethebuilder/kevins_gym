@@ -2,7 +2,6 @@ class NewsStoriesController < ApplicationController
   include SaveDraftArchiveDeleteControllerHelper
 
   before_action :set_news_story, only: [:show, :edit, :update, :destroy]
-  before_action :set_upcoming_classes, :only => [:index]
 
   before_action :except => [:index, :show] do |controller|
     authenticate_user_level!(controller, 'admin')
@@ -11,7 +10,8 @@ class NewsStoriesController < ApplicationController
   respond_to :html
 
   def index
-    @news_stories = NewsStory.records(:order => 'updated_at DESC').limit(6)
+    set_upcoming_classes
+    @news_stories = NewsStory.published.order('updated_at DESC').limit(6)
     respond_with(@news_stories)
   end
 

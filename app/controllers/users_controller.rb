@@ -20,7 +20,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @events = Event.classes_by(@user)
+    set_upcoming_classes(:user => @user)
+    #@events = Event.classes_by(@user)
     respond_with(@users)
   end
 

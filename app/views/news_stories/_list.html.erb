@@ -5,9 +5,9 @@
     <div class="page_title">User List</div>
     <div class="row">
       <% if @filter_users == 'all' %>
-        <%= quick_options [['Staff Users', users_path(:filter_users => 'staff')], ['Create New User', new_user_path]] %>
+        <%= quick_options ['Staff Users', users_path(:filter_users => 'staff')], ['Create New User', new_user_path] %>
       <% else %>
-        <%= quick_options [['All Users', users_path(:filter_users => 'all')], ['Create New User', new_user_path]] %>
+        <%= quick_options ['All Users', users_path(:filter_users => 'all')], ['Create New User', new_user_path] %>
       <% end %>
 
     </div>

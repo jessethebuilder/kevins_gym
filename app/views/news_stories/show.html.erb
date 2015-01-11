@@ -3,7 +3,7 @@
 
 <div class="container">
   <%= security_gate 'news_story', 'show_quick_menu', @news_story do %>
-    <%= quick_options([['Edit', edit_news_story_path(@news_story)],['List', news_stories_path]]) %>
+    <%= quick_options(['Edit', edit_news_story_path(@news_story)],['List', news_stories_path]) %>
   <% end %>
 
   <div id="news_story">
@@ -36,11 +36,5 @@
     </div><!-- row -->
   </div><!-- news_story -->
 
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="facebook_comments text-center">
-        <%= facebook_comments(request.url, :width => 550) %>
-      </div>
-    </div>
-  </div>
+  <%= facebook_comments_row %>
 </div><!-- container -->

@@ -15,7 +15,7 @@ class Event < ActiveRecord::Base
 
   mount_uploader :main_image, MainImageUploader
 
-  EVENT_TYPES = [:class, :appointment, :appointment_request]
+  EVENT_TYPES = %w|class appointment appointment_request|
   #REOCCURRENCE_TYPES = %w|week never every_other_week every_month_on_this_day every_month_on_this_date|
   REOCCURRENCE_TYPES = %w|week day never|
 
@@ -26,21 +26,22 @@ class Event < ActiveRecord::Base
   validates :event_type, :presence => true, :inclusion => {:in => symbols_and_strings(EVENT_TYPES)}
 
   #----------------Custom Validations ------------------------------
-  validate :has_ends_at_if_class, :has_user_if_class, :ends_at_is_after_starts_at
+  validate :has_duration_if_class, :has_user_if_class #, :ends_at_is_after_starts_at
 
-  def has_ends_at_if_class
-    errors.add :ends_at, 'classes must have end time' if event_type == :class && ends_at.nil?
+  def has_duration_if_class
+    #errors.add :duration, 'cannot be blank' if duration.nil?
+    errors.add :duration, 'cannot be blank' if event_type == 'class' && duration.nil?
   end
 
   def has_user_if_class
-    errors.add :user_id, 'class must have an instructor' if event_type == :class && user_id.nil?
+    errors.add :user_id, 'class must have an instructor' if event_type == 'class' && user_id.nil?
   end
-
-  def ends_at_is_after_starts_at
-    unless ends_at.nil?
-      errors.add :ends_at, 'must be after start time' if ends_at < starts_at
-    end
-  end
+  #
+  #def ends_at_is_after_starts_at
+  #  unless ends_at.nil?
+  #    errors.add :ends_at, 'must be after start time' if ends_at < starts_at
+  #  end
+  #end
 
   def month
     starts_at.strftime('%B')
@@ -63,8 +64,7 @@ class Event < ActiveRecord::Base
   end
 
   def duration=(val)
-    @duration = Integer(val)
-    #write_attribute(:ends_at, starts_at + Integer(val).minutes);
+    @duration = val ? Integer(val) : 0
   end
 
   def duration
@@ -87,9 +87,15 @@ class Event < ActiveRecord::Base
     Event.all
   end
 
-  def Event.upcoming_classes(day_count = 7)
+  def Event.upcoming_classes(day_count = 7, user: nil)
     #returns a hash with dates for keys and Arrays of Events (of type :class), ordered by date, soonest first
-    all_hash = classes.soonest_first.group_by{ |event| event.date }
+    if user
+      classes = classes_by(user)
+    else
+      classes = self.classes.soonest_first
+    end
+
+    all_hash = classes.group_by{ |event| event.date}
     #limit the number of days
     h = {}
     i = 0

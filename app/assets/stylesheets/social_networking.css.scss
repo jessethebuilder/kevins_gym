@@ -2,7 +2,7 @@
 
 #social_networking_bar{
   height: 26px;
-  background-color: $gym_main_color;
+  background-color: $gym_secondary;
   padding-top: 3px;
 
   .follow_button{
@@ -16,4 +16,13 @@
 }
 .facebook_comments{
   margin-top: 20px;
+}
+
+.social_networking_likes{
+  padding-top: 20px;
+  padding-right: 20px;
+
+  .tweet{
+    margin-top: 8px;
+  }
 }

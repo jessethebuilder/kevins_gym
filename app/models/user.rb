@@ -13,23 +13,28 @@ class User < ActiveRecord::Base
   AFFILIATED_LEVELS = %w|staff admin|
 
   SKILLS = %w|instructor personal_trainer massage_therapist support management nutritionist|
-  #todo
-  #validates :skills, :inclusion => {:in => SKILLS, :allow_nil => true}
+
+
   def staff_has_skills
-    #errors.add(:skills, 'must have at least one skill') unless level == 'member'
+    errors.add(:skills, 'must have at least one skill') if level != 'member' && skills == []
   end
 
   #scope :group_by_type, -> { all.group_by{ |user| user.user_type } }
 
 
-  #validates :level, :presence => true
+  validates :level, :presence => true
 
-  validate :staff_or_higher_has_names, :user_level_is_in_list, :staff_has_skills
+  validate :staff_or_higher_has_names, :user_level_is_in_list, :staff_has_skills, :skills_are_in_list
 
+  def skills_are_in_list
+    skills.each do |s|
+      errors.add(:skills, "#{s} is not in Skills list") unless SKILLS.include?(s)
+    end
+  end
 
   def user_level_is_in_list
     l = read_attribute(:level)
-    errors.add(:level, 'is not included in the list') unless symbols_and_strings(USER_LEVELS).include?(l)
+    errors.add(:level, 'is not included in the list') unless USER_LEVELS.include?(l)
     errors.add(:level, 'cannot be blank') unless l
   end
 
@@ -43,7 +48,7 @@ class User < ActiveRecord::Base
   def level_is_at_least(level)
     raise ArgumentError, "#{level} is not a valid User level" unless USER_LEVELS.include?(level)
     #self.level && USER_LEVELS.index(self.level.to_sym) >= USER_LEVELS.index(level.to_sym)
-    self.level && self.level >= level
+    self.level && USER_LEVELS.index(self.level) >= USER_LEVELS.index(level)
   end
 
   def name

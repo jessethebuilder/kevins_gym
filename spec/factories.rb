@@ -1,9 +1,17 @@
 FactoryGirl.define do
   sequence(:email){ |n| "test#{n}@test.com" }
+  sequence(:name){ |n| "The Name of Something #{n}"}
 
   trait :human_names do
     first_name Faker::Name.first_name
     last_name Faker::Name.last_name
+    
+  end
+
+  trait :employee do
+    human_names
+    level User::AFFILIATED_LEVELS.sample
+    skills [User::SKILLS.sample]
   end
 
   factory :address do
@@ -46,39 +54,37 @@ FactoryGirl.define do
     level User::USER_LEVELS.sample
 
     factory :member do
-      level :member
+      level 'member'
     end
 
-
     factory :staff do
-      human_names
-      level :staff
+      employee
+      level 'staff'
     end
 
     factory :admin do
-      human_names
-      level :admin
+      employee
+      level 'admin'
     end
 
     factory :owner do
-      human_names
-      level :owner
+      employee
+      level 'owner'
     end
 
     factory :staff_plus do
-      human_names
-      level User::AFFILIATED_LEVELS.sample
+      employee
     end
 
   end
 
   factory :event_category do
-    name Faker::Company.catch_phrase
+    name
   end
 
   factory :event do
     event_date = Random.rand(10..50000).minutes.until
-    name Faker::Company.bs
+    name
     starts_at event_date
     event_category
     reoccurs_every Event::REOCCURRENCE_TYPES.sample
@@ -91,13 +97,13 @@ FactoryGirl.define do
 
 
     factory :class do
-      event_type :class
+      event_type 'class'
       association :user, :factory => User::AFFILIATED_LEVELS.sample
-      ends_at event_date + [30, 45, 60, 75, 90].sample.minutes
+      duration [30, 45, 60, 75, 90].sample
     end
 
     factory :appointment do
-      event_type :appointment
+      event_type 'appointment'
 
     end
   end

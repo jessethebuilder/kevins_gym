@@ -18,6 +18,7 @@
 //= require moment
 //= require bootstrap-datetimepicker
 //= require pickers
+//= require farm_tools
 //= require_tree .
 
 $(document).ready(function(){
@@ -72,35 +73,35 @@ function parseScreenSize(size){
   return val;
 }
 
-//Toolbox ---------------------------------------------
-function splitPath(path){
-  var file = path.match(/(.+\/)(\w+)\.(.+)/);
-  return {
-    path_to_file: file[1],
-    file_name: file[2],
-    extension: file[3]
-  };
-
-}
-function imageChangeOnLinkHover(selector){
-  $(selector).hover(function(){
-    var img = $(this).find('img');
-    var split_path = splitPath(img.attr('src'));
-    var new_path = split_path.path_to_file + split_path.file_name + "_hover." + split_path.extension;
-    img.attr('src', new_path);
-  }, function(){
-    var split_path = splitPath($(this).find('img').attr('src'));
-    var new_file_name = split_path.file_name.match(/(.+)_hover/)[1]
-    var new_path = split_path.path_to_file + new_file_name + "." + split_path.extension;
-    $(this).find('img').attr('src', new_path);
-  })
-}
-
-function toggleClassOnHover(selector, klass, persist){
-  $(selector).hover(function(){
-    $(this).addClass(klass);
-  }, function(){
-    $(this).removeClass(klass);
-  })
-}
+////Toolbox ---------------------------------------------
+//function splitPath(path){
+//  var file = path.match(/(.+\/)(\w+)\.(.+)/);
+//  return {
+//    path_to_file: file[1],
+//    file_name: file[2],
+//    extension: file[3]
+//  };
+//
+//}
+//function imageChangeOnLinkHover(selector){
+//  $(selector).hover(function(){
+//    var img = $(this).find('img');
+//    var split_path = splitPath(img.attr('src'));
+//    var new_path = split_path.path_to_file + split_path.file_name + "_hover." + split_path.extension;
+//    img.attr('src', new_path);
+//  }, function(){
+//    var split_path = splitPath($(this).find('img').attr('src'));
+//    var new_file_name = split_path.file_name.match(/(.+)_hover/)[1]
+//    var new_path = split_path.path_to_file + new_file_name + "." + split_path.extension;
+//    $(this).find('img').attr('src', new_path);
+//  })
+//}
+//
+//function toggleClassOnHover(selector, klass, persist){
+//  $(selector).hover(function(){
+//    $(this).addClass(klass);
+//  }, function(){
+//    $(this).removeClass(klass);
+//  })
+//}
 

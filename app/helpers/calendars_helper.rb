@@ -62,17 +62,7 @@ module CalendarsHelper
     a << ['Monthly', events_path(:calendar_view => 'month', :event_type => @event_type)] unless @calendar_view == 'month'
     a << ['Weekly', events_path(:calendar_view  => 'week', :event_type => @event_type)] unless @calendar_view == 'week'
 
-    if user_signed_in?
-      a << ['List', events_path(:calendar_view => 'list', :event_type => @event_type)]
-      if current_user.classes.count > 0
-      a << ['My Classes', events_path(:calendar_view => 'list', :event_type => @event_type, :user_id => current_user.id)]
-      end
-    end
-
+    a << ['List', events_path(:calendar_view => 'list', :event_type => @event_type)] if user_is_admin?
     a
-
   end
-
-
-
 end

@@ -1,10 +1,10 @@
 module RequestsSpecHelper
   def manual_login_as(user, password: 'testtest')
-    #user param accepts either an existing user or a UserLevel symbol.
+    #user param accepts either an existing user or a UserLevel.
     if user.class == User
       u = user
     else
-      u = FactoryGirl.create user, :password => password
+      u = FactoryGirl.create user.to_s, :password => password
     end
 
     visit '/d/users/sign_in'

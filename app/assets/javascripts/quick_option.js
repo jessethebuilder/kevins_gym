@@ -1,7 +1,7 @@
-function quickOptionsBehaviors(){
-//  colorQuickOptionsRightBorderOnHover();
-  toggleClassOnHover('.quick_options li', 'quick_option_selected');
-}
+//function quickOptionsBehaviors(){
+////  colorQuickOptionsRightBorderOnHover();
+//  toggleClassOnHover('.quick_options li', 'quick_option_selected');
+//}
 
 //function colorQuickOptionsRightBorderOnHover(){
 //  $('.quick_options li a').hover(function(){

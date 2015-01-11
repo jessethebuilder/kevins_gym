@@ -4,6 +4,6 @@ STYLES = {
     :calendar_light => '#dddddd;',
     :calendar_today => 'rgba(108, 177, 255, 0.42);',
     :background_color => 'white;',
-    :gym_main_color => '#780000;'
+    :gym_secondary => '#780000;'
 }
  

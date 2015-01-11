@@ -2,7 +2,6 @@
 
 class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
-  #include CarrierWave::Processing::MiniMagick
 
   storage :file
 
@@ -15,22 +14,38 @@ class AvatarUploader < CarrierWave::Uploader::Base
      process :resize_to_fit => [100, 100]
   end
 
-  version :show do
-    #process :resize_to_fit => [250, 250]
-    process :circle_vingette => [250]
+  version :show_circle do
+    process :convert => 'png'
 
+    process :resize_to_fit => [200, 200]
+    #process :gravity => 'center'
+    #process :crop => [250, 250, 0, 0]
+    process :resize_and_pad => [220, 220]
+    process :circle_vingette => [300]
+    process :resize_to_fit => [200, 200]
   end
+
+  version :show_square do
+    process :resize_to_fit => [250, 250]
+  end
+
 
   def circle_vingette(diameter)
     manipulate! do |img|
-      img.format 'png'
-      img.resize_to_fit(250, 250)
-      img.gravity 'center'
-      img.crop "#{250}x#{250}+0+0"
-      img.alpha 'set'
-      img.background 'none'
-      img.vignette '0x2'
+      #img.forma('png') do |png|
+      #  img.resize "#{diameter}x#{diameter}^"
+      #  img.gravity 'center'
+      #  img.crop "#{diameter}x#{diameter}+0+0"
+      #  img.alpha 'set'
+      #  img.background 'none'
+        img.vignette '0X1'
+      #end
+     img
     end
+  end
+
+  def filename
+    super.chomp(File.extname(super)) + '.png' if original_filename.present?
   end
 
   def extension_white_list

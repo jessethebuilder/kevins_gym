@@ -1,4 +1,9 @@
 <div class="container">
-  <div class="page_title">New <%= @event_type.titlecase %></div>
+  <%= quick_options(*calendar_quick_options) if user_is_admin? %>
+
+  <div class="row">
+    <div class="page_title">New <%= @event_type.titlecase %></div>
+  </div>
+
   <%= render 'form' %>
 </div>

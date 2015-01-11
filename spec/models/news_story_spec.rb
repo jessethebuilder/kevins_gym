@@ -62,36 +62,36 @@ RSpec.describe NewsStory, :type => :model do
     let!(:archive){ create :archive }
 
 
-    describe '#records(show_drafts: false, show_archives: false, :hide_published => false)' do
-      it 'should return no records if :hide_published => false' do
-        NewsStory.records(:hide_published => true).count == 0
-      end
-
-      it 'should return only what is requested (drafts or archives) if :hide_published => false' do
-        #@x = NewsStory.records(:hide_published => true, :show_drafts => true)
-        NewsStory.records(:hide_published => true, :show_drafts => true).count.should == 1
-        NewsStory.records(:hide_published => true, :show_archives => true).count.should == 1
-        NewsStory.records(:hide_published => true, :show_archives => true, :show_drafts => true).count.should == 2
-      end
-
-      it 'should return only published and no archived records if no parameter is sent' do
-        NewsStory.records.count.should == 1
-        NewsStory.records.first.should == pub
-      end
-      
-      it 'should return both published and drafts if show_drafts is true' do
-        NewsStory.records(:show_drafts => true).count.should == 2
-        NewsStory.records(:show_drafts => true).last.should == draft
-      end
-
-      it 'should return published and archived records if show_archives is true' do
-        NewsStory.records(:show_archives => true).count.should == 2
-        NewsStory.records(:show_archives => true).last.should == archive
-      end
-      
-      it 'should return all records if show_drafts and show_archives is set to true' do
-        NewsStory.records(:show_drafts => true, :show_archives => true).count.should == 3
-      end
-    end
+  #  describe '#records(show_drafts: false, show_archives: false, :hide_published => false)' do
+  #    it 'should return no records if :hide_published => false' do
+  #      NewsStory.records(:hide_published => true).count == 0
+  #    end
+  #
+  #    it 'should return only what is requested (drafts or archives) if :hide_published => false' do
+  #      #@x = NewsStory.records(:hide_published => true, :show_drafts => true)
+  #      NewsStory.records(:hide_published => true, :show_drafts => true).count.should == 1
+  #      NewsStory.records(:hide_published => true, :show_archives => true).count.should == 1
+  #      NewsStory.records(:hide_published => true, :show_archives => true, :show_drafts => true).count.should == 2
+  #    end
+  #
+  #    it 'should return only published and no archived records if no parameter is sent' do
+  #      NewsStory.records.count.should == 1
+  #      NewsStory.records.first.should == pub
+  #    end
+  #
+  #    it 'should return both published and drafts if show_drafts is true' do
+  #      NewsStory.records(:show_drafts => true).count.should == 2
+  #      NewsStory.records(:show_drafts => true).last.should == draft
+  #    end
+  #
+  #    it 'should return published and archived records if show_archives is true' do
+  #      NewsStory.records(:show_archives => true).count.should == 2
+  #      NewsStory.records(:show_archives => true).last.should == archive
+  #    end
+  #
+  #    it 'should return all records if show_drafts and show_archives is set to true' do
+  #      NewsStory.records(:show_drafts => true, :show_archives => true).count.should == 3
+  #    end
+  #  end
   end
 end

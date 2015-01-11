@@ -44,7 +44,7 @@
 
     <div class="row">
       <div class="col-12">
-        <%= image_select f, @user, :avatar, :version => :show %>
+        <%= image_select f, @user, :avatar, :version => :show_square %>
       </div><!-- col -->
     </div><!-- row -->
 
@@ -56,7 +56,7 @@
           <% if @user.new_record? %>
             <%= f.hidden_field :password, :val => User.temporary_password %>
           <% else %>
-            <%= link_to "Delete", user_path(@user), :class => 'btn btn-danger',
+            <%= link_to "Delete", user_path(@user), :class => 'btn btn-danger btn-sm',
                       data: { confirm: "Are you sure? This action is permanent!" }, method: :delete %></p>
           <% end %>
         </div>

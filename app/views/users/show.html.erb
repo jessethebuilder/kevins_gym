@@ -1,6 +1,8 @@
+<% content_for(:facebook_meta){ facebook_meta_tags(@user.name, @user.avatar.url.to_s, @user.bio, gym.name) } %>
+
 <div class="container">
   <%= security_gate 'quick_options', 'view' do %>
-    <%= quick_options([['Edit', edit_user_path(@user)]]) %>
+    <%= quick_options(['Edit', edit_user_path(@user)]) %>
   <% end %>
   <div id="user">
     <div class="row">
@@ -9,13 +11,17 @@
     </div><!-- row -->
 
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-8">
         <div class="page_title">
           <%= @user.name %>
-          <%= image_tag(@user.avatar.url(:show), :class => 'avatar') if @user.avatar? %>
         </div>
 
         <div class="content_block">
+          <div class="pull-right">
+            <%= social_networking_likes(:tweet => @user.bio) %>
+          </div>
+          <%= image_tag(@user.avatar.url(:show_square), :class => 'avatar') if @user.avatar? %>
+
           <div class="page_subtitle">
             Skills
           </div>
@@ -36,9 +42,15 @@
 
 
         </div><!-- col -->
-        <div class="col-sm-6">
-          <%= render :partial => 'events/calendar/week', :locals => {:hide_quick_options => true} %>
+        <div class="col-sm-4">
+          <% if @upcoming_classes.count > 0 %>
+            <%= render :partial => 'events/upcoming_class_list' %>
+          <% end %>
+          <%#= render :partial => 'events/calendar/week', :locals => {:hide_quick_options => true} %>
         </div><!-- col -->
     </div><!-- row -->
+
+    <%= facebook_comments_row %>
+
   </div><!-- user -->
 </div>

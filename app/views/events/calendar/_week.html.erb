@@ -1,4 +1,4 @@
-<%= quick_options(calendar_quick_options) unless local_assigns[:hide_quick_options] %>
+<%= quick_options(*calendar_quick_options) if user_is_admin? %>
 
 
 <%= week_calendar :events => @events, :thead => '', :table => {:id => 'calendar_week_table'} do |date, events| %>

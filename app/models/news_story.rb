@@ -18,6 +18,26 @@ class NewsStory < ActiveRecord::Base
 
   validates :title, :presence => true
 
+  #def self.records(show_drafts: false, show_archives: false, hide_published: false, order: nil)
+  #
+  #
+  #  #where(:published => !hide_published).or.where(:published => !show_drafts).or.where(:archived => !show_archives).order(order)
+  #  #
+  #  #if hide_published
+  #  #  r = empty_query
+  #  #else
+  #  #  r = published
+  #  #end
+  #  #r = r.merge(drafts) if show_drafts
+  #  #r = r.merge(archives) if show_archives
+  #  ##r = r + drafts if show_drafts
+  #  ##r = r + archives if show_archives
+  #  #r.order(order)
+  #  #r
+  #end
+
+
+
   #--------------------Methods--------------------------------
 
   #def published=(value)

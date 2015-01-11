@@ -1,10 +1,9 @@
-<% content_for(:facebook_meta){ facebook_meta_tags(@event.name, @event.main_image.url(:large), @event.description, gym.name) } %>
 
 
 <div class="container">
   <div class="show_class">
     <%= security_gate 'event', 'edit_from_show', @event do %>
-      <%= quick_options([['Edit', edit_event_path(@event)]]) %>
+      <%= quick_options(['Edit', edit_event_path(@event)]) %>
     <% end %>
 
     <div class="row">

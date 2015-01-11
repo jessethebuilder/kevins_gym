@@ -4,6 +4,7 @@
  *= require bootstrap-datetimepicker.min
  = require_tree .
  */
+@import 'farm_tools';
 @import 'calendar';
 @import 'events';
 @import 'users';
@@ -73,13 +74,16 @@ h1{
 }
 
 .edit_link:link{
-  color: blue;
+  color: $gym_primary;
   font-size: 18px;
 //  float: right;
 
 }
 .edit_link:visited{
-  color: blue;
+  color: $gym_primary;
+}
+.edit_link:hover{
+  color: $gym_secondary;
 }
 
 .attribute_list{
@@ -109,14 +113,14 @@ h1{
   }
 
   a{
-    color: white;
-    font-size: 14px;
+    color: $calendar_dark;
+    font-size: 18px;
     font-weight: 600;
     letter-spacing: .2em;
   }
 
   a:hover{
-    color: $calendar_medium;
+    color: $gym_primary;
   }
 
   ul.dropdown-menu{
@@ -145,7 +149,7 @@ h1{
 
   h1{
 
-    color: $gym_main_color;
+    color: $gym_secondary;
     text-shadow: 3px 3px $calendar_dark;
 
     text-align: left;
@@ -207,11 +211,13 @@ h1{
 }
 
 .page_title{
+  @include main_link;
   font-size: 58px;
   font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
   font-weight: 800;
   text-shadow: $text_shadow_accent;
   color: $calendar_dark;
+
 }
 .page_subtitle{
   @extend .page_title;

@@ -1,4 +1,4 @@
-<%= quick_options(calendar_quick_options){ user_signed_in? ? ["New Class", new_event_path(:event_type => @event_type)]: nil} %>
+<%= quick_options(*calendar_quick_options){ user_signed_in? ? ["New Class", new_event_path(:event_type => @event_type)]: nil} %>
 
 <div id="calendar_list">
   <div class="row">
