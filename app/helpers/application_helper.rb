@@ -34,9 +34,9 @@ module ApplicationHelper
   #            })</script>"
   #end
 
-  SOCIAL_NETWORKS = {:facebook => {:link => 'www.facebook.com'},
-                     :twitter => {:link => '#'},
-                     :youtube => {:link => '#'}
+  SOCIAL_NETWORKS = {:facebook => {:link => 'https://www.facebook.com/pages/Sequim-Gym/414083728647866'}
+                     #:twitter => {:link => '#'},
+                     #:youtube => {:link => '#'}
   }
 
   #

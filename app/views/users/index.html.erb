@@ -1,44 +1,65 @@
 <div class="container">
   <%= security_gate('quick_options', 'view') do %>
     <%= quick_options(['Create User', new_user_path]) %>
-
   <% end %>
 
   <div class="row">
-    <div class="col-12">
+    <div class="col-sm-12">
       <div class="page_title">Our Team</div>
     </div><!-- col -->
   </div><!-- row -->
 
-  <div id="users" class="page_content">
-    <% @users.in_groups_of(2) do |grp|  %>
-
-
+  <!--<div id="users">-->
+    <% @users.each do |user| %>
       <div class="row user_row">
-        <% grp.each do |user| %>
-          <% if user #since user is in groups, an odd number will create an empty second half of the last group. Raises errors %>
-            <div class="col-md-6">
-              <div class="user content_block">
-                <%= user_bio(user) %>
-              </div>
-            </div><!-- col -->
-          <% end %>
-        <% end %>
+        <div class="col-sm-4">
+          <div class="page_subtitle">
+            <%= link_to user.name, user %>
+          </div>
+
+          <div class="record_descripton">
+            <%= user.bio.to_s %>
+          </div>
+        </div><!-- col -->
+
+        <div class="col-sm-4">
+
+          <%= skills_list(user) %>
+          <%#= user.bio.to_s %>
+
+        </div><!-- col -->
+
+        <div class="col-sm-4">
+          <%= image_tag(user.avatar.url(:show_circle), :class => 'pull-righdt avatar', :style => 'padding-right: 10px;') if user.avatar? %>
+        </div><!-- col -->
+
       </div><!-- row -->
+
     <% end %>
-  </div><!-- news_stories -->
+  <!--</div>&lt;!&ndash; users &ndash;&gt;-->
 </div>
 
-<script>
-  //normalize_user_cols();
 
-  function normalize_user_cols(){
-    $('.user_row').each(function(i, row){
-      //There are two columns. Probably start to abstract this before you finish this comment
-      var cols = $(row).find('user');
-      var tallest_col = cols[0].height() > cols[1].height() ? cols[0].height() : cols[1].height();
-      $(tallest_col).css('min-height', tallest_col.height());
-    })
-  }
 
-</script>
+
+
+<div class="row user_row">
+  <!--<div class="col-md-4">-->
+  <!--<div class="page_subtitle">-->
+  <!--<%#= link_to user.name, user_path(user) %>-->
+  <!--</div>-->
+
+  <!--<div class="record_description">-->
+  <!--<%#= user.bio.to_s %>-->
+  <!--</div>-->
+  <!--</div>&lt;!&ndash; col &ndash;&gt;-->
+
+  <div class="col-md-4">
+    <%#= skills_list(user) %>
+  </div>
+
+  <!--<div class="col-md-4">-->
+  <!--<%#= image_tag(user.avatar.url(:show_circle), :class => 'apull-right avatar', :style => 'padding-right: 10px;') if user.avatar? %>-->
+  <!--</div>-->
+</div><!-- row -->
+

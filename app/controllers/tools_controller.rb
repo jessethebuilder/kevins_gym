@@ -1,6 +1,6 @@
 class ToolsController < ApplicationController
   def home
-
+    render :home, :layout => 'blank'
   end
 
   def membership

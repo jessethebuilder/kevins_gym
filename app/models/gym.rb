@@ -1,4 +1,4 @@
-class Gym < ActiveRecord::Base
+  class Gym < ActiveRecord::Base
   validates :name, :presence => true
   validates :phone, :presence => true
   validates :email, :presence => true

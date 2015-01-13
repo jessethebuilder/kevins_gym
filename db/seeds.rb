@@ -11,9 +11,9 @@ g.save!
 #  u.save!
 #end
 
-10.times do
+10.times do |n|
   #a bunch of random users
-  u = User.new :email => Faker::Internet.email, :password => @pw, :level => 'staff', :skills => [User::SKILLS.sample]
+  u = User.new :email => "#{n}_#{Faker::Internet.email}", :password => @pw, :level => 'staff', :skills => [User::SKILLS.sample]
   unless u.level == 'member' && Random.rand(1..4) != 1
     u.first_name = Faker::Name.first_name
     u.last_name = Faker::Name.last_name

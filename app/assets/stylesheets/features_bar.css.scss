@@ -1,14 +1,16 @@
 @import 'variables';
 
 #features_bar{
-  background-color: black;
+//  background-color: black;
+  background-color: transparent;
   margin-top: 10px;
   margin-bottom: 10px;
-  border: 2px solid $calendar_medium;
+//  border: 2px solid $calendar_medium;
   border-radius: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  box-shadow: $shadow_still;
+//  box-shadow: $shadow_still;
+//  box-shadow: $shadow_still;
 
   a:link{
     color: $calendar_very_light;

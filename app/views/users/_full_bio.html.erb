@@ -2,7 +2,7 @@
 
 <div id="user_bio">
 
-  <%= image_tag(user_record.avatar.url(:show_circle), :class => 'pull-right avatar', :style => 'padding-right: 10px;') if user_record.avatar? %>
+  <%#= image_tag(user_record.avatar.url(:show_circle), :class => 'pull-right avatar', :style => 'padding-right: 10px;') if user_record.avatar? %>
 
     <div class="page_subtitle">
       <%= link_to "#{user_record.first_name} #{user_record.last_name}", user_path(user_record) %>
@@ -19,6 +19,6 @@
 
   <%= user_record.bio.html_safe if user_record.bio %>
 
-  <div class="clearfix"></div>
+  <!--<div class="clearfix"></div>-->
 
 </div>

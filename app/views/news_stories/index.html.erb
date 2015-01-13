@@ -3,12 +3,24 @@
     <!--<h1 class="visible-md medium">Kevin's Gym</h1>-->
     <!--<h1 class="visible-xs visible-sm smaller">Kevin's Gym</h1>-->
   <!--</div>-->
+  <style>
+    .banner_image{
+      height: 400px;
+      width: 100%;
+      /*margin-bottom: 10px;*/
+    }
+  </style>
 
-<div class="container">
+
+
+  <%= image_tag 'backgrounds/gym_still_2.jpg', :class => 'banner_image' %>
+
+  <%= render :partial => 'parts/features_bar' %>
+
+  <div class="container">
   <!--<div style="font-family: president; font-size: 128px;">Sequim Gym</div>-->
 
 
-  <%= render :partial => 'parts/features_bar' %>
 
   <div class="row">
     <div class="col-sm-9 col_left">
