@@ -1,67 +1,19 @@
-  <!--<div id="home_header">-->
-    <!--<h1 class="visible-lg">Kevin's Gym</h1>-->
-    <!--<h1 class="visible-md medium">Kevin's Gym</h1>-->
-    <!--<h1 class="visible-xs visible-sm smaller">Kevin's Gym</h1>-->
-  <!--</div>-->
-  <style>
-    .banner_image{
-      height: 400px;
-      width: 100%;
-      /*margin-bottom: 10px;*/
-    }
-  </style>
+<!--<div class="banner_image"  data-0="opacity:1;z-index:100;" data-200="opacity:0;z-index:100;">-->
+  <!--<%= image_tag 'backgrounds/gym_still_2.jpg' %>-->
+<!--</div>-->
 
+<%= render :partial => 'parts/features_bar' %>
 
-
-  <%= image_tag 'backgrounds/gym_still_2.jpg', :class => 'banner_image' %>
-
-  <%= render :partial => 'parts/features_bar' %>
-
-  <div class="container">
-  <!--<div style="font-family: president; font-size: 128px;">Sequim Gym</div>-->
-
-
-
+<div class="container">
   <div class="row">
-    <div class="col-sm-9 col_left">
-      <!--<div class="banner_image">-->
-        <!--<%= image_tag 'logos/sequim_gym_logo_brown.png' %>-->
-      <!--</div>-->
-
-      <div id="news_stories" class="content_block">
-        <%= security_gate 'quick_options', 'view' do %>
-          <%= quick_options ["New Story", new_news_story_path] %>
-        <% end %>
-        <div class="news_list_header">
-          <h1>Gym News</h1>
-        </div>
-        <div class="news_list">
-          <% @news_stories.each do |story| %>
-            <%= security_gate('news_story', 'index_edit_story') do %>
-              <%= quick_options ['Edit', edit_news_story_path(story)] %>
-            <% end %>
-            <div class="news_story">
-                <div class="news_story_headline">
-                  <%= link_to story.title, news_story_path(story) %>
-                  <%= image_tag(story.main_image.url(:thumb), :class => "story_image pull-#{cycle('right', 'left')}") if story.main_image? %>
-                </div>
-
-                <div class="news_story_content">
-                  <%= truncate(story.content, :length => 250).html_safe %>
-                </div>
-              <div class="clearfix"></div>
-
-              </div><!-- news_story -->
-            </li>
-          <% end %>
-        </div>
-      </div>
-
+    <div class="col-sm-9">
+      <%= image_tag 'logos/sequim_gym_logo_brown.png', :style => 'height: 200px; margin-bottom: 20px; text-align: center;' %>
+      <%= render :partial => 'stories' %>
     </div><!-- col -->
 
 
 
-    <div class="col-sm-3 col_right text-center">
+    <div class="col-sm-3">
       <%= render :partial => 'events/upcoming_class_list' %>
     </div><!-- col -->
   </div><!-- row -->

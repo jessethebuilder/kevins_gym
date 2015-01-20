@@ -8,7 +8,7 @@ gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-
+gem 'compass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
@@ -33,6 +33,7 @@ group :doc do
 end
 
 
+
 gem 'simple_form'
 gem 'momentjs-rails'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
@@ -52,6 +53,7 @@ gem "simple_calendar", "~> 1.1.0"
 gem 'faker'
 
 gem 'bootsy'
+gem 'skrollr-rails'
 
 group :test, :development do
 

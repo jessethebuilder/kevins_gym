@@ -1,0 +1,37 @@
+
+<div id="news_stories" class="content_block">
+  <%= security_gate 'quick_options', 'view' do %>
+    <%= quick_options ["New Story", new_news_story_path] %>
+  <% end %>
+  <h1><%= gym.name + ' News' %></h1>
+
+  <div class="news_list">
+    <% @news_stories.each do |story| %>
+      <%= security_gate('news_story', 'index_edit_story') do %>
+        <%= quick_options ['Edit', edit_news_story_path(story)] %>
+      <% end %>
+      <div class="news_story">
+        <h3>
+          <%= link_to story.title, news_story_path(story) %>
+          <%= image_tag(story.main_image.url(:thumb), :class => "story_image pull-#{cycle('right', 'left')}") if story.main_image? %>
+        </h3>
+
+        <p>
+          <%= story.content[0..200].html_safe %>
+        </p>
+        <div class="clearfix"></div>
+      </div><!-- news_story -->
+
+
+
+  <% end %>
+
+    <div class="more_stories">
+      <%= link_to 'More News Stories... ', more_news_stories_path, :remote => true %>
+    </div>
+  </div>
+</div>
+
+<style>
+
+</style>

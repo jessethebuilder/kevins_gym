@@ -1,0 +1,40 @@
+#news_story{
+  margin-top: 15px;
+
+  .story_author{
+    padding-left: 20px;
+    margin-top: -10px;
+  }
+  .story_content{
+    margin-top: 20px;
+  }
+} // end #news_story
+
+#news_stories{
+  h1{
+    border-bottom: 2px solid $calendar_dark;
+  }
+
+  .more_stories{
+    text-align: right;
+    text-size: 18px;
+    font-weight: 600;
+  }
+
+  .news_story{
+    margin-top: 5px;
+    @include main_link;
+
+
+    p{
+      font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace;
+      margin-top: 0px;
+      line-height: 1.4em;
+    }
+
+    img.story_image.pull-left{
+      //this is so the stories with the image to the left indent properly
+      margin-right: 10px;
+    }
+  }
+} //end #news_stories

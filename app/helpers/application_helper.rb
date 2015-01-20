@@ -10,40 +10,18 @@ module ApplicationHelper
   def gym
     Gym.first || Gym.new
   end
-
-  #def quick_options(options)
-  #  html = initiate_quick_options
-  #  #html += '<div class="row">'
-  #  html += '<ul class="quick_options">'
   #
-  #  options << yield if block_given?
-  #  options.each do |o|
-  #    html += '<li>'
-  #      html += link_to o[0], o[1]
-  #    html += '</li>'
-  #  end
-  #  html += '</ul>'
-  #  #html += '</div>'
-  #
-  #  html.html_safe
-  #end
-  #
-  #def initiate_quick_options
-  #  "<script>$(document).ready(function(){
-  #                    quickOptionsBehaviors();
-  #            })</script>"
-  #end
+  #FEATURES = {
+  #    :membership => '',
+  #    :classes => ,
+  #    :personal_training => ,
+  #    :nutrition
+  #}
 
   SOCIAL_NETWORKS = {:facebook => {:link => 'https://www.facebook.com/pages/Sequim-Gym/414083728647866'}
                      #:twitter => {:link => '#'},
                      #:youtube => {:link => '#'}
   }
-
-  #
-  #def image_select(form_builder, object, uploader, version: :thumb)
-  #  render :partial => 'parts/image_select', :locals => {:f => form_builder, :object => object,
-  #                                                       :uploader => uploader, :version => version}
-  #end
 
   def durations_for_select
     [['Half Hour', 30], ['1 Hour', 60], ['Hour and a Half', 90], ['2 hours', 120]]

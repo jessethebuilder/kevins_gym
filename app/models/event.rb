@@ -29,19 +29,12 @@ class Event < ActiveRecord::Base
   validate :has_duration_if_class, :has_user_if_class #, :ends_at_is_after_starts_at
 
   def has_duration_if_class
-    #errors.add :duration, 'cannot be blank' if duration.nil?
     errors.add :duration, 'cannot be blank' if event_type == 'class' && duration.nil?
   end
 
   def has_user_if_class
     errors.add :user_id, 'class must have an instructor' if event_type == 'class' && user_id.nil?
   end
-  #
-  #def ends_at_is_after_starts_at
-  #  unless ends_at.nil?
-  #    errors.add :ends_at, 'must be after start time' if ends_at < starts_at
-  #  end
-  #end
 
   def month
     starts_at.strftime('%B')
@@ -64,12 +57,16 @@ class Event < ActiveRecord::Base
   end
 
   def duration=(val)
-    @duration = val ? Integer(val) : 0
+    @duration = val ? Integer(val) : nil
   end
 
   def duration
+    #ends_at is set in before_validation filter, because it needs to be set before record is saved,
+    #after the duration value is set (here).
     if ends_at && starts_at
       Integer((ends_at - starts_at) / 60)
+    else
+      nil
     end
   end
 
@@ -95,12 +92,17 @@ class Event < ActiveRecord::Base
       classes = self.classes.soonest_first
     end
 
-    all_hash = classes.group_by{ |event| event.date}
-    #limit the number of days
+    group_records(classes, :date, day_count)
+  end
+
+  private
+
+  def self.group_records(records, attr, count = nil)
+    all_hash = records.group_by{ |r| r.send(attr) }
     h = {}
     i = 0
     all_hash.each do |k, v|
-      if i < day_count
+      if i < count || count.nil?
         h[k] = v
         i += 1
       else

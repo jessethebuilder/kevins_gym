@@ -2,13 +2,15 @@
 <html>
 <head>
   <title><%= gym.name %></title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "application.css", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 
   <%= content_for :facebook_meta %>
 
   <%= favicon_link_tag "favicon.ico" %>
+
+  <!--<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>-->
 
   <%= facebook_sdk(SOCIAL_NETWORKING[:facebook][:id], :turbolinks => true) %>
 </head>
@@ -18,6 +20,8 @@
 <%= render :partial => 'parts/top_nav' %>
 <%= render :partial => 'parts/social_networking_bar' %>
 <%= render :partial => 'parts/the_flash' %>
+
+<%#= render :partial => 'parts/features_bar' %>
 
 <div id="page_content">
   <%= yield %>

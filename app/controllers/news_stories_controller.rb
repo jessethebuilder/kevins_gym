@@ -3,11 +3,15 @@ class NewsStoriesController < ApplicationController
 
   before_action :set_news_story, only: [:show, :edit, :update, :destroy]
 
-  before_action :except => [:index, :show] do |controller|
+  before_action :except => [:index, :show, :more] do |controller|
     authenticate_user_level!(controller, 'admin')
   end
 
-  respond_to :html
+  respond_to :html, :js
+
+  def more
+    @news_stories = NewsStory.published
+  end
 
   def index
     set_upcoming_classes

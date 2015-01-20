@@ -1,0 +1,53 @@
+@mixin text_shadow($color, $width){
+  text-shadow: $width $width $color;
+}
+
+@mixin page_title{
+  @include text-shadow($gym_secondary, 2px);
+  font-size: 80px;
+  font-family: 'Righteous' serif;
+  font-weight: 800;
+  color: $calendar_dark;
+}
+
+@mixin secondary_title{
+  @include text_shadow($gym_primary, 1px);
+  line-height: 34px;
+  font-size: 34px;
+  font-family: Impact, Charcoal, sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}
+@mixin list_text($size, $color){
+  font-family: times, Times New Roman, times-roman, georgia, serif;
+  letter-spacing: -1px;
+  font-size: $size;
+  line-height: $size;
+  color: $color;
+  font-weight: 600;
+}
+
+@mixin main_link{
+  a{
+//    color: $calendar_dark;
+    color: $gym_primary;
+  }
+  a:visited{
+    color: $gym_primary;
+  }
+  a:hover{
+    color: $calendar_medium;
+    text-decoration: none;
+    text-shadow: 0px 0px;
+  }
+}
+
+
+@mixin headline($font_size, $font_color){
+  @include main_link;
+  font-size: $font-size;
+  font-family: times, Times New Roman, times-roman, georgia, serif;
+  letter-spacing: -2px;
+  font-weight: bold;
+  color: $font_color;
+}

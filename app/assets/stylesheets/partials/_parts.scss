@@ -1,0 +1,134 @@
+//@import 'modules/variables';
+
+#the_flash {
+
+  .alert{
+    margin-bottom: 0px;
+  }
+}
+
+#top_nav{
+  a{
+    color: $calendar_dark;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: .2em;
+    text-align: center;
+    border-bottom: 1px solid transparent;
+  }
+
+  a:hover{
+    color: $gym_primary;
+    border-bottom: 1px solid $gym_primary;
+  }
+
+  ul.dropdown-menu{
+    box-shadow: $shadow_dropdown;
+    background-color: rgba($calendar_light, .9);
+
+    li{
+      vertical-align: middle;
+    }
+    li:hover{
+    }
+    a{
+      color: $calendar_dark;
+    }
+  }
+}
+
+#footer{
+  padding-top: 20px;
+  padding-bottom: 30px;
+  background-color: rgba(192, 192, 192, 0.85);
+
+  margin-top: 50px;
+//  box-shadow: $footer_shadow;
+
+  img.social_icon{
+    width: 50px;
+    height: 50px;
+
+  }
+
+  .footer_col{
+  }
+  .footer_center_col{
+    border-left: 2px solid $calendar_light;
+    border-right: 2px solid $calendar_light;
+  }
+
+  address{
+    a:link{
+      color: $calendar-dark;
+    }
+    a:visited{
+      color: $calendar_dark;
+    }
+  }
+}
+
+.social_network_follow_button{
+  padding-top: 3px;
+
+}
+
+#social_networking_bar{
+  height: 26px;
+  //  background-color: $gym_xsecondary;
+  padding-top: 3px;
+
+  .follow_button{
+    float: right;
+    padding-left: 15px;
+  }
+
+  .follow_on_twitter_button{
+    padding-top: 1px;
+  }
+}
+.facebook_comments{
+  margin-top: 20px;
+}
+
+.social_networking_likes{
+  padding-top: 20px;
+  padding-right: 20px;
+
+  .tweet{
+    margin-top: 8px;
+  }
+}
+
+#features_bar{
+//  background-color: black;
+  //  background-color: transparent;
+  background-image: image_url('backgrounds/gym_still_3.jpg');
+  margin-bottom: 10px;
+  border: 2px solid $calendar_medium;
+  border-radius: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: $shadow_still;
+
+  a:link{
+    color: $calendar_very_light;
+  }
+
+  a{
+    color: $calendar_very_light;
+  }
+  a:hover{
+    color: $gym_secondary;
+  }
+
+  div.icon_label{
+    margin-top: 3px;
+    font-size: 14px;
+  }
+
+  img{
+    width: 90px;
+    height: 90px;
+  }
+}

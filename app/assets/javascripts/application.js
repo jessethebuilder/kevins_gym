@@ -19,6 +19,7 @@
 //= require bootstrap-datetimepicker
 //= require pickers
 //= require farm_tools
+//= require skrollr
 //= require_tree .
 
 $(document).ready(function(){
@@ -29,79 +30,16 @@ $(document).ready(function(){
   imageChangeOnLinkHover('.social_icon');
   //set page height so footer is always on bottom
   $('#page_content').css('min-height', $(window).height() - 400);
+
+  var s = skrollr.init();
+
+  onMediaQuery('sm', function(){
+    $('#top_nav a').css('border-bottom-width', '0px');
+  }, function(){
+  })
 })
 
 
-//toolbox---------------------------------------------------------------------------------------
 
-function onMediaQuery(screen_size, on_methods, off_methods) {
-  var size = parseScreenSize(screen_size);
 
-  enquire.register("screen and (max-width:" + size + "px)", [{
-      match: function () {
-          if(typeof on_methods == "function"){on_methods = [on_methods]}
-          on_methods.forEach(function(method){
-              method();
-          })
-      },
-      unmatch: function () {
-          if(typeof off_methods == "function"){off_methods = [off_methods]}
-          off_methods.forEach(function(method){
-              method();
-          })
-
-      }
-    }
-  ])
-}
-
-function parseScreenSize(size){
-  var val
-  switch(size){
-    case 'sm':
-      val = 768;
-      break;
-    case 'md':
-      val = 992;
-      break;
-    case 'lg':
-      val = 1200;
-      break;
-    default:
-      val = size;
-  }
-  return val;
-}
-
-////Toolbox ---------------------------------------------
-//function splitPath(path){
-//  var file = path.match(/(.+\/)(\w+)\.(.+)/);
-//  return {
-//    path_to_file: file[1],
-//    file_name: file[2],
-//    extension: file[3]
-//  };
-//
-//}
-//function imageChangeOnLinkHover(selector){
-//  $(selector).hover(function(){
-//    var img = $(this).find('img');
-//    var split_path = splitPath(img.attr('src'));
-//    var new_path = split_path.path_to_file + split_path.file_name + "_hover." + split_path.extension;
-//    img.attr('src', new_path);
-//  }, function(){
-//    var split_path = splitPath($(this).find('img').attr('src'));
-//    var new_file_name = split_path.file_name.match(/(.+)_hover/)[1]
-//    var new_path = split_path.path_to_file + new_file_name + "." + split_path.extension;
-//    $(this).find('img').attr('src', new_path);
-//  })
-//}
-//
-//function toggleClassOnHover(selector, klass, persist){
-//  $(selector).hover(function(){
-//    $(this).addClass(klass);
-//  }, function(){
-//    $(this).removeClass(klass);
-//  })
-//}
 
