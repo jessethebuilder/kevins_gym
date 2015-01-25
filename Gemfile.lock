@@ -6,16 +6,14 @@ GIT
   specs:
     datetimepicker-rails (3.1.1)
 
-GIT
-  remote: https://github.com/jessethebuilder/TwitterExpress
-  revision: 780ede7751afe8e03acb71b10585eefba22fe542
+PATH
+  remote: c:/users/jf/desktop/jesseweb/TwitterExpress
   specs:
     twitter_express (0.0.1)
       rails (~> 4.0.2)
 
-GIT
-  remote: https://github.com/jessethebuilder/farm_tools
-  revision: 058352993583bdead6c5c38a6f0492ffa8f0900e
+PATH
+  remote: c:/users/jf/desktop/jesseweb/farm_tools
   specs:
     farm_tools (0.0.1)
       rails
@@ -100,6 +98,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.4.3)
       i18n (~> 0.5)
+    ffi (1.9.6)
     ffi (1.9.6-x86-mingw32)
     formatador (0.2.5)
     guard (2.11.1)
@@ -117,6 +116,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     hike (1.2.3)
+    hitimes (1.2.2)
     hitimes (1.2.2-x86-mingw32)
     i18n (0.7.0)
     jbuilder (1.5.3)

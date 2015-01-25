@@ -8,7 +8,8 @@
 
   <%= content_for :facebook_meta %>
 
-  <%= favicon_link_tag "favicon.ico" %>
+  <% icon_colors = %w|red| %>
+  <%= favicon_link_tag "favicons/favicon_#{icon_colors.sample}" %>
 
   <!--<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>-->
 
@@ -18,7 +19,7 @@
 <body>
 
 <%= render :partial => 'parts/top_nav' %>
-<%= render :partial => 'parts/social_networking_bar' %>
+<%#= render :partial => 'parts/social_networking_bar' %>
 <%= render :partial => 'parts/the_flash' %>
 
 <%#= render :partial => 'parts/features_bar' %>

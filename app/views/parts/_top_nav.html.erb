@@ -15,7 +15,7 @@
       </button>
       <%#= link_to "Kevin's Gym", root_path, :class => 'navbar-brand' %>
       <%= link_to root_path, :class => 'no_decoration' do %>
-        <%= image_tag 'logos/sequim_gym_logo_banner_brown.png' %>
+        <%= image_tag 'logos/sequim_gym_small_yellow.png', :style => 'height:50px;' %>
       <% end %>
     </div>
 
@@ -47,19 +47,25 @@
         <li>
           <%= link_to 'Membership', '#' %>
         </li>
-        <li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Classes <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to 'All Classes', events_path %></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Classes by</li>
-                <% User.instructors.each do |i| %>
-                  <li><%= link_to i.name, user_events_path(i) %></li>
-                <% end %>
-              </ul>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Classes <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'All Classes', events_path %></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Classes by</li>
+              <% User.instructors.each do |i| %>
+                <li><%= link_to i.name, user_events_path(i) %></li>
+              <% end %>
+            </ul>
+        </li>
 
-          </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to 'Personal Training', personal_training_path %></li>
+              <li><%= link_to 'Nutrition', nutrition_path %></li>
+              <li><%= link_to 'Massage', massage_path %></li>
+            </ul>
         </li>
 
         <!--<%#= security_gate('top_nav', 'tools_menu') do %>-->
@@ -74,22 +80,22 @@
         <!--<%# end %>-->
 
 
-          <% if user_signed_in? %>
+          <%# if user_signed_in? %>
             <!--<li>-->
-              <!--<%= link_to 'Account', edit_user_registration_path(current_user) %>-->
+              <!--<%#= link_to 'Account', edit_user_registration_path(current_user) %>-->
             <!--</li>-->
-            <li>
-              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-            </li>
-      <% else %>
-            <li>
-              <%= link_to 'Login', new_user_session_path %>
-            </li>
+            <!--<li>-->
+              <%#= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+            <!--</li>-->
+      <%# else %>
+            <!--<li>-->
+              <%#= link_to 'Login', new_user_session_path %>
+            <!--</li>-->
             <!--<li style="font-weight:800;">-->
-               <!--<%= link_to 'Sign Up', new_user_registration_path %>-->
+               <!--<%#= link_to 'Sign Up', new_user_registration_path %>-->
             <!--</li>-->
-          <% end %>
-        </li>
+          <!--<%# end %>-->
+        <!--</li>-->
       </ul>
     </div>
   </div>

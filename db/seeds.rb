@@ -37,7 +37,7 @@ admin.save!
   ec.save!
 end
 
-30.times do
+100.times do
   hour = Random.rand(6..20)
   if hour >= 12
     ampm = 'pm'

@@ -1,11 +1,17 @@
 body{
   background-color: $calendar_very_light;
-  //  background-image: url(image_path("backgrounds/gym_still_2.jpg"));
+//  background-image: url(image_path('backgrounds/gym_still_2.jpg'));
 }
 
-.page_content{
+
+#page_content{
   //the whole page
-  margin-top: 15px;
+//  margin-top: 15px;
+
+  .container{
+//    background-color: $calendar_very_light;
+
+  }
 }
 
 h1{
@@ -22,13 +28,8 @@ h3{
   @include headline(32px, $calendar_dark);
 }
 
-.banner_image{
-  img{
-    height: 500px;
-    width: 100%;
-    position: fixed;
-//    top: -26px;
-  }
+h4{
+
 }
 
 

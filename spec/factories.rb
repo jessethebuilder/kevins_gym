@@ -91,20 +91,26 @@ FactoryGirl.define do
 
     #event is any event EXCEPT a :class
     events = Event::EVENT_TYPES.dup
-    events.delete(:class)
+    events.delete('class')
     event_type events.sample
+    duration [30, 45, 60, 75, 90].sample
 
 
+    factory :weekly_event do
+      reoccurs_every 'week'
+    end
+
+    factory :daily_event do
+      reoccurs_every 'day'
+    end
 
     factory :class do
       event_type 'class'
       association :user, :factory => User::AFFILIATED_LEVELS.sample
-      duration [30, 45, 60, 75, 90].sample
     end
 
     factory :appointment do
       event_type 'appointment'
-
     end
   end
 

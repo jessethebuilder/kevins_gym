@@ -3,6 +3,8 @@
 @import 'partials/bootstrap_customizations';
 @import 'bootstrap';
 
+@import 'farm_tools';
+
 @import 'partials/global';
 
 @import 'partials/bootsy_styles';
@@ -12,6 +14,3 @@
 @import 'partials/parts';
 @import 'partials/users';
 @import 'partials/utilities';
-
-@import 'vendor/_all';
-

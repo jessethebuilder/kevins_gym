@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------
+* #news_story
+* #news_stories
+ - #news_stories_header
+---------------------------------------------------------------*/
+
 #news_story{
   margin-top: 15px;
 
@@ -10,7 +16,10 @@
   }
 } // end #news_story
 
+
+
 #news_stories{
+  margin-top: 15px;
   h1{
     border-bottom: 2px solid $calendar_dark;
   }
@@ -24,6 +33,8 @@
   .news_story{
     margin-top: 5px;
     @include main_link;
+    border-bottom: 1px solid $calendar_medium;
+
 
 
     p{
@@ -35,6 +46,18 @@
     img.story_image.pull-left{
       //this is so the stories with the image to the left indent properly
       margin-right: 10px;
+    }
+  }
+
+  #news_stories_header{
+    border-bottom: 1px solid $calendar_dark;
+//    text-align: center;
+
+    img{
+      height: 200px;
+      padding-bottom: 25px;
+      margin-left: 20px;
+      //    margin-rigth: auto;
     }
   }
 } //end #news_stories

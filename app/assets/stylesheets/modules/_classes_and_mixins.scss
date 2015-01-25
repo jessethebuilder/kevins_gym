@@ -3,7 +3,7 @@
 }
 
 @mixin page_title{
-  @include text-shadow($gym_secondary, 2px);
+//  @include text-shadow($gym_secondary, 2px);
   font-size: 80px;
   font-family: 'Righteous' serif;
   font-weight: 800;
@@ -51,3 +51,5 @@
   font-weight: bold;
   color: $font_color;
 }
+
+

@@ -11,12 +11,7 @@ RSpec.describe Event, :type => :model, :js => false do
     it{ should validate_inclusion_of(:event_type).in_array(symbols_and_strings(Event::EVENT_TYPES)) }
     it{ should validate_inclusion_of(:reoccurs_every).in_array(Event::REOCCURRENCE_TYPES)}
     it{ should validate_presence_of(:reoccurs_every) }
-
-    it 'should validate presence of :duration IF :type == :class' do
-      cl.duration = nil
-      cl.valid?
-      cl.errors.messages[:duration].include?('cannot be blank').should == true
-    end
+    it{ should validate_presence_of(:duration) }
 
     it 'should validate that an event of type :class has a user' do
       cl.user = nil
@@ -24,7 +19,7 @@ RSpec.describe Event, :type => :model, :js => false do
       cl.errors.messages[:user_id].include?('class must have an instructor').should == true
     end
 
-    it{ should validate_presence_of :event_category_id }
+    #it{ should validate_presence_of :event_category_id }
   end
 
   describe 'Associations' do
@@ -51,7 +46,60 @@ RSpec.describe Event, :type => :model, :js => false do
       end
     end
 
+    describe '#reoccurs?' do
+      it 'should return false if reoccurs_every is "never"' do
+        event.reoccurs_every = "never"
+        event.reoccurs?.should == false
+      end
 
+      it 'should return true if otherwise' do
+        event.reoccurs_every = "week"
+        event.reoccurs?.should == true
+
+        event.reoccurs_every = "day"
+        event.reoccurs?.should == true
+      end
+    end
+
+
+  end
+
+  describe 'Reoccuring Events' do
+    let!(:weekly){ create :weekly_event }
+    let!(:daily){ create :daily_event }
+
+    describe 'Event.reoccuring' do
+      it 'should return all classes for which #reoccurance_type is not "never"' do
+        event.reoccurs_every = 'never'
+        event.save
+        Event.reoccuring.count.should == 2 #daily and weekly
+      end
+    end
+
+    describe 'Event.reoccurances(from, till)' do
+      before(:each) do
+        t = Time.parse('1/1/2010 10:00am')
+        weekly.starts_at = t
+        weekly.save
+      end
+
+      it 'should return duplicates of reoccuring classes between the time-frame specified by from and till' do
+        occurance = Event.reoccurences(Time.parse('1/1/2014'), Time.parse('7/1/2014') ).first
+        occurance.starts_at.strftime('%A').should == weekly.starts_at.strftime('%A')
+        occurance.starts_at.strftime('%R').should == weekly.starts_at.strftime('%R')
+        occurance.new_record?.should == true
+      end
+
+      it 'should not return a new record if and where the original record occurs. It will return
+          the original record' do
+        occurance = Event.reoccurences(Time.parse('1/1/2010 8:00am'), Time.parse('1/1/2010 10:00am') ).first
+        occurance.new_record?.should == false
+      end
+
+      specify 'from default now' do
+
+      end
+    end
   end
 
   describe 'Class Methods' do
@@ -107,11 +155,11 @@ RSpec.describe Event, :type => :model, :js => false do
         Event.upcoming_classes.count.should == 2
         Event.upcoming_classes.has_key?('30/12/2009').should == false
       end
-
     end
 
-    describe 'Reoccuring Events' do
 
-    end
+
+
+
   end
 end

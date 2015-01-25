@@ -1,21 +1,23 @@
-<!--<div class="banner_image"  data-0="opacity:1;z-index:100;" data-200="opacity:0;z-index:100;">-->
-  <!--<%= image_tag 'backgrounds/gym_still_2.jpg' %>-->
-<!--</div>-->
+<style>
 
-<%= render :partial => 'parts/features_bar' %>
+</style>
+
+<%= render partial: 'parts/home_banner' %>
+<%= render partial: 'parts/features_bar' %>
+
 
 <div class="container">
+
+
   <div class="row">
-    <div class="col-sm-9">
-      <%= image_tag 'logos/sequim_gym_logo_brown.png', :style => 'height: 200px; margin-bottom: 20px; text-align: center;' %>
+    <div id="news_stories" class="content_block col-sm-9">
       <%= render :partial => 'stories' %>
     </div><!-- col -->
 
 
-
     <div class="col-sm-3">
       <%= render :partial => 'events/upcoming_class_list' %>
-    </div><!-- col -->
+    </div>
   </div><!-- row -->
 </div>
 

@@ -14,6 +14,11 @@ SGym::Application.routes.draw do
 
   #placeholder for what will probably be d/users/new (new users though devise controller)
   get "tools/membership", :to => 'tools#membership', :as => 'membership'
+  get "tools/personal_training", :to => 'tools#personal_training', :as => 'personal_training'
+  get "tools/nutrition", :to => 'tools#nutrition', :as => 'nutrition'
+  get "tools/massage", :to => 'tools#massage', :as => 'massage'
+
+
   get "gym_sign_in", :to => 'tools#gym_sign_in'
 
   devise_for :users, :path_prefix => 'd'
@@ -25,6 +30,8 @@ SGym::Application.routes.draw do
   resources :users
 
 
-  #root :to => 'news_stories#index'
-  root :to => 'tools#home'
+
+
+  root :to => 'news_stories#index'
+  #root :to => 'tools#home'
 end

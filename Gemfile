@@ -53,7 +53,7 @@ gem "simple_calendar", "~> 1.1.0"
 gem 'faker'
 
 gem 'bootsy'
-gem 'skrollr-rails'
+#gem 'skrollr-rails'
 
 group :test, :development do
 
