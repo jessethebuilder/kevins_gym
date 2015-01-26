@@ -8,8 +8,11 @@
 
   <%= content_for :facebook_meta %>
 
-  <% icon_colors = %w|red| %>
-  <%= favicon_link_tag "favicons/favicon_#{icon_colors.sample}" %>
+  <%# icon_colors = %w|red| %>
+  <%#= favicon_link_tag "favicons/favicon_#{icon_colors.sample}" %>
+  <%= favicon_link_tag "favicon.ico" %>
+  <%#= favicon_link_tag "images/favicons/faviocon_red.ico" %>
+
 
   <!--<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>-->
 

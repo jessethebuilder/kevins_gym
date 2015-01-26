@@ -13,7 +13,9 @@ $gym_secondary: #850d15;
 $gym_accent: #634f34;
 $gym_bright_accent: #b5a900;
 
-$shadow_dropdown: 1px 1px 5px $calendar_dark;
+$nav_color: rgba($gym_primary, .9);
+
+$shadow_dropdown: 1px 1px 3px $calendar_dark;
 $shadow_still: 1px 1px 1px 2px $calendar_dark;
 $shadow_selected: 6px 6px 10px $calendar_dark;
 $text_shadow_accent: 2px 2px $gym_secondary;

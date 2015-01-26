@@ -15,11 +15,11 @@
   position: relative;
 //  border-bottom: 2px solid $calendar_medium;
 
-  .banner_image{
-    height: 200px;
+//  .banner_image{
+//    height: 200px;
 //    margin-bottom: 5px;
-    max-width: 19.5%;
-  }
+//    max-width: 19.5%;
+//  }
   .intro_banner_backdrop{
     position: absolute;
     height: 600px;
@@ -32,7 +32,7 @@
   .intro_banner{
 //    padding-top: 100px;
     min-height: 600px;
-    background-color: rgba($gym_secondary, .9);
+    background-color: $nav_color;
     position: relative;
 
     h1{
@@ -47,20 +47,6 @@
     }
   }
 } // end home_banner
-
-
-
-//.banner_text{
-//  position: absolute;
-//  top: 10px;
-//  left: 100px;
-//  background-color: rgba($gym_primary, .8);
-//  padding: 15px;
-//
-//  z-index: 500;
-//
-//  /*text-size:*/
-//}
 
 #the_flash {
 
@@ -81,21 +67,26 @@
   }
 
   a:hover{
-    color: $gym_primary;
-    border-bottom: 1px solid $gym_primary;
+    color: $gym_secondary;
+    border-bottom: 1px solid $gym_secondary;
   }
 
   ul.dropdown-menu{
-    box-shadow: $shadow_dropdown;
-    background-color: white;
+//    box-shadow: $shadow_dropdown;
+    background-color: $nav_color;
 
     li{
-      vertical-align: middle;
+//      vertical-align: middle;
     }
     li:hover{
+      background-color: transparent;
     }
     a{
-      color: $calendar_dark;
+      color: white;
+    }
+    a:hover{
+      color: $gym_secondary;
+      background-color: transparent;
     }
   }
 }
@@ -164,16 +155,15 @@
 }
 
 #features_bar{
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: $calendar_dark;
-//  position: relative;
-  height: 200px;
+  min-height: 200px;
 
   img{
     height: 100px;
-//    @extend .hv_center;
-//    height: 200px;
-//    width: 300px;
   }
+
   h4{
     color: white;
 
@@ -181,32 +171,4 @@
       color: $calendar_medium;
     }
   }
-//  background-image: image_url('backgrounds/gym_still_3.jpg');
-//  border: 2px solid $calendar_medium;
-//  border-radius: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-//  box-shadow: $shadow_still;
-//  height: 200px;
-
-  a:link{
-    color: $calendar_very_light;
-  }
-
-  a{
-    color: $calendar_very_light;
-  }
-  a:hover{
-    color: $gym_secondary;
-  }
-
-  div.icon_label{
-    margin-top: 3px;
-    font-size: 14px;
-  }
-
-//  img{
-//    width: 90px;
-//    height: 90px;
-//  }
 } // end features_bar

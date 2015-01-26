@@ -19,7 +19,6 @@
 //= require bootstrap-datetimepicker
 //= require pickers
 //= require farm_tools
-// // = require skrollr
 //= require_tree .
 
 

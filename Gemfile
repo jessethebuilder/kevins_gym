@@ -34,7 +34,7 @@ end
 
 
 
-gem 'simple_form'
+#gem 'simple_form'
 gem 'momentjs-rails'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 
@@ -50,7 +50,7 @@ gem "simple_calendar", "~> 1.1.0"
 
 #gem 'paypal-sdk-rest'
 
-gem 'faker'
+#gem 'faker'
 
 gem 'bootsy'
 #gem 'skrollr-rails'
