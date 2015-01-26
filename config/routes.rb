@@ -32,6 +32,6 @@ SGym::Application.routes.draw do
 
 
 
-  root :to => 'news_stories#index'
-  #root :to => 'tools#home'
+  #root :to => 'news_stories#index'
+  root :to => 'tools#home'
 end
