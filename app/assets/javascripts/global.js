@@ -10,12 +10,14 @@ function ready(){
   //set page height so footer is always on bottom
   $('#page_content').css('min-height', $(window).height() - 400);
 
+  prepareFeaturesBar();
+
 //  var s = skrollr.init();
 
-  onMediaQuery('sm', function(){
-    $('#top_nav a').css('border-bottom-width', '0px');
-  }, function(){
-  })
+//  onMediaQuery('sm', function(){
+//    $('#top_nav a').css('border-bottom-width', '0px');
+//  }, function(){
+//  })
 
 
 }

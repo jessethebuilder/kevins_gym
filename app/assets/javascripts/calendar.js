@@ -109,8 +109,9 @@ function setUpWeekCalendar(){
 
         set_calendar_size();
 
+      alert('change');
         //change label sizes on xs media query
-        onMediaQuery(768, shrink_calendar_labels, grow_calendar_labels);
+//        onMediaQuery(768, shrink_calendar_labels, grow_calendar_labels);
 
 
       //place events on week calendar in the proper time slot

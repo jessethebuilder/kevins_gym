@@ -6,16 +6,14 @@ GIT
   specs:
     datetimepicker-rails (3.1.1)
 
-GIT
-  remote: https://github.com/jessethebuilder/TwitterExpress
-  revision: 780ede7751afe8e03acb71b10585eefba22fe542
+PATH
+  remote: c:/users/jf/desktop/jesseweb/TwitterExpress
   specs:
     twitter_express (0.0.1)
       rails (~> 4.0.2)
 
-GIT
-  remote: https://github.com/jessethebuilder/farm_tools
-  revision: e367279dbd583a2c94c2d93f3f7579255a89e555
+PATH
+  remote: c:/users/jf/desktop/jesseweb/farm_tools
   specs:
     farm_tools (0.0.1)
       rails

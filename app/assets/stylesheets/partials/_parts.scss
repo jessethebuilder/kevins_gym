@@ -1,5 +1,6 @@
 /*---------------------------------------------------------------------------------
 * #home_banner
+* #features_bar
 * #the_flash
 * #top_nav
 * #footer
@@ -8,18 +9,10 @@
  - #social_networking_bar
  - .facebook_comments
  - .social_networking_likes
-* #features_bar
 ---------------------------------------------------------------------------------*/
 #home_banner{
-//  margin-bottom: 10px;
   position: relative;
-//  border-bottom: 2px solid $calendar_medium;
 
-//  .banner_image{
-//    height: 200px;
-//    margin-bottom: 5px;
-//    max-width: 19.5%;
-//  }
   .intro_banner_backdrop{
     position: absolute;
     height: 600px;
@@ -30,23 +23,53 @@
   }
 
   .intro_banner{
-//    padding-top: 100px;
     min-height: 600px;
     background-color: $nav_color;
     position: relative;
 
     h1{
+      padding: 10px;
+
       @extend .hv_center;
       color: white;
       font-size: 100px;
-//      position: absolute;
-//      top: 50%;
-//      left: 50%;
-//      margin-right: -50%;
-//      transform: translate(-50%, -50%);
     }
   }
 } // end home_banner
+
+#features_bar{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: $gym_secondary;
+  min-height: 200px;
+
+  img{
+    height: 100px;
+  }
+  h3{
+    color: $calendar_medium;
+    letter-spacing: .35em;
+  }
+
+  h4{
+    color: white;
+
+    small{
+      color: $calendar_medium;
+    }
+  }
+
+  .feature_link:visited{
+    text-decoration: none;
+  }
+
+  .feature_link:hover{
+    text-decoration: none;
+    h3{
+      color: $calendar_dark;
+    }
+  }
+} // end features_bar
 
 #the_flash {
 
@@ -82,6 +105,8 @@
       background-color: transparent;
     }
     a{
+      text-align: left;
+
       color: white;
     }
     a:hover{
@@ -153,22 +178,3 @@
     margin-top: 8px;
   }
 }
-
-#features_bar{
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: $calendar_dark;
-  min-height: 200px;
-
-  img{
-    height: 100px;
-  }
-
-  h4{
-    color: white;
-
-    small{
-      color: $calendar_medium;
-    }
-  }
-} // end features_bar

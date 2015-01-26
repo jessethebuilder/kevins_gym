@@ -4,34 +4,50 @@
       <!--<div class="col-sm-4"></div>&lt;!&ndash; col &ndash;&gt;-->
 
 
-      <div class="col-sm-4 text-center">
-        <%= image_tag 'icons/features/membership.png' %>
-        <h4>Become a Member
-          <small>
-            don't be a buster. Members get 10 times the awesomness. Recognize.
+      <div class="col-sm-4 feature_col text-center">
+        <%= link_to membership_path, class: 'feature_link' do %>
+          <h3>fitness</h3>
+          <%= image_tag 'icons/features/fitness.png' %>
+          <%= image_tag 'icons/features/fitness2.png' %>
 
-          </small>
-        </h4>
+
+          <h4>Become a Member
+            <small>
+              don't be a buster. Members get 10 times the awesomness. Recognize.
+
+            </small>
+          </h4>
+        <% end %>
+        <!--<div class="baseline visible-sm-block"></div>-->
       </div><!-- col -->
 
 
-      <div class="col-sm-4 text-center">
-        <%= image_tag 'icons/features/membership.png' %>
-        <h4>Become a Member
-          <small>
-            don't be a buster. Members get 10 times the awesomness. Recognize.
-          </small>
-        </h4>
+      <div class="col-sm-4 feature_col center_col text-center">
+        <%= link_to nutrition_path, class: 'feature_link' do %>
+          <h3>nutrition</h3>
+
+          <%= image_tag 'icons/features/nutrition.png' %>
+          <%= image_tag 'icons/features/nutrition2.png' %>
+          <h4>Something about Nutrition
+            <small>
+              eating is a thing we can help you with. Don't be a buster. Sign up to get your snack on.
+            </small>
+          </h4>
+        <% end %>
       </div><!-- col -->
 
 
-      <div class="col-sm-4 text-center">
-        <%= image_tag 'icons/features/membership.png' %>
-        <h4>Become a Member
-          <small>
-            don't be a buster. Members get 10 times the awesomness. Recognize.
-          </small>
-        </h4>
+      <div class="col-sm-4 feature_col text-center">
+        <%= link_to massage_path, class: 'feature_link' do %>
+          <h3>massage</h3>
+
+          <%= image_tag 'icons/features/fitness.png' %>
+          <h4>Become a Member
+            <small>
+              don't be a buster. Members get 10 times the awesomness. Recognize.
+            </small>
+          </h4>
+        <% end %>
       </div><!-- col -->
       <!--<div class="col-sm-4"></div>&lt;!&ndash; col &ndash;&gt;-->
     </div><!-- row -->
