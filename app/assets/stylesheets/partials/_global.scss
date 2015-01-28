@@ -54,28 +54,6 @@ img.story_image{
   margin-right: 0px;
 }
 
-.content_block{
-  box-shadow: $shadow_still;
-  background-color: $content_background_color;
-  padding: 10px;
-  margin-bottom: 20px;
-}
-.form_block{
-  @extend .content_block;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding: 30px;
-}
-.text_block{
-  font-size: 18px;
-  color: $calendar_dark;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  //  border-top: 1px solid $calendar_dark;
-  //  border-bottom: 1px solid $calendar_dark;
-}
 
 .edit_link:link{
   color: $gym_primary;

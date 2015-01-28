@@ -4,7 +4,7 @@
 
 //Features Bar
 function prepareFeaturesBar(){
-  onMediaQuery('sm', function(){
+  onMediaQuery('md', function(){
     $('.feature_col.center_col').css('border-top', '1px solid white');
     $('.feature_col.center_col').css('border-bottom', '1px solid white');
   }, function(){

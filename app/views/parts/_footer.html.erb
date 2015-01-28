@@ -3,9 +3,9 @@
 <div id="footer">
   <div class="container">
     <div class="row">
-      <div class="col-sm-4 footer_col"></div>
+      <div class="col-md-4 footer_col"></div>
 
-      <div class="col-sm-4 footer_col footer_center_col text-center">
+      <div class="col-md-4 footer_col footer_center_col text-center">
         <h4><%= gym.name %></h4>
         <strong><%= link_to gym.phone, "tel:#{gym.phone}" %></strong><br>
         <strong><%= mail_to gym.email %></strong>
@@ -24,8 +24,13 @@
 
       </div>
 
-      <div class="col-sm-4 footer_col">
-
+      <div class="col-md-4 footer_col">
+        <span class="bottom_right">
+          Application by
+          <%= link_to 'http://www.anysoft.us', target: '_blank' do %>
+            <%= image_tag 'anysoft.jpg', style: 'height: 20px;' %>
+          <% end %>
+        </span>
       </div>
     </div>
   </div>

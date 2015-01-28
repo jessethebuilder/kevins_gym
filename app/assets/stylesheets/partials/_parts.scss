@@ -28,7 +28,7 @@
     position: relative;
 
     h1{
-      padding: 10px;
+      padding-left: 30px;
 
       @extend .hv_center;
       color: white;
@@ -48,7 +48,7 @@
   }
   h3{
     color: $calendar_medium;
-    letter-spacing: .35em;
+    letter-spacing: .18em;
   }
 
   h4{
@@ -115,15 +115,20 @@
       background-color: transparent;
     }
   }
+
+  .navbar-brand{
+    @include page_title;
+    font-size: 30px;
+    color: $calendar_light;
+    letter-spacing: .35em;
+  }
 }
 
 #footer{
   padding-top: 20px;
   padding-bottom: 30px;
   background-color: rgba(192, 192, 192, 0.85);
-
   margin-top: 50px;
-//  box-shadow: $footer_shadow;
 
   img.social_icon{
     width: 50px;
@@ -132,7 +137,24 @@
   }
 
   .footer_col{
-  }
+    position: relative;
+//    display: table-cell;
+
+    .bottom_right{
+
+//      vertical-align: bottom;
+//      float: right;
+      position: absolute;
+//      bottom: 100 !important;
+      right: 0;
+      top: 200px;
+//      position: absolute;
+//      top: 180px;
+//      right: 0;
+    }
+
+   }
+
   .footer_center_col{
     border-left: 2px solid $calendar_light;
     border-right: 2px solid $calendar_light;
