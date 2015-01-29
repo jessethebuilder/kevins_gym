@@ -1,7 +1,7 @@
 @pw = 'carltonlasiter'
 
-g = Gym.new :name => "Sequim Gym", :phone => "360-417-6851", :email => "kevin@sequimgym.com"
-g.address = Address.new :street => '145 East Washington Street', :city => 'Sequim', :state => 'wa', :zip => '98382'
+g = Gym.new :name => "Super Gym", :phone => "360-670-9312", :email => "jesse@anysoft.us"
+g.address = Address.new :street => '4218 Mt. Angeles Rd', :city => 'Port Angeles', :state => 'wa', :zip => '98362'
 g.save!
 #
 #4.times do

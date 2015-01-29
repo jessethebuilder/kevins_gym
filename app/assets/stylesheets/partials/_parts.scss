@@ -28,7 +28,7 @@
     position: relative;
 
     h1{
-      padding-left: 30px;
+      padding-left: 100px;
 
       @extend .hv_center;
       color: white;
@@ -48,7 +48,7 @@
   }
   h3{
     color: $calendar_medium;
-    letter-spacing: .18em;
+    letter-spacing: .15em;
   }
 
   h4{

@@ -50,12 +50,13 @@ gem "simple_calendar", "~> 1.1.0"
 
 #gem 'paypal-sdk-rest'
 
-#gem 'faker'
 
 gem 'bootsy'
 #gem 'skrollr-rails'
 
 group :test, :development do
+
+  gem 'faker'
 
   gem 'poltergeist'
   gem 'rspec-rails'

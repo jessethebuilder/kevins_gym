@@ -270,6 +270,7 @@
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.2.2, ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_girl (v4.5.0, ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="factory_girl_rails (v4.5.0, ruby-2.0.0-p353) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="faker (v1.4.3, ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="farm_tools (v0.0.1, C:/Users/jf/Desktop/jesseweb/farm_tools) [path][gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.9.6, ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="formatador (v0.2.5, ruby-2.0.0-p353) [gem]" level="application" />
