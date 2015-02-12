@@ -1,0 +1,10 @@
+<title><%= content_for :title || 'Anysoft' %></title>
+<%= stylesheet_link_tag    "application.css", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+
+<%= content_for :facebook_meta %>
+
+<%= favicon_link_tag "favicons/favicon_as_square.ico" %>
+
+<%= facebook_sdk(SOCIAL_NETWORKING[:facebook][:id], :turbolinks => true) %>

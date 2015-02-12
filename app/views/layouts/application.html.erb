@@ -1,22 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= gym.name %></title>
-  <%= stylesheet_link_tag    "application.css", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-
-  <%= content_for :facebook_meta %>
-
-  <%# icon_colors = %w|red| %>
-  <%#= favicon_link_tag "favicons/favicon_#{icon_colors.sample}" %>
-  <%= favicon_link_tag "favicons/favicon_as_square.ico" %>
-  <%#= favicon_link_tag "images/favicons/faviocon_red.ico" %>
-
-
-  <!--<link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>-->
-
-  <%= facebook_sdk(SOCIAL_NETWORKING[:facebook][:id], :turbolinks => true) %>
+  <%= render :partial => 'parts/header' %>
 </head>
 
 <body>
