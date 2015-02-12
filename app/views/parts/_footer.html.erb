@@ -1,23 +1,25 @@
 <% @a = gym.address %>
 
-<div id="footer" class="container">
+<div id="footer">
+
+<div class="container">
     <div class="row">
       <div class="col-md-4 footer_col"></div><!-- col -->
 
       <div class="col-md-4 footer_col footer_center_col text-center">
-        <!--<h4><%= gym.name %></h4>-->
-        <!--<strong><%= link_to gym.phone, "tel:#{gym.phone}" %></strong><br>-->
-        <!--<strong><%= mail_to gym.email %></strong>-->
-        <!--<address>-->
-          <%#= link_to "http://maps.google.com/?q=#{@a.to_s}", :target => "_blank" do %>
-            <%#= @a.street %><br>
-            <!--<%= "#{@a.street2} <br>".html_safe if @a.street2 %>-->
-            <!--<%= "#{@a.street3} <br>".html_safe if @a.street3 %>-->
-            <!--<%= "#{@a.city}, #{@a.state} #{@a.zip}" %>-->
-          <!--<%# end %>-->
-        <!--</address>-->
+        <h4><%= gym.name %></h4>
+        <strong><%= link_to gym.phone, "tel:#{gym.phone}" %></strong><br>
+        <strong><%= mail_to gym.email %></strong>
+        <address>
+          <%= link_to "http://maps.google.com/?q=#{@a.to_s}", :target => "_blank" do %>
+            <%= @a.street %><br>
+            <%= "#{@a.street2} <br>".html_safe if @a.street2 %>
+            <%= "#{@a.street3} <br>".html_safe if @a.street3 %>
+            <%= "#{@a.city}, #{@a.state} #{@a.zip}" %>
+          <% end %>
+        </address>
 
-        <!--<%= social_networking_row() %>-->
+        <%= social_networking_row() %>
 
 
 
@@ -33,3 +35,4 @@
       </div>
     </div><!-- row -->
 </div><!-- cont -->
+</div>

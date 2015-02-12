@@ -15,7 +15,7 @@ PATH
 PATH
   remote: c:/users/jf/desktop/jesseweb/farm_tools
   specs:
-    farm_tools (0.0.1)
+    farm_tools (0.0.2)
       rails
 
 GEM
