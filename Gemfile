@@ -54,10 +54,9 @@ gem "simple_calendar", "~> 1.1.0"
 gem 'bootsy'
 #gem 'skrollr-rails'
 
+gem 'faker'
+
 group :test, :development do
-
-  gem 'faker'
-
   gem 'poltergeist'
   gem 'rspec-rails'
   gem 'wdm'
