@@ -1,5 +1,5 @@
-<% content_for(:facebook_meta){ facebook_meta_tags(@news_story.title, @news_story.main_news_story_image.url(:large).to_s, @news_story.content, gym.name) } %>
-
+<% head_info(@news_story.title, facebook_description(@news_story.content.to_s), @news_story.main_news_story_image.url(:large).to_s,
+             'article', 'anysoft.us', news_story_url(@news_story)) %>
 
 <div class="container">
   <%= security_gate 'news_story', 'show_quick_menu', @news_story do %>
@@ -9,17 +9,18 @@
   <div id="news_story">
     <div class="row">
       <div class="col-12">
-        <div class="page_title story_title">
+        <%= social_networking_likes(@news_story.content.to_s) %>
+        <h1>
           <%= @news_story.title %>
-        </div>
+        </h1>
       </div>
     </div>
     <div class="row">
       <div class="col-md-7">
 
-          <div class="story_author">
-            by <strong><%= link_to @news_story.author.name, user_path(@news_story.author) %></strong>
-          </div>
+          <!--<div class="story_author">-->
+            <!--by <strong><%#= link_to @news_story.author.name, user_path(@news_story.author) %></strong>-->
+          <!--</div>-->
 
 
           <div class="story_content content_block">

@@ -1,6 +1,7 @@
 module ApplicationHelper
   # include HtmlTools
   # include Parts
+  include FarmTools
   include SecurityGate
 
   def user_is_admin?
@@ -10,6 +11,11 @@ module ApplicationHelper
   def gym
     Gym.first || Gym.new
   end
+
+  def close_button(selector)
+    %Q|<button onclick="rollThisUp('#{selector}', 250)" class="close close_button pull-right">close x</button>|.html_safe
+  end
+
   #
   #FEATURES = {
   #    :membership => '',

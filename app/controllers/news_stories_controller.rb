@@ -66,7 +66,7 @@ class NewsStoriesController < ApplicationController
     def news_story_params
       params.require(:news_story).permit(:title, :content, :author_id, :published, :archived,
                                          :bootsy_image_gallery_id,
-                                         :main_image, :main_image_cache, :remote_main_image_url)
+                                         :main_news_story_image, :main_news_story_image_cache, :remote_main_news_story_image_url)
     end
 
     #def publish?

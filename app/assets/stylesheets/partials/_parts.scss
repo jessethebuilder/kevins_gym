@@ -28,9 +28,9 @@
     position: relative;
 
     h1{
-      padding-left: 100px;
+//      padding-left: 100px;
 
-      @extend .hv_center;
+//      @extend .hv_center;
       color: white;
       font-size: 100px;
     }
@@ -200,4 +200,9 @@
   .tweet{
     margin-top: 8px;
   }
+}
+
+.close_button{
+  margin-top: 15px;
+  margin-bottom: 15px;
 }

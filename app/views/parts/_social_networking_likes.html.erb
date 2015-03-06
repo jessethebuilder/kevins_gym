@@ -1,9 +1,30 @@
-<div class="social_networking_likes">
-  <div class="like_on_fb">
-    <%= like_on_facebook_button(request.url) %>
-  </div>
+<style>
+  .tweet_button{
+  }
 
-  <div class="tweet">
-    <%= tweet_button(tweet, SOCIAL_NETWORKING[:twitter][:fanpage]) %>
+  .facebook_button{
+    position: relative;
+    top: -5px;
+    margin-left: 10px;
+  }
+
+  #share_on_social_networking_bar{
+    /*text-align: center;*/
+    padding-top: 5px;
+    /*padding-left: 30px;*/
+  }
+
+
+</style>
+
+
+<div id="share_on_social_networking_bar" class="row">
+  <div class="col-xs-12">
+    <span class="tweet_button">
+      <%= tweet_button gym.contact_info.social_networking_profile.twitter_id, :count => 'none' %>
+    </span>
+    <span class="facebook_button">
+      <%= like_on_facebook_button :layout => 'button' %>
+    </span>
   </div>
 </div>
