@@ -19,7 +19,7 @@
       <div class="news_story">
         <h3>
           <%= link_to story.title, news_story_path(story) %>
-          <%= image_tag(story.main_image.url(:thumb), :class => "story_image pull-#{cycle('right', 'left')}") if story.main_image? %>
+          <%= image_tag(story.main_news_story_image.url(:thumb), :class => "story_image pull-#{cycle('right', 'left')}") if story.main_news_story_image? %>
         </h3>
 
         <p>

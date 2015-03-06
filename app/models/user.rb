@@ -4,10 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :news_stories, as: :writes_news_stories
+
   mount_uploader :avatar, AvatarUploader
 
   has_many :events
-  has_many :news_stories, :foreign_key => :author_id
+  # has_many :news_stories, :foreign_key => :author_id
 
   USER_LEVELS = %w|nonuser member staff admin|
   AFFILIATED_LEVELS = %w|staff admin|

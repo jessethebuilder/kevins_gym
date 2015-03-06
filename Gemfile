@@ -94,4 +94,8 @@ gem 'twitter_express', :git => 'https://github.com/jessethebuilder/TwitterExpres
 #gem 'farm_tools', :path => 'c:/users/jf/desktop/jesseweb/farm_tools'
 #gem 'twitter_express', :path => 'c:/users/jf/desktop/jesseweb/TwitterExpress'
 
-ruby '2.0.0'
+gem 'geocoder'
+
+# gem 'tzinfo-data'
+
+ruby '2.1.5'

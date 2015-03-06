@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= render :partial => 'parts/header' %>
+  <%= render :partial => 'parts/head' %>
 </head>
 
 <body>
+<%= facebook_sdk(gym.contact_info.social_networking_profile.facebook_app_id) %>
+
 
 <%= render :partial => 'parts/top_nav' %>
 <%#= render :partial => 'parts/social_networking_bar' %>

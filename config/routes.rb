@@ -2,7 +2,7 @@ SGym::Application.routes.draw do
 
   resources :event_categories
 
-  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+  # mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
   resources :news_stories do
     collection do
@@ -30,5 +30,5 @@ SGym::Application.routes.draw do
   resources :users
 
   #root :to => 'news_stories#index'
-  root :to => 'tools#home'
+  root :to => 'news_stories#index'
 end

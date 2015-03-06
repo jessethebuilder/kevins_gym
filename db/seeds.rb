@@ -1,8 +1,15 @@
 @pw = 'carltonlasiter'
 
 g = Gym.new :name => "Super Gym", :phone => "360-670-9312", :email => "jesse@anysoft.us"
-g.address = Address.new :street => '4218 Mt. Angeles Rd', :city => 'Port Angeles', :state => 'wa', :zip => '98362'
+g.build_contact_info.address = Address.new :street => '4218 Mt. Angeles Rd', :city => 'Port Angeles', :state => 'wa', :zip => '98362'
 g.save!
+
+snp = g.contact_info.build_social_networking_profile
+snp.facebook_url = "https://www.facebook.com/AnysoftSoftwareCompany?ref=hl"
+snp.twitter_url = "https://twitter.com/anysoftdotus?lang=en"
+snp.pinterest_url = "https://www.pinterest.com/anysoft/"
+snp.tumblr_url = "http://anysoft-software.tumblr.com/"
+snp.save!
 #
 #4.times do
 #  u = User.new :first_name => Faker::Name.first_name, :last_name => Faker::Name.last_name,
@@ -78,8 +85,10 @@ end
 10.times do
   ns = NewsStory.new :title => Faker::Company.bs.titlecase, :published => true,
                      :content => Faker::Lorem.paragraphs(paragraph_count = Random.rand(3..20)).join('<p>')
-  ns.author = User.where.not(:level => 'member').sample
   fn = File.join(Rails.root, 'app/assets/images/temp', "news_sample#{Random.rand(1..2)}.jpg")
-  ns.main_image = File.new(fn)
+  ns.main_news_story_image = File.new(fn)
   ns.save!
+  User.where.not(:level => 'member').sample.news_stories << ns
+
 end
+

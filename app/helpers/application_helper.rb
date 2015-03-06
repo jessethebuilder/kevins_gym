@@ -1,6 +1,6 @@
 module ApplicationHelper
-  include HtmlTools
-  include Parts
+  # include HtmlTools
+  # include Parts
   include SecurityGate
 
   def user_is_admin?

@@ -1,4 +1,4 @@
-<% content_for(:facebook_meta){ facebook_meta_tags(@news_story.title, @news_story.main_image.url(:large).to_s, @news_story.content, gym.name) } %>
+<% content_for(:facebook_meta){ facebook_meta_tags(@news_story.title, @news_story.main_news_story_image.url(:large).to_s, @news_story.content, gym.name) } %>
 
 
 <div class="container">
@@ -31,7 +31,7 @@
 
       <div class="col-md-5">
         <%#= user_bio(@news_story.author) %>
-        <%= image_tag(@news_story.main_image.url(:large), :class => 'main_image') if @news_story.main_image? %>
+        <%= image_tag(@news_story.main_news_story_image.url(:large), :class => 'main_news_story_image') if @news_story.main_news_story_image? %>
       </div><!-- col -->
     </div><!-- row -->
   </div><!-- news_story -->

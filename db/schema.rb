@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150108031410) do
+ActiveRecord::Schema.define(version: 20150306091839) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 20150108031410) do
     t.datetime "updated_at"
   end
 
+  create_table "contact_infos", force: true do |t|
+    t.string  "phone"
+    t.string  "phone2"
+    t.string  "phone3"
+    t.string  "main_email"
+    t.string  "billing_email"
+    t.string  "website_url"
+    t.integer "has_contact_info_id"
+    t.string  "has_contact_info_type"
+  end
+
   create_table "event_categories", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -81,23 +92,28 @@ ActiveRecord::Schema.define(version: 20150108031410) do
   create_table "news_stories", force: true do |t|
     t.string   "title"
     t.text     "content"
-    t.integer  "author_id"
-    t.boolean  "published",  default: false
-    t.boolean  "archived",   default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "main_image"
+    t.boolean  "published",                default: false
+    t.boolean  "archived",                 default: false
+    t.string   "main_news_story_image"
+    t.string   "writes_news_stories_type"
+    t.string   "writes_news_stories_id"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.string   "slug"
   end
 
   create_table "social_networking_profiles", force: true do |t|
-    t.string   "fb_app_id"
-    t.string   "fb_app_secret"
-    t.string   "fb_fan_page"
-    t.string   "fb_person_id"
+    t.string   "facebook_app_id"
+    t.string   "facebook_app_secret"
+    t.string   "facebook_id"
+    t.string   "twitter_app_id"
     t.string   "twitter_id"
-    t.string   "twitter_handle"
     t.string   "has_social_networking_id"
     t.string   "has_social_networking_type"
+    t.string   "tumblr_id"
+    t.string   "google_plus_id"
+    t.string   "pinterest_id"
+    t.string   "instagram_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
