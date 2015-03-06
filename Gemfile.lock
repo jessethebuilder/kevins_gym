@@ -13,8 +13,9 @@ GIT
     twitter_express (0.0.1)
       rails
 
-PATH
-  remote: C:/Users/Bucky/Desktop/jesseweb/farm_tools/farm_tools
+GIT
+  remote: https://github.com/jessethebuilder/farm_tools
+  revision: e0f71a3ca866858c84f2d21b294caa88e8eadca2
   specs:
     farm_tools (0.0.3)
       bootsy
@@ -270,8 +271,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.5.3)
-      coffee-rails
     tzinfo (0.3.43)
     uglifier (2.7.1)
       execjs (>= 0.3.0)
@@ -323,7 +322,6 @@ DEPENDENCIES
   simple_calendar (~> 1.1.0)
   simple_form
   timecop
-  turbolinks
   twitter_express!
   uglifier (>= 1.3.0)
   wdm

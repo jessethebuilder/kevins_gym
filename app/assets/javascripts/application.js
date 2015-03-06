@@ -12,9 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootsy
+////  = require bootsy
 //= require bootstrap
-//= require turbolinks
 //= require moment
 //= require bootstrap-datetimepicker
 //= require pickers

@@ -1,4 +1,7 @@
 @pw = 'carltonlasiter'
+require 'action_view/helpers'
+
+include ActionView::Helpers
 
 g = Gym.new :name => "Super Gym", :phone => "360-670-9312", :email => "jesse@anysoft.us"
 g.build_contact_info.address = Address.new :street => '4218 Mt. Angeles Rd', :city => 'Port Angeles', :state => 'wa', :zip => '98362'
@@ -18,7 +21,7 @@ snp.save!
 #  u.save!
 #end
 
-10.times do |n|
+3.times do |n|
   #a bunch of random users
   u = User.new :email => "#{n}_#{Faker::Internet.email}", :password => @pw, :level => 'staff', :skills => [User::SKILLS.sample]
   unless u.level == 'member' && Random.rand(1..4) != 1
@@ -26,8 +29,13 @@ snp.save!
     u.last_name = Faker::Name.last_name
   end
 
+  # url = helper.image_url("temp/user_sample#{Random.rand(1..2)}")
+  # e.main_image = File.new(fn)
+  # u.remote_avatar_url = url
+  #
   fn = File.join(Rails.root, "app/assets/images/temp/user_sample#{Random.rand(1..2)}.jpg")
   u.avatar = File.new(fn)
+
 
 
   u.bio = Faker::Lorem.sentences(sentence_count = Random.rand(1..10)).join('<p>'.html_safe)
@@ -44,7 +52,7 @@ admin.save!
   ec.save!
 end
 
-100.times do
+6.times do
   hour = Random.rand(6..20)
   if hour >= 12
     ampm = 'pm'
@@ -76,17 +84,21 @@ end
 
   #setup main_image
   fn = File.join(Rails.root, 'app/assets/images/temp', "class_sample#{Random.rand(1..3)}.jpg")
+  # url = helper.image_url("temp/class_sample#{Random.rand(1..3)}")
   e.main_image = File.new(fn)
+  # e.remote_main_image_url = url
 
   e.save!
 
 end
 
-10.times do
+6.times do
   ns = NewsStory.new :title => Faker::Company.bs.titlecase, :published => true,
                      :content => Faker::Lorem.paragraphs(paragraph_count = Random.rand(3..20)).join('<p>')
-  fn = File.join(Rails.root, 'app/assets/images/temp', "news_sample#{Random.rand(1..2)}.jpg")
+  fn = File.join(Rails.root, 'app/assets/images/temp', "news_sample#{Random.rand(1..6)}.jpg")
   ns.main_news_story_image = File.new(fn)
+  # url = helper.image_url("temp/news_sample#{Random.rand(1..6)}")
+  # ns.remote_main_news_story_image_url = url
   ns.save!
   User.where.not(:level => 'member').sample.news_stories << ns
 
