@@ -15,7 +15,7 @@ GIT
 
 GIT
   remote: https://github.com/jessethebuilder/farm_tools
-  revision: c975fcbcf0cb32800dce18eb30d4724dd0325969
+  revision: 39ca0e0746d9808f840be448e940ac37799035e2
   specs:
     farm_tools (0.0.3)
       bootsy

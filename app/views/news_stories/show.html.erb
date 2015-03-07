@@ -32,7 +32,7 @@
 
       <div class="col-md-5">
         <%#= user_bio(@news_story.author) %>
-        <%= image_tag(@news_story.main_news_story_image.url(:large), :class => 'main_news_story_image') if @news_story.main_news_story_image? %>
+        <%= image_tag(@news_story.main_news_story_image.url(:medium), :class => 'main_news_story_image') if @news_story.main_news_story_image? %>
       </div><!-- col -->
     </div><!-- row -->
   </div><!-- news_story -->
