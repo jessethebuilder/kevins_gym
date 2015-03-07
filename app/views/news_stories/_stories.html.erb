@@ -1,10 +1,16 @@
 <div id="news_stories" class="col-md-9">
 
-  <%= security_gate 'quick_options', 'view' do %>
-    <%= quick_options ["New Story", new_news_story_path] %>
-  <% end %>
 
-  <%= render :partial => 'parts/social_networking_bar' %>
+    <%= security_gate 'quick_options', 'view' do %>
+
+    <div>
+      <%= quick_options ["New Story", new_news_story_path] %>
+      <div class="clearfix"></div>
+    </div>
+    <% end %>
+
+  <%= render :partial => 'parts/social_networking_bar' if do_social_networking? %>
+
 
 
   <!--<div id="news_stories_header">-->

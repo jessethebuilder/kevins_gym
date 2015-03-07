@@ -16,6 +16,11 @@ module ApplicationHelper
     %Q|<button onclick="rollThisUp('#{selector}', 250)" class="close close_button pull-right">close x</button>|.html_safe
   end
 
+  def do_social_networking?
+    !user_is_admin?
+    # true
+  end
+
   #
   #FEATURES = {
   #    :membership => '',
