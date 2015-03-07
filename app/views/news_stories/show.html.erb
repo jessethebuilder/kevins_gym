@@ -1,4 +1,4 @@
-<% head_info(@news_story.title, facebook_description(@news_story.content.to_s), @news_story.main_news_story_image.url(:large).to_s,
+<% head_info(@news_story.title, facebook_description(@news_story.content.to_s), image_path(@news_story.main_news_story_image.url(:large).to_s),
              'article', 'anysoft.us', news_story_url(@news_story)) %>
 
 <div class="container">
