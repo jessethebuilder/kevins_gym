@@ -1,5 +1,5 @@
 <% head_info(@news_story.title, facebook_description(@news_story.content.to_s), image_url(@news_story.main_news_story_image.url(:large).to_s),
-             'article', 'anysoft.us', news_story_url(@news_story)) %>
+             'article', 'anysoft.us', news_story_url(@news_story), :facebook_app_id => gym.contact_info.social_networking_profile.facebook_app_id) %>
 
 <div class="container">
   <%= security_gate 'news_story', 'show_quick_menu', @news_story do %>
