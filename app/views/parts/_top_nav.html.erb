@@ -1,8 +1,10 @@
-<style>
-    body{
-        padding-top: 50px;
-    }
-</style>
+<!--<style>-->
+    <!--/*body{*/-->
+        <!--/*padding-top: 104px;*/-->
+    <!--/*}*/-->
+<!--</style>-->
+
+
 
 <div id='top_nav' class='navbar navbar-fixed-top navbar-default navbar-inverse' role='navigation'>
   <div class="container">
@@ -80,23 +82,35 @@
         <!--<%# end %>-->
 
 
-          <%# if user_signed_in? %>
+          <% if user_signed_in? %>
             <!--<li>-->
-              <!--<%#= link_to 'Account', edit_user_registration_path(current_user) %>-->
+              <%#= link_to 'Account', edit_user_registration_path(current_user) %>
             <!--</li>-->
-            <!--<li>-->
-              <%#= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-            <!--</li>-->
-      <%# else %>
-            <!--<li>-->
-              <%#= link_to 'Login', new_user_session_path %>
-            <!--</li>-->
+            <li>
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to 'Login', new_user_session_path %>
+            </li>
             <!--<li style="font-weight:800;">-->
-               <!--<%#= link_to 'Sign Up', new_user_registration_path %>-->
+               <%#= link_to 'Sign Up', new_user_registration_path %>
             <!--</li>-->
-          <!--<%# end %>-->
+          <% end %>
         <!--</li>-->
       </ul>
     </div>
   </div>
 </div>
+
+<script>
+  function padBodyForTopNav(){
+    $('body').css('padding-top', $('#top_nav').height() + 1);
+
+    $(window).resize(function(){
+      $('body').css('padding-top', $('#top_nav').height() + 1);
+    })
+  }
+
+  ready_methods.push(padBodyForTopNav);
+</script>

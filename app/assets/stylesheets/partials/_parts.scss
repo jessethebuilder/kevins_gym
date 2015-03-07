@@ -83,16 +83,16 @@
   a{
 //    color: $calendar_dark;
     color: white;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
-    letter-spacing: .2em;
+    letter-spacing: .20em;
     text-align: center;
-    border-bottom: 1px solid transparent;
+    border-bottom: 4px solid transparent;
   }
 
   a:hover{
     color: $gym_secondary;
-    border-bottom: 1px solid $gym_secondary;
+    border-bottom: 4px solid $gym_secondary;
   }
 
   ul.dropdown-menu{
@@ -120,7 +120,7 @@
     @include page_title;
     font-size: 30px;
     color: $calendar_light;
-    letter-spacing: .35em;
+    letter-spacing: .45em;
   }
 }
 
