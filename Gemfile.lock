@@ -15,14 +15,12 @@ GIT
 
 GIT
   remote: https://github.com/jessethebuilder/farm_tools
-  revision: 600b8345b1e52f5c7b7dbece3bbfd700289d4f73
+  revision: cc1c505c31269373305015aaf22a751d374e807d
   specs:
     farm_tools (0.0.3)
       bootsy
-      carrierwave
       geocoder
       koala (~> 1.11.0rc)
-      mini_magick
 
 GEM
   remote: http://rubygems.org/
@@ -56,7 +54,7 @@ GEM
     bcrypt (3.1.10-x64-mingw32)
     bootstrap-sass (3.0.3.0)
       sass (~> 3.2)
-    bootsy (2.0.13)
+    bootsy (2.1.0)
       carrierwave (~> 0.10)
       mini_magick (~> 4.0)
       remotipart (~> 1.2)
