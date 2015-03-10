@@ -17,4 +17,5 @@ module RequestsSpecHelper
   def setup_store
     gym = create :gym
   end
+
 end
