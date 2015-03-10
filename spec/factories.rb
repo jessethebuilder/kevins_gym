@@ -24,10 +24,16 @@ FactoryGirl.define do
     end
   end
 
+  factory :contact_info do
+
+    factory :contact_info_with_full_address do
+      association :address, :factory => :address_full
+    end
+  end
 
   factory :news_story do
     title Faker::Company.catch_phrase.titlecase
-    association :author, :factory => :staff_plus
+    #todo association :author, :factory => :staff_plus
 
     factory :published do
       published true
@@ -45,7 +51,7 @@ FactoryGirl.define do
     name Faker::Company.name
     email
     phone Faker::PhoneNumber.phone_number
-    association :address, :factory => :address_full
+    association :contact_info, :factory => :contact_info_with_full_address
   end
 
   factory :user do

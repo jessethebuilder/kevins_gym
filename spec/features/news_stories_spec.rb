@@ -1,10 +1,10 @@
-#require 'rails_helper'
+require 'rails_helper'
 #
-#RSpec.describe 'News Story Requests', :type => :feature do
-#  let!(:ns){ create :news_story }
-#  before(:each) do
-#    setup_store
-#  end
+RSpec.describe 'News Story Requests', :type => :feature do
+  let!(:ns){ create :news_story }
+  before(:each) do
+     setup_store
+  end
 #
 #  describe 'Index' do
 #
@@ -107,4 +107,6 @@
 #
 #
 #
-#end
+
+
+end

@@ -13,9 +13,8 @@ GIT
     twitter_express (0.0.1)
       rails
 
-GIT
-  remote: https://github.com/jessethebuilder/farm_tools
-  revision: cc1c505c31269373305015aaf22a751d374e807d
+PATH
+  remote: C:/Users/Bucky/Desktop/jesseweb/farm_tools/farm_tools
   specs:
     farm_tools (0.0.3)
       bootsy
@@ -137,7 +136,7 @@ GEM
       multi_json
     launchy (2.3.0)
       addressable (~> 2.3)
-    listen (2.8.5)
+    listen (2.8.6)
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)

@@ -89,8 +89,8 @@ end
 
 #gem 'webrat'
 
-gem 'farm_tools', :git => 'https://github.com/jessethebuilder/farm_tools'
-# gem 'farm_tools', :path => 'C:\Users\Bucky\Desktop\jesseweb\farm_tools\farm_tools'
+# gem 'farm_tools', :git => 'https://github.com/jessethebuilder/farm_tools'
+gem 'farm_tools', :path => 'C:\Users\Bucky\Desktop\jesseweb\farm_tools\farm_tools'
 gem 'twitter_express', :git => 'https://github.com/jessethebuilder/TwitterExpress'
 #gem 'twitter_express', :path => 'c:/users/jf/desktop/jesseweb/TwitterExpress'
 

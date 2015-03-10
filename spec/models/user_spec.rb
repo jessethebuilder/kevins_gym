@@ -38,7 +38,7 @@ RSpec.describe User, :type => :model do
 
   describe 'Associations' do
     it{ should have_many(:events) }
-    it{ should have_many(:news_stories).with_foreign_key('author_id') }
+    it{ should have_many(:news_stories) }
   end
 
   describe 'Methods' do

@@ -8,6 +8,6 @@ RSpec.describe Gym, :type => :model do
   end
 
   describe 'Associations' do
-    it{ should have_one :address }
+    it{ should have_one :contact_info }
   end
 end
