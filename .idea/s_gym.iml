@@ -231,26 +231,6 @@
     </content>
     <orderEntry type="jdk" jdkName="ruby-2.1.5-p273" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
-      <library name="farm_tools (v0.0.3, C:/Users/Bucky/Desktop/jesseweb/farm_tools/farm_tools) [path][gem]">
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/../farm_tools/farm_tools/db" />
-          <root url="file://$MODULE_DIR$/../farm_tools/farm_tools/app" />
-          <root url="file://$MODULE_DIR$/../farm_tools/farm_tools/bin" />
-          <root url="file://$MODULE_DIR$/../farm_tools/farm_tools/lib" />
-          <root url="file://$MODULE_DIR$/../farm_tools/farm_tools/.idea" />
-          <root url="file://$MODULE_DIR$/../farm_tools/farm_tools/config" />
-        </CLASSES>
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/../farm_tools/farm_tools/db" />
-          <root url="file://$MODULE_DIR$/../farm_tools/farm_tools/app" />
-          <root url="file://$MODULE_DIR$/../farm_tools/farm_tools/bin" />
-          <root url="file://$MODULE_DIR$/../farm_tools/farm_tools/lib" />
-          <root url="file://$MODULE_DIR$/../farm_tools/farm_tools/.idea" />
-          <root url="file://$MODULE_DIR$/../farm_tools/farm_tools/config" />
-        </SOURCES>
-      </library>
-    </orderEntry>
     <orderEntry type="library" scope="PROVIDED" name="actionmailer (v4.0.2, ruby-2.1.5-p273) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="actionpack (v4.0.2, ruby-2.1.5-p273) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activemodel (v4.0.2, ruby-2.1.5-p273) [gem]" level="application" />
@@ -284,6 +264,7 @@
     <orderEntry type="library" scope="PROVIDED" name="factory_girl_rails (v4.5.0, ruby-2.1.5-p273) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faker (v1.4.3, ruby-2.1.5-p273) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="faraday (v0.9.1, ruby-2.1.5-p273) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="farm_tools (v0.0.3@9bee04, ruby-2.1.5-p273) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="ffi (v1.9.6, ruby-2.1.5-p273) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="formatador (v0.2.5, ruby-2.1.5-p273) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="geocoder (v1.2.7, ruby-2.1.5-p273) [gem]" level="application" />
@@ -305,7 +286,6 @@
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v1.25.1, ruby-2.1.5-p273) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_magick (v4.1.0, ruby-2.1.5-p273) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mini_portile (v0.6.2, ruby-2.1.5-p273) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="minitest (v4.7.5, ruby-2.1.5-p273) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="momentjs-rails (v2.9.0, ruby-2.1.5-p273) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.11.0, ruby-2.1.5-p273) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multipart-post (v2.0.0, ruby-2.1.5-p273) [gem]" level="application" />

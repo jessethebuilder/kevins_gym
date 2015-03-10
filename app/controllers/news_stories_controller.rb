@@ -1,5 +1,4 @@
 class NewsStoriesController < ApplicationController
-  include SaveDraftArchiveDeleteControllerHelper
 
   before_action :set_news_story, only: [:show, :edit, :update, :destroy]
 

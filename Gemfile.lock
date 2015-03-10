@@ -13,8 +13,9 @@ GIT
     twitter_express (0.0.1)
       rails
 
-PATH
-  remote: C:/Users/Bucky/Desktop/jesseweb/farm_tools/farm_tools
+GIT
+  remote: https://github.com/jessethebuilder/farm_tools
+  revision: 9bee04a298d24027bb0260c1bd0316537dab7e71
   specs:
     farm_tools (0.0.3)
       bootsy
